@@ -1327,6 +1327,56 @@
   @media print{
     .media-add, .media-thumb .mt-del{ display:none !important; }
   }
+
+  /* ---------- EDIT MODE (مخفی به‌صورت پیش‌فرض) ---------- */
+  .media-add,
+  .media-thumb .mt-del{
+    display:none !important;
+  }
+  body.edit-mode .media-add{
+    display:inline-flex !important;
+  }
+  body.edit-mode .media-thumb .mt-del{
+    display:flex !important;
+  }
+
+  /* نشانگر حالت ویرایش */
+  .edit-badge{
+    position:fixed;
+    bottom:16px;
+    left:16px;
+    z-index:500;
+    display:none;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    background:rgba(229,72,77,.15);
+    border:1px solid #e5484d;
+    color:#ff8a8d;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.02em;
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+    pointer-events:none;
+  }
+  .edit-badge::before{
+    content:'';
+    width:7px; height:7px;
+    border-radius:999px;
+    background:#e5484d;
+    animation:editPulse 1.6s ease-in-out infinite;
+  }
+  @keyframes editPulse{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:.4; transform:scale(.8); }
+  }
+  body.edit-mode .edit-badge{ display:flex; }
+
+  @media print{
+    .edit-badge{ display:none !important; }
+  }
 </style>
 </head>
 <body>
@@ -2056,6 +2106,8 @@
   </div>
 </footer>
 
+<div class="edit-badge" aria-hidden="true">حالت ویرایش فعال — Ctrl+Shift+E برای خروج</div>
+
 <!-- ==================== LANGUAGE + FILTER SCRIPT ==================== -->
 <script>
   (function () {
@@ -2402,6 +2454,40 @@
 
   document.querySelectorAll('.media-block[data-media]').forEach(function (block) {
     render(block.dataset.media);
+  });
+})();
+</script>
+
+<!-- ==================== EDIT MODE SCRIPT ==================== -->
+<script>
+(function(){
+  var KEY = 'kazzi-edit-mode';
+
+  function isOn(){
+    try { return localStorage.getItem(KEY) === '1'; }
+    catch(e){ return false; }
+  }
+  function setOn(on){
+    document.body.classList.toggle('edit-mode', on);
+    try { localStorage.setItem(KEY, on ? '1' : '0'); } catch(e){}
+  }
+
+  // اگر URL شامل #edit بود، روشن کن
+  if (location.hash === '#edit') setOn(true);
+  else if (isOn()) setOn(true);
+
+  // Ctrl+Shift+E (یا Cmd+Shift+E روی مک) برای تاگل
+  document.addEventListener('keydown', function(e){
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'E' || e.key === 'e')) {
+      e.preventDefault();
+      setOn(!document.body.classList.contains('edit-mode'));
+    }
+  });
+
+  // با تغییر hash هم بشه روشن/خاموش کرد
+  window.addEventListener('hashchange', function(){
+    if (location.hash === '#edit') setOn(true);
+    else if (location.hash === '#view') setOn(false);
   });
 })();
 </script>
