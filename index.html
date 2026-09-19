@@ -17,7 +17,6 @@
   }
 
   *{ box-sizing:border-box; }
-
   html{ scroll-behavior:smooth; }
 
   body{
@@ -30,7 +29,6 @@
   }
 
   ::selection{ background:var(--line); color:var(--bg); }
-
   a{ color:inherit; }
 
   .lat{
@@ -78,7 +76,6 @@
   }
   .brand svg{ width:28px; height:auto; display:block; }
 
-  /* ---------- site nav (وسط دقیق هدر) ---------- */
   .site-nav{
     position:absolute;
     left:50%;
@@ -93,9 +90,7 @@
     white-space:nowrap;
     direction:rtl;
   }
-  html[lang="en"] .site-nav{
-    direction:ltr;
-  }
+  html[lang="en"] .site-nav{ direction:ltr; }
   .site-nav a{
     text-decoration:none;
     color:var(--line-dim);
@@ -113,21 +108,14 @@
   }
 
   /* ---------- socials ---------- */
-  .socials{
-    display:flex;
-    align-items:center;
-    gap:16px;
-  }
+  .socials{ display:flex; align-items:center; gap:16px; }
   .socials a{
     display:flex;
     color:var(--line-dim);
     text-decoration:none;
     transition:color .25s ease, transform .25s ease;
   }
-  .socials a:hover{
-    color:var(--line);
-    transform:translateY(-1px);
-  }
+  .socials a:hover{ color:var(--line); transform:translateY(-1px); }
   .socials svg{
     width:18px; height:18px;
     fill:none;
@@ -262,10 +250,7 @@
     text-align:right;
     font-weight:500;
   }
-  html[lang="en"] .eyebrow{
-    text-align:left;
-    direction:ltr;
-  }
+  html[lang="en"] .eyebrow{ text-align:left; direction:ltr; }
 
   h2{
     font-size:clamp(24px, 3.4vw, 34px);
@@ -324,9 +309,9 @@
     grid-template-columns:1fr;
     gap:6px;
     padding:22px 0;
-    border-bottom:1px solid var(--line-faint);
   }
-  .resume-item:last-child{ border-bottom:none; padding-bottom:0; }
+  .resume-item:first-child{ padding-top:22px; }
+  .resume-item:last-child{ padding-bottom:0; }
 
   .resume-item-head{
     display:flex;
@@ -372,9 +357,7 @@
     transition:text-decoration-color .2s ease;
   }
   .resume-org a:hover,
-  .resume-desc a:hover{
-    text-decoration-color:var(--line);
-  }
+  .resume-desc a:hover{ text-decoration-color:var(--line); }
 
   .resume-desc{
     margin:8px 0 0;
@@ -385,12 +368,7 @@
     max-width:none;
   }
 
-  .resume-desc ul{
-    margin:0;
-    padding:0;
-    list-style:none;
-  }
-
+  .resume-desc ul{ margin:0; padding:0; list-style:none; }
   .resume-desc li{
     position:relative;
     padding-inline-start:18px;
@@ -398,7 +376,6 @@
     line-height:1.85;
   }
   .resume-desc li:last-child{ margin-bottom:0; }
-
   .resume-desc li::before{
     content:'–';
     position:absolute;
@@ -406,56 +383,105 @@
     color:var(--line-faint);
   }
 
-  /* ---------- publications ---------- */
-  .pub-list{ display:grid; gap:0; }
+  /* ---------- works ---------- */
+  .work-filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:0 0 46px;
+  }
+  .work-filters button{
+    font-family:inherit;
+    font-size:12.5px;
+    font-weight:400;
+    color:var(--line-dim);
+    background:none;
+    border:1px solid var(--line-faint);
+    border-radius:999px;
+    padding:6px 15px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:color .22s ease, border-color .22s ease, background .22s ease;
+  }
+  .work-filters button:hover{ color:var(--line); border-color:var(--line-dim); }
+  .work-filters button[aria-pressed="true"]{
+    background:var(--line);
+    color:var(--bg);
+    border-color:var(--line);
+  }
 
-  .pub-item{
-    padding:24px 0;
+  .work-group{ margin-bottom:56px; }
+  .work-group:last-child{ margin-bottom:0; }
+  .work-group[hidden]{ display:none; }
+
+  .work-group > h3{
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--line-dim);
+    font-weight:500;
+    margin:0 0 6px;
+    padding-bottom:16px;
     border-bottom:1px solid var(--line-faint);
   }
-  .pub-item:last-child{ border-bottom:none; padding-bottom:0; }
+  html[lang="fa"] .work-group > h3{ letter-spacing:0; text-transform:none; }
 
-  .pub-title{
-    margin:0 0 8px;
+  .work-item{
+    display:grid;
+    gap:6px;
+    padding:22px 0;
+  }
+  .work-item:first-child{ padding-top:22px; }
+  .work-item:last-child{ padding-bottom:0; }
+
+  .work-item-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .work-title{
+    margin:0;
     font-size:clamp(16px, 1.9vw, 18px);
     font-weight:500;
     line-height:1.5;
     color:var(--line);
+    max-width:none;
   }
 
-  .pub-authors{
-    margin:0 0 6px;
+  .work-date{
+    font-size:12.5px;
+    color:var(--line-dim);
+    white-space:nowrap;
+    font-weight:400;
+  }
+
+  .work-desc{
+    margin:8px 0 0;
     font-size:14px;
-    color:#c9cdd3;
-    font-weight:300;
-    line-height:1.7;
-  }
-
-  .pub-journal{
-    margin:0;
-    font-size:13.5px;
     color:var(--line-dim);
     font-weight:300;
-    line-height:1.7;
-    font-style:italic;
+    line-height:1.9;
+    max-width:none;
   }
-
-  .pub-journal a{
+  .work-desc a{
     color:inherit;
     text-decoration:underline;
     text-decoration-color:var(--line-faint);
     text-underline-offset:3px;
+    transition:text-decoration-color .2s ease;
   }
-  .pub-journal a:hover{ text-decoration-color:var(--line); }
+  .work-desc a:hover{ text-decoration-color:var(--line); }
 
-  .pub-tags{
+  .work-tags{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
     margin-top:12px;
   }
-
-  .pub-tags span{
+  .work-tags span{
     font-size:12px;
     color:var(--line-dim);
     border:1px solid var(--line-faint);
@@ -570,7 +596,6 @@
     .socials{ gap:12px; }
   }
 
-  /* ---------- small screens ---------- */
   @media (max-width:700px){
     .site-nav{
       position:static;
@@ -656,14 +681,12 @@
       <span>KAZZIBLANKA</span>
     </a>
 
-    <!-- ============ NAV / OUTLINE ============ -->
     <nav class="site-nav" aria-label="Site outline">
-      <a href="#about"        data-en="About">درباره</a>
-      <a href="#resume"       data-en="Resume">رزومه</a>
-      <a href="#publications" data-en="Publications">انتشارات</a>
-      <a href="#contact"      data-en="Contact">ارتباط</a>
+      <a href="#about"  data-en="About">درباره</a>
+      <a href="#resume" data-en="Resume">رزومه</a>
+      <a href="#works"  data-en="Works">آثار</a>
+      <a href="#contact" data-en="Contact">ارتباط</a>
     </nav>
-    <!-- ============ /NAV ============ -->
 
     <div class="header-right">
 
@@ -754,7 +777,7 @@
       </span>
     </div>
 
-    <!-- ============ 1. EXPERIENCE ============ -->
+    <!-- ============ EXPERIENCE ============ -->
     <div class="resume-block">
       <h3 data-en="Experience">تجربیات کاری</h3>
 
@@ -791,8 +814,45 @@
         </div>
       </div>
     </div>
+    <!-- ============ /EXPERIENCE ============ -->
 
-    <!-- ============ 2. EDUCATION ============ -->
+    <!-- ============ BUILT & ENTREPRENEURSHIP ============ -->
+    <div class="resume-block">
+      <h3 data-en="Things I’ve Built &amp; Entrepreneurship">چیزهایی که ساختم و کارآفرینی</h3>
+
+      <div class="resume-item">
+        <div class="resume-item-head">
+          <h4 data-en="Project Name — short tagline">نام پروژه — یک خط معرفی</h4>
+          <span class="resume-date" data-en="2024 – Present">۱۴۰۳ – اکنون</span>
+        </div>
+        <p class="resume-org" data-en="Founder — Tehran, Iran">بنیان‌گذار — تهران، ایران</p>
+        <div class="resume-desc" data-en="<ul><li>What problem it solves and who it’s for.</li><li>Your specific role and main contributions.</li><li>Key outcome: users, revenue, downloads, or impact metric.</li></ul>">
+          <ul>
+            <li>چه مشکلی را حل می‌کند و مخاطبش کیست.</li>
+            <li>نقش دقیق شما و مشارکت‌های اصلی.</li>
+            <li>نتیجهٔ کلیدی: تعداد کاربر، درآمد، دانلود یا شاخص اثر.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="resume-item">
+        <div class="resume-item-head">
+          <h4 data-en="Project Name — short tagline">نام پروژه — یک خط معرفی</h4>
+          <span class="resume-date" data-en="2023 – 2024">۱۴۰۲ – ۱۴۰۳</span>
+        </div>
+        <p class="resume-org" data-en="Co-founder — Location">هم‌بنیان‌گذار — مکان</p>
+        <div class="resume-desc" data-en="<ul><li>What problem it solves and who it’s for.</li><li>Your specific role and main contributions.</li><li>Key outcome: users, revenue, downloads, or impact metric.</li></ul>">
+          <ul>
+            <li>چه مشکلی را حل می‌کند و مخاطبش کیست.</li>
+            <li>نقش دقیق شما و مشارکت‌های اصلی.</li>
+            <li>نتیجهٔ کلیدی: تعداد کاربر، درآمد، دانلود یا شاخص اثر.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- ============ /BUILT & ENTREPRENEURSHIP ============ -->
+
+    <!-- ============ EDUCATION ============ -->
     <div class="resume-block">
       <h3 data-en="Education">تحصیلات</h3>
 
@@ -812,8 +872,9 @@
         <p class="resume-org" data-en="Alborz University of Medical Sciences">دانشگاه علوم پزشکی البرز</p>
       </div>
     </div>
+    <!-- ============ /EDUCATION ============ -->
 
-    <!-- ============ 3. COURSES ============ -->
+    <!-- ============ COURSES ============ -->
     <div class="resume-block">
       <h3 data-en="Courses">دوره‌ها و کورس‌ها</h3>
 
@@ -833,8 +894,9 @@
         <p class="resume-org" data-en="Shahid Beheshti University of Medical Sciences">دانشگاه علوم پزشکی شهید بهشتی</p>
       </div>
     </div>
+    <!-- ============ /COURSES ============ -->
 
-    <!-- ============ 4. LEADERSHIP & ACTIVITIES ============ -->
+    <!-- ============ LEADERSHIP & ACTIVITIES ============ -->
     <div class="resume-block">
       <h3 data-en="Leadership &amp; Activities">رهبری و فعالیت‌ها</h3>
 
@@ -934,8 +996,9 @@
         </div>
       </div>
     </div>
+    <!-- ============ /LEADERSHIP & ACTIVITIES ============ -->
 
-    <!-- ============ 5. SKILLS & INTERESTS ============ -->
+    <!-- ============ SKILLS & INTERESTS ============ -->
     <div class="resume-block">
       <h3 data-en="Skills &amp; Interests">مهارت‌ها و علاقه‌مندی‌ها</h3>
 
@@ -964,49 +1027,164 @@
             <span data-en="Entrepreneurship — Basics">کارآفرینی — مقدماتی</span>
           </div>
         </div>
+
+        <div class="skill-group">
+          <h4 data-en="Artistic">هنری</h4>
+          <div class="skill-tags">
+            <span data-en="Painting — Intermediate">نقاشی — متوسط</span>
+            <span data-en="Graphic Design — Upper-intermediate">طراحی گرافیک — بالاتر از متوسط</span>
+            <span data-en="Visual Identity — Basics">هویت بصری — مقدماتی</span>
+            <span data-en="Photography — Basics">عکاسی — مقدماتی</span>
+            <span data-en="Video Editing — Basics">تدوین ویدیو — مقدماتی</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4 data-en="Sports Achievements">دستاوردهای ورزشی</h4>
+          <div class="skill-tags">
+            <span data-en="Swimming — Provincial medal">شنا — مقام استانی</span>
+            <span data-en="Football — University team">فوتبال — عضویت در تیم دانشگاه</span>
+            <span data-en="Mountaineering — Damavand summit">کوهنوردی — صعود به دماوند</span>
+          </div>
+        </div>
       </div>
     </div>
+    <!-- ============ /SKILLS & INTERESTS ============ -->
 
-    <!-- ============ 6. LANGUAGES ============ -->
+    <!-- ============ LANGUAGES ============ -->
     <div class="resume-block">
       <h3 data-en="Languages">زبان‌ها</h3>
       <div class="skill-tags">
         <span data-en="English — Upper-Intermediate">انگلیسی — بالاتر از متوسط</span>
       </div>
     </div>
+    <!-- ============ /LANGUAGES ============ -->
 
   </div>
 </section>
 <!-- =============== /RESUME =============== -->
 
-<!-- ================= PUBLICATIONS ================= -->
-<section id="publications">
+<!-- ================= WORKS ================= -->
+<section id="works">
   <div class="wrap">
-    <span class="eyebrow" data-en="publications">انتشارات</span>
-    <h2 data-en="Publications">انتشارات</h2>
+    <span class="eyebrow" data-en="works">آثار</span>
+    <h2 data-en="Works &amp; Publications">آثار و انتشارات</h2>
 
-    <div class="pub-list">
+    <div class="work-filters" role="group" aria-label="Filter works">
+      <button type="button" data-filter="all"    aria-pressed="true"  data-en="All">همه</button>
+      <button type="button" data-filter="video"  aria-pressed="false" data-en="Video">ویدیو</button>
+      <button type="button" data-filter="course" aria-pressed="false" data-en="Courses">کورس</button>
+      <button type="button" data-filter="docs"   aria-pressed="false" data-en="Docs">مستندات</button>
+      <button type="button" data-filter="audio"  aria-pressed="false" data-en="Audio">صوتی</button>
+      <button type="button" data-filter="visual" aria-pressed="false" data-en="Visual">تصویری</button>
+    </div>
 
-      <div class="pub-item">
-        <p class="pub-title" data-en="Title of your paper goes here">
-          عنوان مقالهٔ شما اینجا قرار می‌گیرد
+    <div class="work-group" data-cat="video">
+      <h3 data-en="Video">ویدیو</h3>
+
+      <div class="work-item">
+        <div class="work-item-head">
+          <p class="work-title" data-en="Anatomy in Five Minutes — short teaching series">آناتومی در پنج دقیقه — مجموعهٔ آموزشی کوتاه</p>
+          <span class="work-date" data-en="2025 – Present">۱۴۰۴ – اکنون</span>
+        </div>
+        <p class="work-desc" data-en="Short, high-density videos covering core anatomy topics for medical students, built for quick review.">
+          ویدیوهای کوتاه و فشرده دربارهٔ مباحث پایهٔ آناتومی برای دانشجویان پزشکی، طراحی‌شده برای مرور سریع.
         </p>
-        <p class="pub-authors" data-en="M. H. Kazemi, et al.">
-          م.ح. کاظمی و همکاران
+        <div class="work-tags">
+          <span data-en="medical education">آموزش پزشکی</span>
+          <span data-en="video">ویدیو</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-group" data-cat="course">
+      <h3 data-en="Courses">کورس</h3>
+
+      <div class="work-item">
+        <div class="work-item-head">
+          <p class="work-title" data-en="Intensive Laboratory Sciences Course">کورس فشردهٔ علوم آزمایشگاهی</p>
+          <span class="work-date" data-en="2024">۱۴۰۳</span>
+        </div>
+        <p class="work-desc" data-en="A structured course covering core laboratory science concepts, delivered with audio and written material.">
+          دوره‌ای ساخت‌یافته حول مفاهیم پایهٔ علوم آزمایشگاهی، همراه با محتوای صوتی و متنی.
         </p>
-        <p class="pub-journal" data-en="Journal / Conference name, Year — DOI or link">
-          نام مجله / کنفرانس، سال — DOI یا لینک
+        <div class="work-tags">
+          <span data-en="course">کورس</span>
+          <span data-en="medical education">آموزش پزشکی</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-group" data-cat="docs">
+      <h3 data-en="Docs — Papers &amp; Books">مستندات — مقاله و کتاب</h3>
+
+      <div class="work-item">
+        <div class="work-item-head">
+          <p class="work-title" data-en="Title of your paper goes here">عنوان مقالهٔ شما اینجا قرار می‌گیرد</p>
+          <span class="work-date" data-en="2025">۱۴۰۴</span>
+        </div>
+        <p class="work-desc" data-en="M. H. Kazemi, et al. — Journal / Conference name, Year. DOI or link.">
+          م.ح. کاظمی و همکاران — نام مجله / کنفرانس، سال. DOI یا لینک.
         </p>
-        <div class="pub-tags">
+        <div class="work-tags">
           <span data-en="medical education">آموزش پزشکی</span>
           <span data-en="edtech">فناوری آموزشی</span>
         </div>
       </div>
 
+      <div class="work-item">
+        <div class="work-item-head">
+          <p class="work-title" data-en="Title of your book goes here">عنوان کتاب شما اینجا قرار می‌گیرد</p>
+          <span class="work-date" data-en="2024">۱۴۰۳</span>
+        </div>
+        <p class="work-desc" data-en="Publisher — short description of the book.">
+          ناشر — توضیح کوتاه دربارهٔ کتاب.
+        </p>
+        <div class="work-tags">
+          <span data-en="book">کتاب</span>
+        </div>
+      </div>
     </div>
+
+    <div class="work-group" data-cat="audio">
+      <h3 data-en="Audio — Podcast">صوتی — پادکست</h3>
+
+      <div class="work-item">
+        <div class="work-item-head">
+          <p class="work-title" data-en="Lab — audio podcast of course material">آزمایشگاه — پادکست صوتی محتوای درسی</p>
+          <span class="work-date" data-en="2024 – Present">۱۴۰۳ – اکنون</span>
+        </div>
+        <p class="work-desc" data-en="Audio versions of course material so students can study while commuting or away from a desk.">
+          نسخهٔ صوتی محتوای درسی تا دانشجوها بتوانند در مسیر رفت‌وآمد یا دور از میز مطالعه کنند.
+        </p>
+        <div class="work-tags">
+          <span data-en="podcast">پادکست</span>
+          <span data-en="audio">صوتی</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-group" data-cat="visual">
+      <h3 data-en="Visual — Painting">تصویری — نقاشی</h3>
+
+      <div class="work-item">
+        <div class="work-item-head">
+          <p class="work-title" data-en="Painting collection — title goes here">مجموعهٔ نقاشی — عنوان اینجا قرار می‌گیرد</p>
+          <span class="work-date" data-en="2023 – Present">۱۴۰۲ – اکنون</span>
+        </div>
+        <p class="work-desc" data-en="A short description of the collection, medium, and where it has been shown.">
+          توضیح کوتاه دربارهٔ مجموعه، تکنیک و مکان نمایش.
+        </p>
+        <div class="work-tags">
+          <span data-en="painting">نقاشی</span>
+          <span data-en="visual art">هنرهای تجسمی</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
-<!-- =============== /PUBLICATIONS =============== -->
+<!-- =============== /WORKS =============== -->
 
 <!-- ================= CONTACT ================= -->
 <section id="contact">
@@ -1061,6 +1239,23 @@
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         setLang(btn.dataset.langBtn);
+      });
+    });
+
+    var filterBtns = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
+    var groups = Array.prototype.slice.call(document.querySelectorAll('.work-group'));
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.dataset.filter;
+
+        filterBtns.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b === btn));
+        });
+
+        groups.forEach(function (g) {
+          g.hidden = !(f === 'all' || g.dataset.cat === f);
+        });
       });
     });
 
