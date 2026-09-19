@@ -334,10 +334,18 @@
   .edit-btn.ghost:hover{ color:var(--line); border-color:var(--line-dim); opacity:1; }
   .edit-btn[disabled]{ opacity:.5; cursor:wait; }
 
-  /* ============ EDIT MODE: content editing, add/delete ============ */
+  /* ============ EDIT MODE ============ */
   .media-add, .media-thumb .mt-del{ display:none !important; }
   body.edit-mode .media-add{ display:inline-flex !important; }
   body.edit-mode .media-thumb .mt-del{ display:flex !important; }
+
+  /* edit mode: extra top space so the × button never overlaps title/date */
+  body.edit-mode .resume-item,
+  body.edit-mode .resume-item:first-child,
+  body.edit-mode .work-item,
+  body.edit-mode .work-item:first-child{
+    padding-top: 48px;
+  }
 
   [contenteditable="true"]{
     outline: none;
@@ -376,10 +384,11 @@
     background: rgba(238, 241, 244, 0.04);
   }
 
+  /* delete button — placed in the extra top space, aligned to the start edge (right in RTL) */
   .kz-del-btn{
     position: absolute;
-    top: 8px;
-    inset-inline-end: 8px;
+    top: 10px;
+    inset-inline-start: 0;
     width: 26px;
     height: 26px;
     display: none;
@@ -439,6 +448,10 @@
     .resume-block, .work-group{ margin-bottom:38px; }
     .resume-block > h3, .work-group > h3{ font-size:11.5px; padding-bottom:12px;
       letter-spacing:.1em; }
+    body.edit-mode .resume-item,
+    body.edit-mode .resume-item:first-child,
+    body.edit-mode .work-item,
+    body.edit-mode .work-item:first-child{ padding-top:44px; }
     .resume-item, .work-item{ padding:16px 0; }
     .resume-item:first-child, .work-item:first-child{ padding-top:16px; }
     .resume-item-head h4, .work-title{ font-size:15.5px; }
@@ -1113,7 +1126,6 @@
   var EDIT_KEY = 'kazzi-edit-mode';
   var currentKey = null;
 
-  // ============ Embedded media parse + sync ============
   var EMBEDDED = {};
   try {
     var el = document.getElementById('embedded-media');
@@ -1136,7 +1148,6 @@
     try { localStorage.setItem(VERSION_KEY, embVer); } catch (e) {}
   })();
 
-  // ============ DOM refs ============
   var modal = document.getElementById('mediaModal');
   var viewer = document.getElementById('mediaViewer');
   var stage = document.getElementById('mvStage');
@@ -1149,7 +1160,6 @@
   var tabs = document.querySelectorAll('[data-mm-tab]');
   var panels = document.querySelectorAll('[data-mm-panel]');
 
-  // ============ Storage helpers ============
   function getStore(key) {
     try { var raw = localStorage.getItem(STORAGE_PREFIX + key); if (raw) return JSON.parse(raw); } catch (e) {}
     return [];
@@ -1184,7 +1194,6 @@
     });
   }
 
-  // ============ Render media ============
   function render(key) {
     var block = document.querySelector('.media-block[data-media="' + key + '"]');
     if (!block) return;
@@ -1220,7 +1229,6 @@
     });
   }
 
-  // ============ Viewer ============
   function openViewer(key, idx) {
     var items = getStore(key);
     var item = items[idx];
@@ -1260,7 +1268,6 @@
     bar.innerHTML = '';
   }
 
-  // ============ Add media modal ============
   function openModal(key) {
     currentKey = key;
     modal.classList.add('open');
@@ -1325,16 +1332,10 @@
   document.getElementById('mvClose').addEventListener('click', closeViewer);
   viewer.addEventListener('click', function (e) { if (e.target === viewer) closeViewer(); });
 
-  // ============ Global event delegation ============
   document.addEventListener('click', function (e) {
-    // add media
     var addBtn = e.target.closest('[data-add]');
-    if (addBtn) {
-      e.preventDefault();
-      openModal(addBtn.dataset.add);
-      return;
-    }
-    // delete media
+    if (addBtn) { e.preventDefault(); openModal(addBtn.dataset.add); return; }
+
     var del = e.target.closest('.mt-del');
     if (del) {
       e.stopPropagation();
@@ -1346,21 +1347,15 @@
       render(block.dataset.media);
       return;
     }
-    // open media viewer
     var thumb = e.target.closest('.media-thumb');
     if (thumb) {
       var blk = thumb.closest('.media-block');
       if (blk) openViewer(blk.dataset.media, +thumb.dataset.idx);
       return;
     }
-    // add new item
     var addItemBtn = e.target.closest('.kz-add-btn');
-    if (addItemBtn) {
-      e.preventDefault();
-      addNewItem(addItemBtn);
-      return;
-    }
-    // delete item
+    if (addItemBtn) { e.preventDefault(); addNewItem(addItemBtn); return; }
+
     var delBtn = e.target.closest('.kz-del-btn');
     if (delBtn) {
       e.preventDefault();
@@ -1376,7 +1371,6 @@
     if (e.key === 'Escape') { closeViewer(); closeModal(); }
   });
 
-  // ============ Content editing ============
   var EDITABLE_SEL = [
     '.hero h1', '.hero .role',
     '#about .eyebrow', '#about h2', '#about p',
@@ -1417,7 +1411,6 @@
     });
   }
 
-  // ============ Add / delete buttons ============
   function addDeleteButtons() {
     document.querySelectorAll('.resume-item, .work-item').forEach(function (item) {
       if (item.querySelector(':scope > .kz-del-btn')) return;
@@ -1491,14 +1484,12 @@
 
     container.insertBefore(newItem, btn);
 
-    // re-attach input handlers on new editable elements
     newItem.querySelectorAll('[contenteditable="true"]').forEach(function (el) {
       el._kzInputHandler = function () { saveDualLang(el); };
       el.addEventListener('input', el._kzInputHandler);
       el.addEventListener('blur', el._kzInputHandler);
     });
 
-    // focus first editable
     var first = newItem.querySelector('[contenteditable="true"]');
     if (first) {
       first.focus();
@@ -1512,7 +1503,6 @@
     }
   }
 
-  // ============ Edit mode toggle ============
   function isEditOn() {
     try { return localStorage.getItem(EDIT_KEY) === '1'; } catch (e) { return false; }
   }
@@ -1559,53 +1549,43 @@
     setEditOn(false);
   });
 
-  // ============ Export HTML ============
   document.getElementById('exportHtmlBtn').addEventListener('click', function () {
     var btn = this;
     btn.disabled = true;
     btn.textContent = 'در حال آماده‌سازی...';
 
     try {
-      // Close overlays in real DOM
       modal.classList.remove('open');
       viewer.classList.remove('open');
 
-      // Clone documentElement
       var docClone = document.documentElement.cloneNode(true);
 
-      // Remove edit-mode class from body
       var bodyClone = docClone.querySelector('body');
       if (bodyClone) bodyClone.classList.remove('edit-mode');
 
-      // Remove edit-only UI
       docClone.querySelectorAll('.kz-add-btn, .kz-del-btn').forEach(function (b) { b.remove(); });
       docClone.querySelectorAll('[contenteditable]').forEach(function (el) { el.removeAttribute('contenteditable'); });
       docClone.querySelectorAll('.kz-editable').forEach(function (el) { el.classList.remove('kz-editable'); });
 
-      // Reset language state
       docClone.setAttribute('lang', 'fa');
       docClone.setAttribute('dir', 'rtl');
       docClone.querySelectorAll('[data-lang-btn]').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.langBtn === 'fa' ? 'true' : 'false');
       });
 
-      // Reset filter state (show all groups)
       docClone.querySelectorAll('[data-filter]').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.filter === 'all' ? 'true' : 'false');
       });
       docClone.querySelectorAll('.work-group[hidden]').forEach(function (g) { g.removeAttribute('hidden'); });
 
-      // Reset export button
       var expBtnClone = docClone.querySelector('#exportHtmlBtn');
       if (expBtnClone) {
         expBtnClone.setAttribute('disabled', '');
         expBtnClone.textContent = 'در حال آماده‌سازی...';
       }
 
-      // Clear media strips (they'll re-render via JS on load)
       docClone.querySelectorAll('.media-strip').forEach(function (s) { s.innerHTML = ''; });
 
-      // Collect all media from localStorage
       var allMedia = { __version: 'v' + Date.now() };
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
@@ -1615,15 +1595,12 @@
         }
       }
 
-      // Update embedded-media script
       var json = JSON.stringify(allMedia).replace(/<\//g, '<\\/');
       var embScript = docClone.querySelector('#embedded-media');
       if (embScript) embScript.textContent = json;
 
-      // Serialize
       var html = '<!DOCTYPE html>\n' + docClone.outerHTML;
 
-      // Download
       var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
@@ -1648,7 +1625,6 @@
     }
   });
 
-  // ============ Initial render ============
   renderAll();
 })();
 </script>
