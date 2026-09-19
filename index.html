@@ -1187,14 +1187,13 @@
 <script>
 (function () {
   var root = document.documentElement;
-  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
-  var phNodes = Array.prototype.slice.call(document.querySelectorAll('[data-en-placeholder]'));
   var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-lang-btn]'));
 
-  nodes.forEach(function (el) {
+  // یک بار در ابتدا برای پر کردن data-fa عناصری که فقط data-en دارند
+  document.querySelectorAll('[data-en]').forEach(function (el) {
     if (!el.dataset.fa) el.dataset.fa = el.innerHTML;
   });
-  phNodes.forEach(function (el) {
+  document.querySelectorAll('[data-en-placeholder]').forEach(function (el) {
     if (el.dataset.faPlaceholder === undefined) {
       el.dataset.faPlaceholder = el.getAttribute('placeholder') || '';
     }
@@ -1204,16 +1203,26 @@
     if (lang !== 'en') lang = 'fa';
     root.setAttribute('lang', lang);
     root.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
-    nodes.forEach(function (el) { el.innerHTML = el.dataset[lang]; });
-    phNodes.forEach(function (el) {
+
+    // هر بار از DOM می‌خونیم تا عناصری که بعداً اضافه شدن هم شامل بشن
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      var v = el.dataset[lang];
+      if (typeof v === 'string') el.innerHTML = v;
+    });
+
+    document.querySelectorAll('[data-en-placeholder]').forEach(function (el) {
       var v = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.faPlaceholder;
       if (typeof v === 'string') el.setAttribute('placeholder', v);
     });
-    buttons.forEach(function (btn) {
+
+    document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
       btn.setAttribute('aria-pressed', String(btn.dataset.langBtn === lang));
     });
+
     try { localStorage.setItem('kazzi-lang', lang); } catch (e) {}
+
     if (typeof window.__kazziRenderMedia === 'function') window.__kazziRenderMedia();
+    if (typeof window.__kazziRefreshChips === 'function') window.__kazziRefreshChips();
   };
 
   buttons.forEach(function (btn) {
@@ -1635,6 +1644,7 @@
     addSkillChipDelButtons();
     addSkillAddButtons();
   }
+  window.__kazziRefreshChips = refreshSkillChips;
 
   function addNewChip(container) {
     if (!container) return;
@@ -1672,16 +1682,6 @@
       sel.removeAllRanges();
       sel.addRange(range);
     } catch (e) {}
-  }
-
-  var origSetLang = window.__kazziSetLang;
-  if (typeof origSetLang === 'function') {
-    window.__kazziSetLang = function (lang) {
-      origSetLang(lang);
-      if (document.body.classList.contains('edit-mode')) {
-        refreshSkillChips();
-      }
-    };
   }
 
   function addNewItem(btn) {
