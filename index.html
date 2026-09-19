@@ -1127,38 +1127,42 @@
 <div class="mm-overlay" id="mediaModal" role="dialog" aria-modal="true" aria-label="افزودن رسانه">
   <div class="mm-card">
     <div class="mm-head">
-      <h3>افزودن رسانه</h3>
+      <h3 data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</h3>
       <button class="mm-x" id="mmClose" type="button" aria-label="بستن">×</button>
     </div>
     <div class="mm-tabs">
-      <button class="mm-tab is-active" type="button" data-mm-tab="file">آپلود فایل</button>
-      <button class="mm-tab" type="button" data-mm-tab="link">لینک</button>
+      <button class="mm-tab is-active" type="button" data-mm-tab="file" data-en="Upload file" data-fa="آپلود فایل">آپلود فایل</button>
+      <button class="mm-tab" type="button" data-mm-tab="link" data-en="Link" data-fa="لینک">لینک</button>
     </div>
     <div class="mm-panel" data-mm-panel="file">
       <div class="mm-drop" id="mmDrop">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4 4 4"></path><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg>
-        <strong>فایل را اینجا رها کن یا کلیک کن</strong>
-        <small>تصویر، ویدیو، صدا، PDF یا هر فایل دیگری — چند فایل هم می‌شود</small>
+        <strong data-en="Drop a file here or click to browse" data-fa="فایل را اینجا رها کن یا کلیک کن">فایل را اینجا رها کن یا کلیک کن</strong>
+        <small data-en="Image, video, audio, PDF or any other file — multiple files allowed" data-fa="تصویر، ویدیو، صدا، PDF یا هر فایل دیگری — چند فایل هم می‌شود">تصویر، ویدیو، صدا، PDF یا هر فایل دیگری — چند فایل هم می‌شود</small>
         <input type="file" id="mmFile" hidden multiple>
       </div>
     </div>
     <div class="mm-panel" data-mm-panel="link" hidden>
       <div class="mm-field">
-        <label>آدرس لینک</label>
+        <label data-en="Link URL" data-fa="آدرس لینک">آدرس لینک</label>
         <input type="url" id="mmLink" placeholder="https://..." dir="ltr">
       </div>
       <div class="mm-field">
         <label data-en="English link name (optional)" data-fa="نام لینک انگلیسی (اختیاری)">نام لینک انگلیسی (اختیاری)</label>
-        <input type="text" id="mmLinkNameEn" placeholder="e.g. Certificate, Portfolio, Paper" dir="ltr">
+        <input type="text" id="mmLinkNameEn" placeholder="e.g. Certificate, Portfolio, Paper" dir="ltr"
+               data-en-placeholder="e.g. Certificate, Portfolio, Paper"
+               data-fa-placeholder="مثلاً Certificate، Portfolio، Paper">
       </div>
       <div class="mm-field">
         <label data-en="Persian link name (optional)" data-fa="نام لینک فارسی (اختیاری)">نام لینک فارسی (اختیاری)</label>
-        <input type="text" id="mmLinkNameFa" placeholder="مثلاً گواهی، نمونه‌کار، مقاله">
+        <input type="text" id="mmLinkNameFa" placeholder="مثلاً گواهی، نمونه‌کار، مقاله"
+               data-en-placeholder="e.g. گواهی، نمونه‌کار، مقاله"
+               data-fa-placeholder="مثلاً گواهی، نمونه‌کار، مقاله">
       </div>
     </div>
     <div class="mm-foot">
-      <button class="mm-btn ghost" id="mmCancel" type="button">انصراف</button>
-      <button class="mm-btn primary" id="mmAddLink" type="button" hidden>افزودن لینک</button>
+      <button class="mm-btn ghost" id="mmCancel" type="button" data-en="Cancel" data-fa="انصراف">انصراف</button>
+      <button class="mm-btn primary" id="mmAddLink" type="button" hidden data-en="Add link" data-fa="افزودن لینک">افزودن لینک</button>
     </div>
   </div>
 </div>
@@ -1177,10 +1181,16 @@
 (function () {
   var root = document.documentElement;
   var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
+  var phNodes = Array.prototype.slice.call(document.querySelectorAll('[data-en-placeholder]'));
   var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-lang-btn]'));
 
   nodes.forEach(function (el) {
     if (!el.dataset.fa) el.dataset.fa = el.innerHTML;
+  });
+  phNodes.forEach(function (el) {
+    if (el.dataset.faPlaceholder === undefined) {
+      el.dataset.faPlaceholder = el.getAttribute('placeholder') || '';
+    }
   });
 
   window.__kazziSetLang = function(lang) {
@@ -1188,6 +1198,10 @@
     root.setAttribute('lang', lang);
     root.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
     nodes.forEach(function (el) { el.innerHTML = el.dataset[lang]; });
+    phNodes.forEach(function (el) {
+      var v = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.faPlaceholder;
+      if (typeof v === 'string') el.setAttribute('placeholder', v);
+    });
     buttons.forEach(function (btn) {
       btn.setAttribute('aria-pressed', String(btn.dataset.langBtn === lang));
     });
@@ -1297,6 +1311,7 @@
   }
 
   function currentLang() { return document.documentElement.lang === 'en' ? 'en' : 'fa'; }
+  function T(fa, en) { return currentLang() === 'en' ? en : fa; }
   function itemName(item) {
     if (!item) return '';
     if (item.type === 'link') {
@@ -1323,10 +1338,10 @@
       var inner = '';
       if (item.type === 'image') inner = '<img src="' + escHtml(item.url) + '" alt="" loading="lazy">';
       else if (item.type === 'video') inner = '<video src="' + escHtml(item.url) + '" muted playsinline preload="metadata"></video><span class="mt-play">▶</span>';
-      else if (item.type === 'audio') inner = '<div class="mt-badge">صدا</div>';
+      else if (item.type === 'audio') inner = '<div class="mt-badge">' + T('صدا', 'Audio') + '</div>';
       else if (item.type === 'pdf') inner = '<div class="mt-badge">PDF</div>';
       else if (item.type === 'file') inner = '<div class="mt-badge">' + escHtml(extOf(item.name)) + '</div>';
-      else inner = '<div class="mt-link-type" data-en="LINK" data-fa="لینک">LINK</div>' +
+      else inner = '<div class="mt-link-type">' + T('لینک', 'LINK') + '</div>' +
         '<div class="mt-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 13.5l4-4"></path><path d="M7.8 16.2l-1.4 1.4a3.2 3.2 0 0 1-4.5-4.5l4-4a3.2 3.2 0 0 1 4.5 0"></path><path d="M16.2 7.8l1.4-1.4a3.2 3.2 0 0 1 4.5 4.5l-4 4a3.2 3.2 0 0 1-4.5 0"></path></svg></div>';
 
       div.innerHTML = inner +
@@ -1364,14 +1379,14 @@
       box.style.cssText = 'text-align:center;color:#c9cdd3;font-size:14px;line-height:2;padding:30px 20px;';
       box.innerHTML = '<div style="font-size:40px;font-weight:600;color:#eef1f4;letter-spacing:.05em;margin-bottom:14px;">' + escHtml(extOf(item.name)) + '</div>' +
         '<div style="direction:ltr;unicode-bidi:isolate;color:#7c828c;max-width:60ch;overflow-wrap:anywhere;">' + escHtml(itemName(item) || '') + '</div>' +
-        '<div style="color:#7c828c;margin-top:10px;">پیش‌نمایش ندارد — دانلودش کن.</div>';
+        '<div style="color:#7c828c;margin-top:10px;">' + T('پیش‌نمایش ندارد — دانلودش کن.', 'No preview — download it.') + '</div>';
       stage.appendChild(box);
     }
 
-    var actions = '<a href="' + escHtml(item.url) + '" download="' + escHtml(itemName(item) || '') + '">دانلود</a>' +
-                  '<a href="' + escHtml(item.url) + '" target="_blank" rel="noopener">باز کردن در تب جدید</a>';
+    var actions = '<a href="' + escHtml(item.url) + '" download="' + escHtml(itemName(item) || '') + '">' + T('دانلود', 'Download') + '</a>' +
+                  '<a href="' + escHtml(item.url) + '" target="_blank" rel="noopener">' + T('باز کردن در تب جدید', 'Open in new tab') + '</a>';
     bar.innerHTML = '<span class="mv-name">' + escHtml(itemName(item) || item.url) + '</span>' + actions +
-      '<button class="mv-close-inline" type="button" style="background:none;border:1px solid var(--line-faint);color:var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;font-family:inherit;font-size:12px;">بستن</button>';
+      '<button class="mv-close-inline" type="button" style="background:none;border:1px solid var(--line-faint);color:var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;font-family:inherit;font-size:12px;">' + T('بستن', 'Close') + '</button>';
     bar.querySelector('.mv-close-inline').addEventListener('click', closeViewer);
     viewer.classList.add('open');
   }
@@ -1599,257 +1614,4 @@
     });
   }
 
-  function addSkillAddButtons() {
-    document.querySelectorAll('.skill-tags').forEach(function (container) {
-      if (container.querySelector(':scope > .kz-add-chip')) return;
-      var btn = document.createElement('button');
-      btn.className = 'kz-add-chip';
-      btn.type = 'button';
-      btn.textContent = '+ افزودن';
-      container.appendChild(btn);
-    });
-  }
-
-  function refreshSkillChips() {
-    addSkillChipDelButtons();
-    addSkillAddButtons();
-  }
-
-  function addNewChip(container) {
-    if (!container) return;
-    var lang = document.documentElement.lang === 'en' ? 'en' : 'fa';
-    var faText = 'مهارت جدید';
-    var enText = 'New skill';
-
-    var chip = document.createElement('span');
-    chip.setAttribute('data-fa', faText);
-    chip.setAttribute('data-en', enText);
-    chip.textContent = lang === 'en' ? enText : faText;
-    chip.setAttribute('contenteditable', 'true');
-    chip.classList.add('kz-editable');
-
-    chip._kzInputHandler = function () { saveDualLang(chip); };
-    chip.addEventListener('input', chip._kzInputHandler);
-    chip.addEventListener('blur', chip._kzInputHandler);
-
-    var addBtn = container.querySelector(':scope > .kz-add-chip');
-    if (addBtn) container.insertBefore(chip, addBtn);
-    else container.appendChild(chip);
-
-    addChipDelButton(chip);
-
-    chip.focus();
-    try {
-      var range = document.createRange();
-      var textNode = chip.firstChild;
-      if (textNode && textNode.nodeType === 3) {
-        range.selectNodeContents(textNode);
-      } else {
-        range.selectNodeContents(chip);
-      }
-      var sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
-    } catch (e) {}
-  }
-
-  // ============ Wrap language setter to re-add chip buttons ============
-  var origSetLang = window.__kazziSetLang;
-  if (typeof origSetLang === 'function') {
-    window.__kazziSetLang = function (lang) {
-      origSetLang(lang);
-      renderAll();
-      if (typeof window.__kazziRenderMedia === 'function') window.__kazziRenderMedia();
-      if (document.body.classList.contains('edit-mode')) {
-        refreshSkillChips();
-      }
-    };
-  }
-
-  function addNewItem(btn) {
-    var type = btn.dataset.addType;
-    var container = btn.parentElement;
-    var mediaKey = 'new-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
-    var newItem = document.createElement('div');
-
-    var delBtnHtml = '<button class="kz-del-btn" type="button" title="حذف">×</button>';
-    var mediaHtml = '<div class="media-block" data-media="' + mediaKey + '">' +
-        '<div class="media-strip"></div>' +
-        '<button type="button" class="media-add" data-add="' + mediaKey + '">' +
-          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>' +
-          '<span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span>' +
-        '</button>' +
-      '</div>';
-
-    if (type === 'resume-item') {
-      newItem.className = 'resume-item';
-      newItem.innerHTML = delBtnHtml +
-        '<div class="resume-item-head">' +
-          '<h4 contenteditable="true" class="kz-editable">عنوان جدید</h4>' +
-          '<span class="resume-date" contenteditable="true" class="kz-editable">۱۴۰۳</span>' +
-        '</div>' +
-        '<p class="resume-org" contenteditable="true" class="kz-editable">سازمان / مکان</p>' +
-        '<div class="resume-desc" contenteditable="true" class="kz-editable"><ul><li>توضیحات…</li></ul></div>' +
-        mediaHtml;
-    } else {
-      newItem.className = 'work-item';
-      newItem.innerHTML = delBtnHtml +
-        '<div class="work-item-head">' +
-          '<p class="work-title" contenteditable="true" class="kz-editable">عنوان جدید</p>' +
-          '<span class="work-date" contenteditable="true" class="kz-editable">۱۴۰۳</span>' +
-        '</div>' +
-        '<p class="work-desc" contenteditable="true" class="kz-editable">توضیحات…</p>' +
-        '<div class="work-tags"><span contenteditable="true" class="kz-editable">تگ</span></div>' +
-        mediaHtml;
-    }
-
-    container.insertBefore(newItem, btn);
-
-    newItem.querySelectorAll('[contenteditable="true"]').forEach(function (el) {
-      el._kzInputHandler = function () { saveDualLang(el); };
-      el.addEventListener('input', el._kzInputHandler);
-      el.addEventListener('blur', el._kzInputHandler);
-    });
-
-    var first = newItem.querySelector('[contenteditable="true"]');
-    if (first) {
-      first.focus();
-      try {
-        var range = document.createRange();
-        range.selectNodeContents(first);
-        var sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-      } catch (e) {}
-    }
-  }
-
-  function isEditOn() {
-    try { return localStorage.getItem(EDIT_KEY) === '1'; } catch (e) { return false; }
-  }
-  function setEditOn(on) {
-    document.body.classList.toggle('edit-mode', on);
-    try { localStorage.setItem(EDIT_KEY, on ? '1' : '0'); } catch (e) {}
-
-    var exportBtn = document.getElementById('exportHtmlBtn');
-    if (exportBtn) {
-      if (on) {
-        exportBtn.disabled = false;
-        exportBtn.textContent = 'ذخیره و دانلود HTML';
-      } else {
-        exportBtn.disabled = true;
-        exportBtn.textContent = 'در حال آماده‌سازی...';
-      }
-    }
-
-    if (on) {
-      enableEditing();
-      addDeleteButtons();
-      addAddButtons();
-      refreshSkillChips();
-    } else {
-      disableEditing();
-    }
-  }
-
-  if (location.hash === '#edit') setEditOn(true);
-  else if (isEditOn()) setEditOn(true);
-
-  document.addEventListener('keydown', function (e) {
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'E' || e.key === 'e')) {
-      e.preventDefault();
-      setEditOn(!document.body.classList.contains('edit-mode'));
-    }
-  });
-
-  window.addEventListener('hashchange', function () {
-    if (location.hash === '#edit') setEditOn(true);
-    else if (location.hash === '#view') setEditOn(false);
-  });
-
-  document.getElementById('exitEditBtn').addEventListener('click', function () {
-    setEditOn(false);
-  });
-
-  document.getElementById('exportHtmlBtn').addEventListener('click', function () {
-    var btn = this;
-    btn.disabled = true;
-    btn.textContent = 'در حال آماده‌سازی...';
-
-    try {
-      modal.classList.remove('open');
-      viewer.classList.remove('open');
-
-      var docClone = document.documentElement.cloneNode(true);
-
-      var bodyClone = docClone.querySelector('body');
-      if (bodyClone) bodyClone.classList.remove('edit-mode');
-
-      docClone.querySelectorAll('.kz-add-btn, .kz-del-btn, .kz-add-chip, .kz-chip-del').forEach(function (b) { b.remove(); });
-      docClone.querySelectorAll('[contenteditable]').forEach(function (el) { el.removeAttribute('contenteditable'); });
-      docClone.querySelectorAll('.kz-editable').forEach(function (el) { el.classList.remove('kz-editable'); });
-
-      docClone.setAttribute('lang', 'fa');
-      docClone.setAttribute('dir', 'rtl');
-      docClone.querySelectorAll('[data-lang-btn]').forEach(function (b) {
-        b.setAttribute('aria-pressed', b.dataset.langBtn === 'fa' ? 'true' : 'false');
-      });
-
-      docClone.querySelectorAll('[data-filter]').forEach(function (b) {
-        b.setAttribute('aria-pressed', b.dataset.filter === 'all' ? 'true' : 'false');
-      });
-      docClone.querySelectorAll('.work-group[hidden]').forEach(function (g) { g.removeAttribute('hidden'); });
-
-      var expBtnClone = docClone.querySelector('#exportHtmlBtn');
-      if (expBtnClone) {
-        expBtnClone.setAttribute('disabled', '');
-        expBtnClone.textContent = 'در حال آماده‌سازی...';
-      }
-
-      docClone.querySelectorAll('.media-strip').forEach(function (s) { s.innerHTML = ''; });
-
-      var allMedia = { __version: 'v' + Date.now() };
-      for (var i = 0; i < localStorage.length; i++) {
-        var k = localStorage.key(i);
-        if (k && k.indexOf(STORAGE_PREFIX) === 0) {
-          var mediaKey = k.slice(STORAGE_PREFIX.length);
-          try { allMedia[mediaKey] = JSON.parse(localStorage.getItem(k)); } catch (e) {}
-        }
-      }
-
-      var json = JSON.stringify(allMedia).replace(/<\//g, '<\\/');
-      var embScript = docClone.querySelector('#embedded-media');
-      if (embScript) embScript.textContent = json;
-
-      var html = '<!DOCTYPE html>\n' + docClone.outerHTML;
-
-      var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url;
-      a.download = 'index.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
-
-      btn.disabled = false;
-      btn.textContent = 'ذخیره و دانلود HTML';
-
-      setTimeout(function () {
-        alert('✅ فایل index.html دانلود شد.\n\nحالا:\n1. برو به گیت‌هاب\n2. index.html قبلی رو با این جایگزین کن\n3. Commit کن\n4. صبر کن ۱ دقیقه');
-      }, 300);
-    } catch (err) {
-      btn.disabled = false;
-      btn.textContent = 'ذخیره و دانلود HTML';
-      alert('خطا در ساخت فایل: ' + err.message);
-      console.error(err);
-    }
-  });
-
-  renderAll();
-})();
-</script>
-
-</body>
-</html>
+  function
