@@ -176,6 +176,24 @@
     gap:clamp(14px, 2.4vw, 26px); font-size:14px; color:var(--line-dim); flex-wrap:wrap; }
   .contact-list a{ text-decoration:none; padding:4px 0; }
   .contact-list a:hover{ color:var(--line); }
+
+  /* Social icons */
+  .socials{ display:flex; align-items:center; gap:6px; }
+  .socials a{ position:relative; width:34px; height:34px; display:grid; place-items:center;
+    color:var(--line-dim); text-decoration:none; border:1px solid transparent; border-radius:50%;
+    transition:color .22s ease, border-color .22s ease, background .22s ease, transform .22s ease; }
+  .socials a::after{ content:''; position:absolute; inset:0; border-radius:50%;
+    border:1px solid var(--line); opacity:0; transform:scale(.72);
+    transition:opacity .22s ease, transform .22s ease; }
+  .socials a:hover{ color:var(--line); border-color:var(--line-faint);
+    background:rgba(255,255,255,.035); transform:translateY(-2px); }
+  .socials a:hover::after{ opacity:.18; transform:scale(1); }
+  .socials a:active{ transform:translateY(0); }
+  .socials svg{ width:16px; height:16px; fill:none; stroke:currentColor;
+    stroke-width:1.65; stroke-linecap:round; stroke-linejoin:round;
+    position:relative; z-index:1; transition:transform .22s ease; }
+  .socials a:hover svg{ transform:scale(1.08); }
+  .socials a:focus-visible{ outline:1px solid var(--line); outline-offset:4px; }
   footer{ padding:32px 0 44px; border-top:1px solid var(--line-faint);
     color:var(--line-faint); font-size:12.5px; font-weight:300; }
   footer .wrap{ display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; }
@@ -624,19 +642,19 @@
 
     <div class="header-right">
       <nav class="socials" aria-label="Social media">
-        <a href="mailto:kazziworks@gmail.com" aria-label="Email" title="Email">
+        <a href="mailto:kazziworks@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
         </a>
-        <a href="https://www.linkedin.com/in/thisiskazzi" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/thisiskazzi" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
         </a>
-        <a href="https://x.com/thisiskazzi" target="_blank" rel="noopener" aria-label="X" title="X">
+        <a href="https://x.com/thisiskazzi" target="_blank" rel="noopener" aria-label="X">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16"></path><path d="M20 4 4 20"></path></svg>
         </a>
-        <a href="https://t.me/KazziWorks" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
+        <a href="https://t.me/KazziWorks" target="_blank" rel="noopener" aria-label="Telegram">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
         </a>
-        <a href="https://github.com/thisiskazzi" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <a href="https://github.com/thisiskazzi" target="_blank" rel="noopener" aria-label="GitHub">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
         </a>
       </nav>
