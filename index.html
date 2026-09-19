@@ -174,8 +174,8 @@
 
   /* ================= HERO ================= */
   .hero{
-    height: 100vh;          /* fallback */
-    height: 100svh;         /* modern: exact visible area on mobile */
+    height: 100vh;
+    height: 100svh;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -226,7 +226,6 @@
     line-height:1.8;
   }
 
-  /* scroll cue pinned to bottom of viewport */
   .scroll-cue{
     position:absolute;
     left:50%;
@@ -343,7 +342,7 @@
     justify-content:space-between;
     align-items:baseline;
     gap:8px 16px;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
   }
   .resume-item-head h4{
     margin:0;
@@ -351,8 +350,10 @@
     font-weight:500;
     line-height:1.4;
     color:var(--line);
-    flex:1 1 auto;
+    flex:1 1 0;
     min-width:0;
+    overflow-wrap:break-word;
+    word-break:normal;
   }
 
   .resume-date{
@@ -361,7 +362,7 @@
     white-space:nowrap;
     font-weight:400;
     unicode-bidi:isolate;
-    flex-shrink:0;
+    flex:0 0 auto;
   }
   .resume-date.lat{ direction:ltr; }
 
@@ -469,7 +470,7 @@
     justify-content:space-between;
     align-items:baseline;
     gap:8px 16px;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
   }
   .work-title{
     margin:0;
@@ -478,15 +479,16 @@
     line-height:1.5;
     color:var(--line);
     max-width:none;
-    flex:1 1 auto;
+    flex:1 1 0;
     min-width:0;
+    overflow-wrap:break-word;
   }
   .work-date{
     font-size:12.5px;
     color:var(--line-dim);
     white-space:nowrap;
     font-weight:400;
-    flex-shrink:0;
+    flex:0 0 auto;
   }
   .work-desc{
     margin:8px 0 0;
@@ -618,7 +620,6 @@
      RESPONSIVE
      ================================================= */
 
-  /* large desktop */
   @media (min-width:1400px){
     .wrap{ max-width:1240px; }
     .site-nav{ gap:32px; font-size:14.5px; }
@@ -630,7 +631,6 @@
     .wrap{ max-width:1360px; }
   }
 
-  /* tablet */
   @media (max-width:1100px){
     .site-nav{ gap:18px; font-size:13.5px; }
     .header-right{ gap:12px; }
@@ -647,11 +647,8 @@
     .eyebrow{ margin-bottom:18px; }
   }
 
-  /* mobile: switch to 2-row header */
   @media (max-width:760px){
-    :root{
-      --header-h: 86px;
-    }
+    :root{ --header-h: 86px; }
     header.site{
       padding-top:max(8px, env(safe-area-inset-top, 0));
       padding-bottom:12px;
@@ -695,14 +692,13 @@
     section{ scroll-margin-top: 130px; }
   }
 
-  /* small mobile */
   @media (max-width:560px){
     :root{
       --gap-xl: clamp(48px, 12vw, 80px);
       --header-h: 82px;
     }
 
-    .brand span{ display:none; }  /* keep only logo */
+    .brand span{ display:none; }
     .brand svg{ width:22px; }
 
     .socials{ gap:7px; }
@@ -753,7 +749,6 @@
     .resume-desc,
     .work-desc{ font-size:13.5px; line-height:1.8; }
 
-    /* horizontal scroll for filter pills */
     .work-filters{
       flex-wrap:nowrap;
       overflow-x:auto;
@@ -777,7 +772,22 @@
     footer .wrap{ flex-direction:column; gap:6px; align-items:flex-start; }
   }
 
-  /* very small */
+  @media (max-width:400px){
+    .resume-item-head,
+    .work-item-head{
+      gap:6px 10px;
+    }
+    .resume-item-head h4,
+    .work-title{
+      font-size:14.5px;
+      line-height:1.35;
+    }
+    .resume-date,
+    .work-date{
+      font-size:11px;
+    }
+  }
+
   @media (max-width:380px){
     :root{ --header-h: 78px; }
     .socials{ gap:5px; }
@@ -799,7 +809,6 @@
     .work-filters{ margin-inline:-14px; padding-inline:14px; }
   }
 
-  /* short screens (landscape phone / small height) */
   @media (max-height: 640px){
     .mark{ width:min(30vw, 220px, 26vh); margin-bottom:12px; }
     h1{ font-size:clamp(20px, min(5vw, 6vh), 34px); margin-bottom:8px; }
@@ -822,7 +831,6 @@
     .mark{ width:min(20vw, 120px, 20vh); margin-bottom:6px; }
   }
 
-  /* reduced motion */
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     .mark{ animation:none; opacity:1; }
@@ -830,7 +838,6 @@
     *{ transition-duration:.01ms !important; }
   }
 
-  /* touch devices: bigger hit areas */
   @media (hover: none) and (pointer: coarse){
     .site-nav a{ padding:8px 4px; }
     .socials a{ min-width:28px; min-height:28px; }
@@ -838,7 +845,6 @@
     .work-filters button{ min-height:38px; }
   }
 
-  /* print */
   @media print{
     header.site, .scroll-cue, .work-filters{ display:none; }
     body{ background:#fff; color:#000; }
