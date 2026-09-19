@@ -22,7 +22,6 @@
   .lat{ direction:ltr; unicode-bidi:isolate; }
   .wrap{ width:100%; max-width:1100px; margin:0 auto; padding:0 var(--pad-x); }
 
-  /* HEADER */
   header.site{ position:fixed; top:0; left:0; right:0; z-index:50;
     background:linear-gradient(to bottom, rgba(7,8,10,.94), rgba(7,8,10,.82) 70%, rgba(7,8,10,0));
     padding-top:max(10px, env(safe-area-inset-top, 0)); padding-bottom:20px; }
@@ -53,7 +52,6 @@
   .lang-switch button:hover{ color:var(--line); }
   .lang-switch button[aria-pressed="true"]{ background:var(--line); color:var(--bg); }
 
-  /* HERO */
   .hero{ height: 100vh; height: 100svh; display:flex; flex-direction:column; align-items:center;
     justify-content:center; text-align:center;
     padding: calc(var(--header-h) + 20px + env(safe-area-inset-top, 0)) var(--pad-x)
@@ -76,7 +74,6 @@
     width:100%; height:100%; background:var(--line-dim); animation:drip 2.2s ease-in-out infinite; }
   @keyframes drip{ 0%{ top:-100%; } 60%{ top:100%; } 100%{ top:100%; } }
 
-  /* SECTIONS */
   section{ padding:var(--gap-xl) 0; border-top:1px solid var(--line-faint); scroll-margin-top: 90px; }
   .eyebrow{ display:block; font-size:12.5px; color:var(--line-dim); letter-spacing:.14em;
     margin-bottom:22px; text-align:right; font-weight:500; }
@@ -86,7 +83,6 @@
     margin:0 0 18px; max-width:62ch; }
   #about .about-grid{ display:grid; grid-template-columns:1fr; gap:30px; }
 
-  /* RESUME */
   .resume-meta{ display:flex; flex-wrap:wrap; gap:6px 14px; font-size:13.5px; color:var(--line-dim);
     margin:-6px 0 52px; line-height:1.9; font-weight:300; }
   .resume-meta span{ word-break:break-word; overflow-wrap:anywhere; }
@@ -97,7 +93,7 @@
     border-bottom:1px solid var(--line-faint); }
   html[lang="fa"] .resume-block > h3{ letter-spacing:0; text-transform:none; }
   .resume-item{ display:grid; grid-template-columns:1fr; gap:6px;
-    padding:clamp(16px, 2.4vw, 22px) 0; }
+    padding:clamp(16px, 2.4vw, 22px) 0; position:relative; }
   .resume-item:first-child{ padding-top:clamp(16px, 2.4vw, 22px); }
   .resume-item:last-child{ padding-bottom:0; }
   .resume-item-head{ display:flex; justify-content:space-between; align-items:baseline;
@@ -122,7 +118,6 @@
   .resume-desc li:last-child{ margin-bottom:0; }
   .resume-desc li::before{ content:'–'; position:absolute; inset-inline-start:0; color:var(--line-faint); }
 
-  /* WORKS */
   .work-filters{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 clamp(32px, 4.5vw, 46px); }
   .work-filters button{ font-family:inherit; font-size:12.5px; font-weight:400;
     color:var(--line-dim); background:none; border:1px solid var(--line-faint);
@@ -137,7 +132,7 @@
     color:var(--line-dim); font-weight:500; margin:0 0 6px; padding-bottom:16px;
     border-bottom:1px solid var(--line-faint); }
   html[lang="fa"] .work-group > h3{ letter-spacing:0; text-transform:none; }
-  .work-item{ display:grid; gap:6px; padding:clamp(16px, 2.4vw, 22px) 0; }
+  .work-item{ display:grid; gap:6px; padding:clamp(16px, 2.4vw, 22px) 0; position:relative; }
   .work-item:first-child{ padding-top:clamp(16px, 2.4vw, 22px); }
   .work-item:last-child{ padding-bottom:0; }
   .work-item-head{ display:flex; justify-content:space-between; align-items:baseline;
@@ -157,7 +152,6 @@
   .work-tags span{ font-size:12px; color:var(--line-dim); border:1px solid var(--line-faint);
     border-radius:999px; padding:4px 12px; font-weight:400; unicode-bidi:isolate; }
 
-  /* SKILLS */
   .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
     gap:clamp(24px, 3.4vw, 36px); }
   .skill-group h4{ font-size:12px; letter-spacing:.12em; text-transform:uppercase;
@@ -169,7 +163,6 @@
     font-weight:400; unicode-bidi:isolate; }
   .skill-tags span:hover{ color:var(--line); border-color:var(--line-dim); }
 
-  /* CONTACT */
   #contact{ display:flex; flex-direction:column; align-items:flex-start; }
   #contact h2{ max-width:20ch; }
   .contact-link{ display:inline-flex; align-items:center; gap:10px; margin-top:10px;
@@ -187,7 +180,6 @@
   footer .wrap{ display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; }
   a:focus-visible, button:focus-visible{ outline:1px solid var(--line); outline-offset:4px; }
 
-  /* MEDIA */
   .media-block{ margin-top:12px; display:flex; flex-direction:column;
     align-items:flex-start; gap:10px; min-width:0; }
   .media-strip{ display:grid; grid-template-columns:repeat(auto-fill, minmax(104px, 1fr));
@@ -233,7 +225,6 @@
   .media-add svg{ width:14px; height:14px; fill:none; stroke:currentColor;
     stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
 
-  /* MODAL */
   .mm-overlay{ position:fixed; inset:0; z-index:400; display:flex; align-items:center;
     justify-content:center; padding:16px; background:rgba(4,5,7,.74);
     -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); opacity:0;
@@ -288,7 +279,6 @@
   .mm-btn.primary{ background:var(--line); color:var(--bg); }
   .mm-btn.primary:hover{ opacity:.85; }
 
-  /* VIEWER */
   .mv-overlay{ position:fixed; inset:0; z-index:410; display:flex; align-items:center;
     justify-content:center; padding:clamp(14px, 4vw, 44px); background:rgba(3,4,6,.94);
     -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); opacity:0;
@@ -320,7 +310,6 @@
     border-radius:999px; cursor:pointer; transition:background .2s; z-index:2; }
   .mv-close:hover{ background:rgba(255,255,255,.13); }
 
-  /* EDIT TOOLBAR */
   .edit-toolbar{ position:fixed; bottom:max(16px, env(safe-area-inset-bottom, 0));
     left:50%; transform:translateX(-50%) translateY(20px); z-index:500;
     display:none; align-items:center; gap:8px; padding:8px 10px;
@@ -345,12 +334,72 @@
   .edit-btn.ghost:hover{ color:var(--line); border-color:var(--line-dim); opacity:1; }
   .edit-btn[disabled]{ opacity:.5; cursor:wait; }
 
-  /* EDIT MODE - media controls only visible in edit mode */
+  /* ============ EDIT MODE: content editing, add/delete ============ */
   .media-add, .media-thumb .mt-del{ display:none !important; }
   body.edit-mode .media-add{ display:inline-flex !important; }
   body.edit-mode .media-thumb .mt-del{ display:flex !important; }
 
-  /* RESPONSIVE */
+  [contenteditable="true"]{
+    outline: none;
+    border-radius: 5px;
+    transition: box-shadow .15s ease, background .15s ease;
+  }
+  [contenteditable="true"]:hover{
+    box-shadow: 0 0 0 1px rgba(238, 241, 244, 0.10);
+  }
+  [contenteditable="true"]:focus{
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.55);
+    background: rgba(52, 152, 219, 0.05);
+  }
+
+  .kz-add-btn{
+    display: none;
+    margin-top: 16px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--line-dim);
+    background: transparent;
+    border: 1px dashed var(--line-faint);
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: color .2s, border-color .2s, background .2s;
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    gap: 6px;
+  }
+  body.edit-mode .kz-add-btn{ display: inline-flex; }
+  .kz-add-btn:hover{
+    color: var(--line);
+    border-color: var(--line-dim);
+    background: rgba(238, 241, 244, 0.04);
+  }
+
+  .kz-del-btn{
+    position: absolute;
+    top: 8px;
+    inset-inline-end: 8px;
+    width: 26px;
+    height: 26px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1;
+    color: #ff8a8d;
+    background: rgba(229, 72, 77, 0.15);
+    border: 1px solid rgba(229, 72, 77, 0.35);
+    border-radius: 999px;
+    cursor: pointer;
+    z-index: 4;
+    transition: background .18s, color .18s, border-color .18s, transform .18s;
+  }
+  body.edit-mode .kz-del-btn{ display: flex; }
+  .kz-del-btn:hover{ background: #e5484d; color: #fff; border-color: #e5484d; transform: scale(1.08); }
+
   @media (max-width:760px){
     :root{ --header-h: 86px; }
     header.site{ padding-top:max(8px, env(safe-area-inset-top, 0));
@@ -455,7 +504,7 @@
   }
   @media print{
     header.site, .scroll-cue, .work-filters, .media-add, .media-thumb .mt-del,
-    .edit-toolbar{ display:none !important; }
+    .edit-toolbar, .kz-add-btn, .kz-del-btn{ display:none !important; }
     body{ background:#fff; color:#000; }
     section{ border-top:1px solid #ccc; padding:20px 0; }
     .mark path{ stroke:#000; }
@@ -959,7 +1008,6 @@
   </div>
 </footer>
 
-<!-- EDIT TOOLBAR -->
 <div class="edit-toolbar" role="toolbar" aria-label="حالت ویرایش">
   <span class="edit-dot"></span>
   <span class="edit-label">حالت ویرایش</span>
@@ -967,7 +1015,6 @@
   <button type="button" class="edit-btn ghost" id="exitEditBtn">خروج</button>
 </div>
 
-<!-- MEDIA MODAL -->
 <div class="mm-overlay" id="mediaModal" role="dialog" aria-modal="true" aria-label="افزودن رسانه">
   <div class="mm-card">
     <div class="mm-head">
@@ -1003,7 +1050,6 @@
   </div>
 </div>
 
-<!-- MEDIA VIEWER -->
 <div class="mv-overlay" id="mediaViewer" role="dialog" aria-modal="true" aria-label="نمایش رسانه">
   <button class="mv-close" id="mvClose" type="button" aria-label="بستن">×</button>
   <div class="mv-inner">
@@ -1012,10 +1058,8 @@
   </div>
 </div>
 
-<!-- ============ EMBEDDED MEDIA DATA ============ -->
 <script type="application/json" id="embedded-media">{"__version":"v1789809273203"}</script>
 
-<!-- ============ LANGUAGE + FILTER SCRIPT ============ -->
 <script>
 (function () {
   var root = document.documentElement;
@@ -1062,7 +1106,6 @@
 })();
 </script>
 
-<!-- ============ MEDIA + EDIT MODE SCRIPT ============ -->
 <script>
 (function () {
   var STORAGE_PREFIX = 'kazzi-media-';
@@ -1070,7 +1113,7 @@
   var EDIT_KEY = 'kazzi-edit-mode';
   var currentKey = null;
 
-  // ============ Parse embedded media ============
+  // ============ Embedded media parse + sync ============
   var EMBEDDED = {};
   try {
     var el = document.getElementById('embedded-media');
@@ -1080,7 +1123,6 @@
     }
   } catch (e) { EMBEDDED = {}; }
 
-  // ============ Sync embedded → localStorage (if version changed) ============
   (function syncFromEmbedded() {
     var embVer = EMBEDDED.__version || '';
     if (!embVer) return;
@@ -1089,9 +1131,7 @@
     if (embVer === locVer) return;
     Object.keys(EMBEDDED).forEach(function (key) {
       if (key === '__version') return;
-      try {
-        localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(EMBEDDED[key]));
-      } catch (e) {}
+      try { localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(EMBEDDED[key])); } catch (e) {}
     });
     try { localStorage.setItem(VERSION_KEY, embVer); } catch (e) {}
   })();
@@ -1111,18 +1151,13 @@
 
   // ============ Storage helpers ============
   function getStore(key) {
-    try {
-      var raw = localStorage.getItem(STORAGE_PREFIX + key);
-      if (raw) return JSON.parse(raw);
-    } catch (e) {}
+    try { var raw = localStorage.getItem(STORAGE_PREFIX + key); if (raw) return JSON.parse(raw); } catch (e) {}
     return [];
   }
   function setStore(key, arr) {
     try { localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(arr)); }
-    catch (e) { alert('حجم فایل زیاد است یا حافظه پر شده. فایل کوچک‌تر بده یا از لینک استفاده کن.'); }
+    catch (e) { alert('حجم فایل زیاد است یا حافظه پر شده.'); }
   }
-
-  // ============ Type detection ============
   function inferType(url, fileType) {
     if (fileType) {
       if (fileType.indexOf('image/') === 0) return 'image';
@@ -1149,11 +1184,12 @@
     });
   }
 
-  // ============ Render ============
+  // ============ Render media ============
   function render(key) {
     var block = document.querySelector('.media-block[data-media="' + key + '"]');
     if (!block) return;
     var strip = block.querySelector('.media-strip');
+    if (!strip) return;
     strip.innerHTML = '';
     var items = getStore(key);
 
@@ -1165,46 +1201,22 @@
       div.dataset.idx = idx;
 
       var inner = '';
-      if (item.type === 'image') {
-        inner = '<img src="' + escHtml(item.url) + '" alt="" loading="lazy">';
-      } else if (item.type === 'video') {
-        inner = '<video src="' + escHtml(item.url) + '" muted playsinline preload="metadata"></video><span class="mt-play">▶</span>';
-      } else if (item.type === 'audio') {
-        inner = '<div class="mt-badge">صدا</div>';
-      } else if (item.type === 'pdf') {
-        inner = '<div class="mt-badge">PDF</div>';
-      } else if (item.type === 'file') {
-        inner = '<div class="mt-badge">' + escHtml(extOf(item.name)) + '</div>';
-      } else {
-        inner = '<div class="mt-badge">لینک</div>';
-      }
+      if (item.type === 'image') inner = '<img src="' + escHtml(item.url) + '" alt="" loading="lazy">';
+      else if (item.type === 'video') inner = '<video src="' + escHtml(item.url) + '" muted playsinline preload="metadata"></video><span class="mt-play">▶</span>';
+      else if (item.type === 'audio') inner = '<div class="mt-badge">صدا</div>';
+      else if (item.type === 'pdf') inner = '<div class="mt-badge">PDF</div>';
+      else if (item.type === 'file') inner = '<div class="mt-badge">' + escHtml(extOf(item.name)) + '</div>';
+      else inner = '<div class="mt-badge">لینک</div>';
 
       div.innerHTML = inner +
         '<span class="mt-name">' + escHtml((item.name || item.url || '').slice(0, 60)) + '</span>' +
         '<button class="mt-del" type="button" aria-label="حذف" data-del="' + idx + '">×</button>';
-
       strip.appendChild(div);
     });
-
-    strip.querySelectorAll('.mt-del').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var idx = +btn.dataset.del;
-        var arr = getStore(key);
-        arr.splice(idx, 1);
-        setStore(key, arr);
-        render(key);
-      });
-    });
-
-    strip.querySelectorAll('.media-thumb').forEach(function (thumb) {
-      thumb.addEventListener('click', function (e) {
-        if (e.target.closest('.mt-del')) return;
-        openViewer(key, +thumb.dataset.idx);
-      });
-      thumb.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); thumb.click(); }
-      });
+  }
+  function renderAll() {
+    document.querySelectorAll('.media-block[data-media]').forEach(function (b) {
+      render(b.dataset.media);
     });
   }
 
@@ -1213,63 +1225,40 @@
     var items = getStore(key);
     var item = items[idx];
     if (!item) return;
-
-    if (item.type === 'link') {
-      window.open(item.url, '_blank', 'noopener,noreferrer');
-      return;
-    }
+    if (item.type === 'link') { window.open(item.url, '_blank', 'noopener,noreferrer'); return; }
 
     stage.innerHTML = '';
     bar.innerHTML = '';
 
     if (item.type === 'image') {
-      var img = document.createElement('img');
-      img.src = item.url; img.alt = item.name || '';
-      stage.appendChild(img);
+      var img = document.createElement('img'); img.src = item.url; img.alt = item.name || ''; stage.appendChild(img);
     } else if (item.type === 'video') {
-      var v = document.createElement('video');
-      v.src = item.url; v.controls = true; v.autoplay = true; v.playsInline = true;
-      stage.appendChild(v);
+      var v = document.createElement('video'); v.src = item.url; v.controls = true; v.autoplay = true; v.playsInline = true; stage.appendChild(v);
     } else if (item.type === 'audio') {
-      var a = document.createElement('audio');
-      a.src = item.url; a.controls = true; a.autoplay = true;
-      stage.appendChild(a);
+      var a = document.createElement('audio'); a.src = item.url; a.controls = true; a.autoplay = true; stage.appendChild(a);
     } else if (item.type === 'pdf') {
-      var iframe = document.createElement('iframe');
-      iframe.src = item.url;
-      stage.appendChild(iframe);
+      var iframe = document.createElement('iframe'); iframe.src = item.url; stage.appendChild(iframe);
     } else if (item.type === 'file') {
       var box = document.createElement('div');
       box.style.cssText = 'text-align:center;color:#c9cdd3;font-size:14px;line-height:2;padding:30px 20px;';
       box.innerHTML = '<div style="font-size:40px;font-weight:600;color:#eef1f4;letter-spacing:.05em;margin-bottom:14px;">' + escHtml(extOf(item.name)) + '</div>' +
         '<div style="direction:ltr;unicode-bidi:isolate;color:#7c828c;max-width:60ch;overflow-wrap:anywhere;">' + escHtml(item.name || '') + '</div>' +
-        '<div style="color:#7c828c;margin-top:10px;">این نوع فایل داخل مرورگر پیش‌نمایش نمی‌شود — دانلودش کن.</div>';
+        '<div style="color:#7c828c;margin-top:10px;">پیش‌نمایش ندارد — دانلودش کن.</div>';
       stage.appendChild(box);
     }
 
     var actions = '<a href="' + escHtml(item.url) + '" download="' + escHtml(item.name || '') + '">دانلود</a>' +
                   '<a href="' + escHtml(item.url) + '" target="_blank" rel="noopener">باز کردن در تب جدید</a>';
-
-    bar.innerHTML = '<span class="mv-name">' + escHtml(item.name || item.url) + '</span>' +
-      actions +
+    bar.innerHTML = '<span class="mv-name">' + escHtml(item.name || item.url) + '</span>' + actions +
       '<button class="mv-close-inline" type="button" style="background:none;border:1px solid var(--line-faint);color:var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;font-family:inherit;font-size:12px;">بستن</button>';
-
     bar.querySelector('.mv-close-inline').addEventListener('click', closeViewer);
     viewer.classList.add('open');
   }
-
   function closeViewer() {
     viewer.classList.remove('open');
     stage.innerHTML = '';
     bar.innerHTML = '';
   }
-
-  viewer.addEventListener('click', function (e) { if (e.target === viewer) closeViewer(); });
-  document.getElementById('mvClose').addEventListener('click', closeViewer);
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeViewer(); closeModal(); }
-  });
 
   // ============ Add media modal ============
   function openModal(key) {
@@ -1284,70 +1273,246 @@
     modal.classList.remove('open');
     currentKey = null;
   }
-
-  document.getElementById('mmClose').addEventListener('click', closeModal);
-  document.getElementById('mmCancel').addEventListener('click', closeModal);
-  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
-
   function switchTab(name) {
     tabs.forEach(function (t) { t.classList.toggle('is-active', t.dataset.mmTab === name); });
     panels.forEach(function (p) { p.hidden = p.dataset.mmPanel !== name; });
     mmAddLink.hidden = name !== 'link';
   }
+
   tabs.forEach(function (t) {
     t.addEventListener('click', function () { switchTab(t.dataset.mmTab); });
   });
-
   mmDrop.addEventListener('click', function () { mmFile.click(); });
   mmDrop.addEventListener('dragover', function (e) { e.preventDefault(); mmDrop.classList.add('is-over'); });
   mmDrop.addEventListener('dragleave', function () { mmDrop.classList.remove('is-over'); });
   mmDrop.addEventListener('drop', function (e) {
-    e.preventDefault();
-    mmDrop.classList.remove('is-over');
+    e.preventDefault(); mmDrop.classList.remove('is-over');
     if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files);
   });
   mmFile.addEventListener('change', function () {
     if (mmFile.files.length) handleFiles(mmFile.files);
   });
-
   function handleFiles(files) {
     if (!currentKey) return;
     var key = currentKey;
     var items = getStore(key);
     var remaining = files.length;
-
     Array.prototype.forEach.call(files, function (file) {
       var reader = new FileReader();
       reader.onload = function (ev) {
         var type = inferType(file.name, file.type);
         items.push({ url: ev.target.result, name: file.name, type: type, size: file.size, mime: file.type });
-        setStore(key, items);
-        render(key);
+        setStore(key, items); render(key);
         remaining--;
         if (remaining <= 0) closeModal();
       };
       reader.readAsDataURL(file);
     });
   }
-
   mmAddLink.addEventListener('click', function () {
     if (!currentKey) return;
     var url = mmLink.value.trim();
     if (!url) return;
     var name = mmLinkName.value.trim() || url;
-    var type = inferType(url);
     var items = getStore(currentKey);
-    items.push({ url: url, name: name, type: type });
-    setStore(currentKey, items);
-    render(currentKey);
-    closeModal();
+    items.push({ url: url, name: name, type: inferType(url) });
+    setStore(currentKey, items); render(currentKey); closeModal();
   });
 
-  document.querySelectorAll('[data-add]').forEach(function (btn) {
-    btn.addEventListener('click', function () { openModal(btn.dataset.add); });
+  document.getElementById('mmClose').addEventListener('click', closeModal);
+  document.getElementById('mmCancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.getElementById('mvClose').addEventListener('click', closeViewer);
+  viewer.addEventListener('click', function (e) { if (e.target === viewer) closeViewer(); });
+
+  // ============ Global event delegation ============
+  document.addEventListener('click', function (e) {
+    // add media
+    var addBtn = e.target.closest('[data-add]');
+    if (addBtn) {
+      e.preventDefault();
+      openModal(addBtn.dataset.add);
+      return;
+    }
+    // delete media
+    var del = e.target.closest('.mt-del');
+    if (del) {
+      e.stopPropagation();
+      var block = del.closest('.media-block');
+      if (!block) return;
+      var arr = getStore(block.dataset.media);
+      arr.splice(+del.dataset.del, 1);
+      setStore(block.dataset.media, arr);
+      render(block.dataset.media);
+      return;
+    }
+    // open media viewer
+    var thumb = e.target.closest('.media-thumb');
+    if (thumb) {
+      var blk = thumb.closest('.media-block');
+      if (blk) openViewer(blk.dataset.media, +thumb.dataset.idx);
+      return;
+    }
+    // add new item
+    var addItemBtn = e.target.closest('.kz-add-btn');
+    if (addItemBtn) {
+      e.preventDefault();
+      addNewItem(addItemBtn);
+      return;
+    }
+    // delete item
+    var delBtn = e.target.closest('.kz-del-btn');
+    if (delBtn) {
+      e.preventDefault();
+      if (confirm('این مورد حذف بشه؟')) {
+        var item = delBtn.closest('.resume-item, .work-item');
+        if (item) item.remove();
+      }
+      return;
+    }
   });
 
-  // ============ Edit mode ============
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeViewer(); closeModal(); }
+  });
+
+  // ============ Content editing ============
+  var EDITABLE_SEL = [
+    '.hero h1', '.hero .role',
+    '#about .eyebrow', '#about h2', '#about p',
+    '#resume .eyebrow', '#resume h2', '#resume .resume-meta span',
+    '.resume-block > h3',
+    '.resume-item-head h4', '.resume-date', '.resume-org', '.resume-desc',
+    '.work-group > h3',
+    '.work-title', '.work-date', '.work-desc', '.work-tags span',
+    '.skill-group h4', '.skill-tags span',
+    '#contact .eyebrow', '#contact h2', '.contact-link',
+    'footer .wrap > span'
+  ].join(',');
+
+  function saveDualLang(el) {
+    var lang = document.documentElement.lang === 'en' ? 'en' : 'fa';
+    if (el.hasAttribute('data-' + lang)) {
+      el.setAttribute('data-' + lang, el.innerHTML);
+    }
+  }
+
+  function enableEditing() {
+    document.querySelectorAll(EDITABLE_SEL).forEach(function (el) {
+      if (el.closest('.edit-toolbar, .mm-overlay, .mv-overlay')) return;
+      el.setAttribute('contenteditable', 'true');
+      el.classList.add('kz-editable');
+      if (!el._kzInputHandler) {
+        el._kzInputHandler = function () { saveDualLang(el); };
+        el.addEventListener('input', el._kzInputHandler);
+        el.addEventListener('blur', el._kzInputHandler);
+      }
+    });
+  }
+
+  function disableEditing() {
+    document.querySelectorAll('[contenteditable="true"]').forEach(function (el) {
+      el.removeAttribute('contenteditable');
+      el.classList.remove('kz-editable');
+    });
+  }
+
+  // ============ Add / delete buttons ============
+  function addDeleteButtons() {
+    document.querySelectorAll('.resume-item, .work-item').forEach(function (item) {
+      if (item.querySelector(':scope > .kz-del-btn')) return;
+      var btn = document.createElement('button');
+      btn.className = 'kz-del-btn';
+      btn.type = 'button';
+      btn.textContent = '×';
+      btn.title = 'حذف';
+      item.insertBefore(btn, item.firstChild);
+    });
+  }
+
+  function addAddButtons() {
+    document.querySelectorAll('.resume-block').forEach(function (block) {
+      if (!block.querySelector('.resume-item')) return;
+      if (block.querySelector(':scope > .kz-add-btn')) return;
+      var btn = document.createElement('button');
+      btn.className = 'kz-add-btn';
+      btn.type = 'button';
+      btn.dataset.addType = 'resume-item';
+      btn.innerHTML = '<span>+</span><span>افزودن مورد جدید</span>';
+      block.appendChild(btn);
+    });
+    document.querySelectorAll('.work-group').forEach(function (group) {
+      if (group.querySelector(':scope > .kz-add-btn')) return;
+      var btn = document.createElement('button');
+      btn.className = 'kz-add-btn';
+      btn.type = 'button';
+      btn.dataset.addType = 'work-item';
+      btn.innerHTML = '<span>+</span><span>افزودن مورد جدید</span>';
+      group.appendChild(btn);
+    });
+  }
+
+  function addNewItem(btn) {
+    var type = btn.dataset.addType;
+    var container = btn.parentElement;
+    var mediaKey = 'new-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+    var newItem = document.createElement('div');
+
+    var delBtnHtml = '<button class="kz-del-btn" type="button" title="حذف">×</button>';
+    var mediaHtml = '<div class="media-block" data-media="' + mediaKey + '">' +
+        '<div class="media-strip"></div>' +
+        '<button type="button" class="media-add" data-add="' + mediaKey + '">' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>' +
+          '<span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span>' +
+        '</button>' +
+      '</div>';
+
+    if (type === 'resume-item') {
+      newItem.className = 'resume-item';
+      newItem.innerHTML = delBtnHtml +
+        '<div class="resume-item-head">' +
+          '<h4 contenteditable="true" class="kz-editable">عنوان جدید</h4>' +
+          '<span class="resume-date" contenteditable="true" class="kz-editable">۱۴۰۳</span>' +
+        '</div>' +
+        '<p class="resume-org" contenteditable="true" class="kz-editable">سازمان / مکان</p>' +
+        '<div class="resume-desc" contenteditable="true" class="kz-editable"><ul><li>توضیحات…</li></ul></div>' +
+        mediaHtml;
+    } else {
+      newItem.className = 'work-item';
+      newItem.innerHTML = delBtnHtml +
+        '<div class="work-item-head">' +
+          '<p class="work-title" contenteditable="true" class="kz-editable">عنوان جدید</p>' +
+          '<span class="work-date" contenteditable="true" class="kz-editable">۱۴۰۳</span>' +
+        '</div>' +
+        '<p class="work-desc" contenteditable="true" class="kz-editable">توضیحات…</p>' +
+        '<div class="work-tags"><span contenteditable="true" class="kz-editable">تگ</span></div>' +
+        mediaHtml;
+    }
+
+    container.insertBefore(newItem, btn);
+
+    // re-attach input handlers on new editable elements
+    newItem.querySelectorAll('[contenteditable="true"]').forEach(function (el) {
+      el._kzInputHandler = function () { saveDualLang(el); };
+      el.addEventListener('input', el._kzInputHandler);
+      el.addEventListener('blur', el._kzInputHandler);
+    });
+
+    // focus first editable
+    var first = newItem.querySelector('[contenteditable="true"]');
+    if (first) {
+      first.focus();
+      try {
+        var range = document.createRange();
+        range.selectNodeContents(first);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } catch (e) {}
+    }
+  }
+
+  // ============ Edit mode toggle ============
   function isEditOn() {
     try { return localStorage.getItem(EDIT_KEY) === '1'; } catch (e) { return false; }
   }
@@ -1355,7 +1520,6 @@
     document.body.classList.toggle('edit-mode', on);
     try { localStorage.setItem(EDIT_KEY, on ? '1' : '0'); } catch (e) {}
 
-    // ===== فعال/غیرفعال کردن دکمهٔ خروجی گرفتن =====
     var exportBtn = document.getElementById('exportHtmlBtn');
     if (exportBtn) {
       if (on) {
@@ -1367,10 +1531,13 @@
       }
     }
 
-    // Re-render all media blocks
-    document.querySelectorAll('.media-block[data-media]').forEach(function (b) {
-      render(b.dataset.media);
-    });
+    if (on) {
+      enableEditing();
+      addDeleteButtons();
+      addAddButtons();
+    } else {
+      disableEditing();
+    }
   }
 
   if (location.hash === '#edit') setEditOn(true);
@@ -1399,54 +1566,46 @@
     btn.textContent = 'در حال آماده‌سازی...';
 
     try {
-      // Close any open overlays
+      // Close overlays in real DOM
       modal.classList.remove('open');
       viewer.classList.remove('open');
 
-      // Save current state
-      var wasEdit = document.body.classList.contains('edit-mode');
-      var strips = document.querySelectorAll('.media-strip');
-      var savedContents = [];
-      strips.forEach(function (s, i) { savedContents[i] = s.innerHTML; s.innerHTML = ''; });
+      // Clone documentElement
+      var docClone = document.documentElement.cloneNode(true);
 
-      var hiddenGroups = [];
-      document.querySelectorAll('.work-group[hidden]').forEach(function (g) {
-        hiddenGroups.push(g);
-        g.removeAttribute('hidden');
-      });
+      // Remove edit-mode class from body
+      var bodyClone = docClone.querySelector('body');
+      if (bodyClone) bodyClone.classList.remove('edit-mode');
 
-      // Reset edit-mode class & aria-pressed for snapshot
-      document.body.classList.remove('edit-mode');
-      var pressedButtons = [];
-      document.querySelectorAll('[aria-pressed="true"]').forEach(function (b) {
-        pressedButtons.push(b);
-      });
-      // Reset lang buttons to FA state
-      document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+      // Remove edit-only UI
+      docClone.querySelectorAll('.kz-add-btn, .kz-del-btn').forEach(function (b) { b.remove(); });
+      docClone.querySelectorAll('[contenteditable]').forEach(function (el) { el.removeAttribute('contenteditable'); });
+      docClone.querySelectorAll('.kz-editable').forEach(function (el) { el.classList.remove('kz-editable'); });
+
+      // Reset language state
+      docClone.setAttribute('lang', 'fa');
+      docClone.setAttribute('dir', 'rtl');
+      docClone.querySelectorAll('[data-lang-btn]').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.langBtn === 'fa' ? 'true' : 'false');
       });
-      // Reset filter buttons to "all"
-      document.querySelectorAll('[data-filter]').forEach(function (b) {
+
+      // Reset filter state (show all groups)
+      docClone.querySelectorAll('[data-filter]').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.filter === 'all' ? 'true' : 'false');
       });
-      // Reset lang/dir on html
-      document.documentElement.setAttribute('lang', 'fa');
-      document.documentElement.setAttribute('dir', 'rtl');
+      docClone.querySelectorAll('.work-group[hidden]').forEach(function (g) { g.removeAttribute('hidden'); });
 
-      // Snapshot
-      var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      // Reset export button
+      var expBtnClone = docClone.querySelector('#exportHtmlBtn');
+      if (expBtnClone) {
+        expBtnClone.setAttribute('disabled', '');
+        expBtnClone.textContent = 'در حال آماده‌سازی...';
+      }
 
-      // Restore
-      if (wasEdit) document.body.classList.add('edit-mode');
-      strips.forEach(function (s, i) { s.innerHTML = savedContents[i]; });
-      hiddenGroups.forEach(function (g) { g.setAttribute('hidden', ''); });
-      // Restore lang if it was EN
-      try {
-        var savedLang = localStorage.getItem('kazzi-lang');
-        if (savedLang === 'en' && window.__kazziSetLang) window.__kazziSetLang('en');
-      } catch (e) {}
+      // Clear media strips (they'll re-render via JS on load)
+      docClone.querySelectorAll('.media-strip').forEach(function (s) { s.innerHTML = ''; });
 
-      // Collect all media
+      // Collect all media from localStorage
       var allMedia = { __version: 'v' + Date.now() };
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
@@ -1456,18 +1615,13 @@
         }
       }
 
-      // Escape closing script tags inside JSON
+      // Update embedded-media script
       var json = JSON.stringify(allMedia).replace(/<\//g, '<\\/');
+      var embScript = docClone.querySelector('#embedded-media');
+      if (embScript) embScript.textContent = json;
 
-      // Update embedded-media script content
-      var re = /(<script type="application\/json" id="embedded-media">)[\s\S]*?(<\/script>)/;
-      if (!re.test(html)) {
-        alert('خطا: تگ embedded-media پیدا نشد. لطفاً کد را دوباره از منبع کپی کن.');
-        btn.disabled = false;
-        btn.textContent = 'ذخیره و دانلود HTML';
-        return;
-      }
-      html = html.replace(re, '$1' + json + '$2');
+      // Serialize
+      var html = '<!DOCTYPE html>\n' + docClone.outerHTML;
 
       // Download
       var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
@@ -1484,7 +1638,7 @@
       btn.textContent = 'ذخیره و دانلود HTML';
 
       setTimeout(function () {
-        alert('✅ فایل index.html دانلود شد.\n\nحالا:\n1. برو به گیت‌هاب\n2. فایل قبلی index.html رو با این یکی جایگزین کن\n3. Commit کن\n4. صبر کن ۱ دقیقه\n\nاز این به بعد همه می‌تونن عکس‌ها و فایل‌هات رو ببینن.');
+        alert('✅ فایل index.html دانلود شد.\n\nحالا:\n1. برو به گیت‌هاب\n2. index.html قبلی رو با این جایگزین کن\n3. Commit کن\n4. صبر کن ۱ دقیقه');
       }, 300);
     } catch (err) {
       btn.disabled = false;
@@ -1495,9 +1649,7 @@
   });
 
   // ============ Initial render ============
-  document.querySelectorAll('.media-block[data-media]').forEach(function (block) {
-    render(block.dataset.media);
-  });
+  renderAll();
 })();
 </script>
 
