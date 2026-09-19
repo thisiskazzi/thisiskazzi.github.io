@@ -359,15 +359,6 @@
     background: rgba(52, 152, 219, 0.05);
   }
 
-  /* Links inside editable areas get a blue tint in edit mode so they're visible */
-  body.edit-mode [contenteditable="true"] a{
-    background: rgba(52, 152, 219, 0.10);
-    text-decoration: underline;
-    text-decoration-color: #3498db;
-    text-decoration-thickness: 1.5px;
-    cursor: text;
-  }
-
   .kz-add-btn{
     display: none;
     margin-top: 16px;
@@ -466,108 +457,6 @@
   body.edit-mode .kz-add-chip{ display: inline-flex; }
   .kz-add-chip:hover{ color: var(--line); border-color: var(--line-dim); background: rgba(238,241,244,.04); }
 
-  /* ============ LINK POPUP ============ */
-  .kz-link-popup{
-    position: fixed;
-    z-index: 600;
-    display: none;
-    align-items: center;
-    gap: 5px;
-    padding: 6px;
-    background: rgba(11,13,17,.97);
-    border: 1px solid var(--line-faint);
-    border-radius: 999px;
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 34px rgba(0,0,0,.6);
-    transform: translateY(-4px);
-    animation: kzPop .16s ease-out;
-  }
-  @keyframes kzPop{ from{ opacity: 0; transform: translateY(0); } to{ opacity: 1; transform: translateY(-4px); } }
-  .kz-link-popup.show{ display: flex; }
-  .kz-link-popup button{
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--line);
-    background: none;
-    border: 1px solid var(--line-faint);
-    border-radius: 999px;
-    padding: 5px 12px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background .18s, border-color .18s, color .18s;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    min-height: 28px;
-  }
-  .kz-link-popup button:hover{ background: rgba(238,241,244,.08); border-color: var(--line-dim); }
-  .kz-link-popup button.kz-remove-link-btn{ color: #ff8a8d; border-color: rgba(229,72,77,.4); }
-  .kz-link-popup button.kz-remove-link-btn:hover{ background: #e5484d; color: #fff; border-color: #e5484d; }
-  .kz-link-popup button.kz-add-link-btn{ color: #7ac0ff; border-color: rgba(52,152,219,.5); }
-  .kz-link-popup button.kz-add-link-btn:hover{ background: rgba(52,152,219,.18); border-color: #3498db; }
-
-  /* ============ LINK MODAL ============ */
-  .kz-link-modal{
-    position: fixed;
-    inset: 0;
-    z-index: 700;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    background: rgba(4,5,7,.74);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .2s;
-  }
-  .kz-link-modal.open{ display: flex; opacity: 1; pointer-events: auto; }
-  .kz-link-modal-card{
-    width: min(480px, 100%);
-    background: #0b0d11;
-    border: 1px solid var(--line-faint);
-    border-radius: 18px;
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    box-shadow: 0 30px 90px rgba(0,0,0,.65);
-  }
-  .kz-link-modal-card h3{ margin: 0; font-size: 16.5px; font-weight: 500; }
-  .kz-link-modal-card label{ font-size: 12px; color: var(--line-dim); }
-  .kz-link-modal-card input{
-    font-family: inherit;
-    font-size: 13.5px;
-    color: var(--line);
-    background: #0f1216;
-    border: 1px solid var(--line-faint);
-    border-radius: 10px;
-    padding: 11px 13px;
-    outline: none;
-    transition: border-color .2s;
-    direction: ltr;
-    width: 100%;
-  }
-  .kz-link-modal-card input:focus{ border-color: var(--line-dim); }
-  .kz-link-modal-foot{ display: flex; justify-content: flex-end; gap: 10px; }
-  .kz-link-modal-foot button{
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 500;
-    border-radius: 999px;
-    padding: 9px 20px;
-    cursor: pointer;
-    min-height: 38px;
-    transition: opacity .2s, background .2s, border-color .2s, color .2s;
-  }
-  .kz-link-modal-foot .ghost{ background: none; border: 1px solid var(--line-faint); color: var(--line-dim); }
-  .kz-link-modal-foot .ghost:hover{ color: var(--line); border-color: var(--line-dim); }
-  .kz-link-modal-foot .primary{ background: var(--line); color: var(--bg); border: 1px solid var(--line); }
-  .kz-link-modal-foot .primary:hover{ opacity: .85; }
-
   @media (max-width:760px){
     :root{ --header-h: 86px; }
     header.site{ padding-top:max(8px, env(safe-area-inset-top, 0));
@@ -638,7 +527,6 @@
     .mm-card{ padding:18px; border-radius:16px; }
     .mv-stage img, .mv-stage video{ max-height:64vh; }
     .mv-stage iframe{ height:66vh; }
-    .kz-link-popup button{ font-size: 11.5px; padding: 5px 10px; }
   }
   @media (max-width:480px){
     .edit-toolbar{ left:12px; right:12px; transform:none; justify-content:center;
@@ -672,12 +560,12 @@
     html{ scroll-behavior:auto; }
     .mark{ animation:none; opacity:1; }
     .scroll-cue span.line::after{ animation:none; }
-    .mm-overlay, .mm-card, .mv-overlay, .media-thumb, .edit-toolbar, .kz-link-popup{ transition:none; animation:none; }
+    .mm-overlay, .mm-card, .mv-overlay, .media-thumb, .edit-toolbar{ transition:none; }
     *{ transition-duration:.01ms !important; }
   }
   @media print{
     header.site, .scroll-cue, .work-filters, .media-add, .media-thumb .mt-del,
-    .edit-toolbar, .kz-add-btn, .kz-del-btn, .kz-add-chip, .kz-chip-del, .kz-link-popup{ display:none !important; }
+    .edit-toolbar, .kz-add-btn, .kz-del-btn, .kz-add-chip, .kz-chip-del{ display:none !important; }
     body{ background:#fff; color:#000; }
     section{ border-top:1px solid #ccc; padding:20px 0; }
     .mark path{ stroke:#000; }
@@ -1231,18 +1119,666 @@
   </div>
 </div>
 
-<!-- LINK POPUP (created dynamically appended below) -->
+<script type="application/json" id="embedded-media">{"__version":"v1789809273203"}</script>
 
-<!-- LINK MODAL -->
-<div class="kz-link-modal" id="kzLinkModal" role="dialog" aria-modal="true" aria-label="افزودن لینک">
-  <div class="kz-link-modal-card">
-    <h3 id="kzLinkModalTitle">افزودن لینک</h3>
-    <div class="mm-field">
-      <label>آدرس لینک</label>
-      <input type="url" id="kzLinkUrl" placeholder="https://..." dir="ltr">
-    </div>
-    <div class="mm-field">
-      <label>متن نمایشی (اختیاری — خالی بگذار تا متن انتخابی حفظ شود)</label>
-      <input type="text" id="kzLinkText" placeholder="متن روی لینک">
-    </div>
-    <div class="
+<script>
+(function () {
+  var root = document.documentElement;
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-lang-btn]'));
+
+  nodes.forEach(function (el) {
+    if (!el.dataset.fa) el.dataset.fa = el.innerHTML;
+  });
+
+  window.__kazziSetLang = function(lang) {
+    if (lang !== 'en') lang = 'fa';
+    root.setAttribute('lang', lang);
+    root.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+    nodes.forEach(function (el) { el.innerHTML = el.dataset[lang]; });
+    buttons.forEach(function (btn) {
+      btn.setAttribute('aria-pressed', String(btn.dataset.langBtn === lang));
+    });
+    try { localStorage.setItem('kazzi-lang', lang); } catch (e) {}
+  };
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () { window.__kazziSetLang(btn.dataset.langBtn); });
+  });
+
+  var filterBtns = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.work-group'));
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.dataset.filter;
+      filterBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      groups.forEach(function (g) {
+        g.hidden = !(f === 'all' || g.dataset.cat === f);
+      });
+    });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem('kazzi-lang'); } catch (e) {}
+  if (saved === 'en') window.__kazziSetLang('en');
+})();
+</script>
+
+<script>
+(function () {
+  var STORAGE_PREFIX = 'kazzi-media-';
+  var VERSION_KEY = 'kazzi-media-version';
+  var EDIT_KEY = 'kazzi-edit-mode';
+  var currentKey = null;
+
+  var EMBEDDED = {};
+  try {
+    var el = document.getElementById('embedded-media');
+    if (el) {
+      var parsed = JSON.parse(el.textContent || '{}');
+      if (parsed && typeof parsed === 'object') EMBEDDED = parsed;
+    }
+  } catch (e) { EMBEDDED = {}; }
+
+  (function syncFromEmbedded() {
+    var embVer = EMBEDDED.__version || '';
+    if (!embVer) return;
+    var locVer = '';
+    try { locVer = localStorage.getItem(VERSION_KEY) || ''; } catch (e) {}
+    if (embVer === locVer) return;
+    Object.keys(EMBEDDED).forEach(function (key) {
+      if (key === '__version') return;
+      try { localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(EMBEDDED[key])); } catch (e) {}
+    });
+    try { localStorage.setItem(VERSION_KEY, embVer); } catch (e) {}
+  })();
+
+  var modal = document.getElementById('mediaModal');
+  var viewer = document.getElementById('mediaViewer');
+  var stage = document.getElementById('mvStage');
+  var bar = document.getElementById('mvBar');
+  var mmDrop = document.getElementById('mmDrop');
+  var mmFile = document.getElementById('mmFile');
+  var mmLink = document.getElementById('mmLink');
+  var mmLinkName = document.getElementById('mmLinkName');
+  var mmAddLink = document.getElementById('mmAddLink');
+  var tabs = document.querySelectorAll('[data-mm-tab]');
+  var panels = document.querySelectorAll('[data-mm-panel]');
+
+  function getStore(key) {
+    try { var raw = localStorage.getItem(STORAGE_PREFIX + key); if (raw) return JSON.parse(raw); } catch (e) {}
+    return [];
+  }
+  function setStore(key, arr) {
+    try { localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(arr)); }
+    catch (e) { alert('حجم فایل زیاد است یا حافظه پر شده.'); }
+  }
+  function inferType(url, fileType) {
+    if (fileType) {
+      if (fileType.indexOf('image/') === 0) return 'image';
+      if (fileType.indexOf('video/') === 0) return 'video';
+      if (fileType.indexOf('audio/') === 0) return 'audio';
+      if (fileType === 'application/pdf') return 'pdf';
+      return 'file';
+    }
+    var u = url.split('?')[0].toLowerCase();
+    if (/\.(png|jpe?g|gif|webp|svg|bmp|avif)$/.test(u)) return 'image';
+    if (/\.(mp4|webm|ogg|mov|m4v)$/.test(u)) return 'video';
+    if (/\.(mp3|wav|ogg|m4a|aac)$/.test(u)) return 'audio';
+    if (/\.pdf$/.test(u)) return 'pdf';
+    if (/\.(zip|rar|7z|docx?|xlsx?|pptx?|txt|csv|json)$/.test(u)) return 'file';
+    return 'link';
+  }
+  function extOf(name) {
+    var m = /\.([a-z0-9]+)$/i.exec(name || '');
+    return m ? m[1].toUpperCase() : 'FILE';
+  }
+  function escHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, function(c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function render(key) {
+    var block = document.querySelector('.media-block[data-media="' + key + '"]');
+    if (!block) return;
+    var strip = block.querySelector('.media-strip');
+    if (!strip) return;
+    strip.innerHTML = '';
+    var items = getStore(key);
+
+    items.forEach(function (item, idx) {
+      var div = document.createElement('div');
+      div.className = 'media-thumb';
+      div.tabIndex = 0;
+      div.setAttribute('role', 'button');
+      div.dataset.idx = idx;
+
+      var inner = '';
+      if (item.type === 'image') inner = '<img src="' + escHtml(item.url) + '" alt="" loading="lazy">';
+      else if (item.type === 'video') inner = '<video src="' + escHtml(item.url) + '" muted playsinline preload="metadata"></video><span class="mt-play">▶</span>';
+      else if (item.type === 'audio') inner = '<div class="mt-badge">صدا</div>';
+      else if (item.type === 'pdf') inner = '<div class="mt-badge">PDF</div>';
+      else if (item.type === 'file') inner = '<div class="mt-badge">' + escHtml(extOf(item.name)) + '</div>';
+      else inner = '<div class="mt-badge">لینک</div>';
+
+      div.innerHTML = inner +
+        '<span class="mt-name">' + escHtml((item.name || item.url || '').slice(0, 60)) + '</span>' +
+        '<button class="mt-del" type="button" aria-label="حذف" data-del="' + idx + '">×</button>';
+      strip.appendChild(div);
+    });
+  }
+  function renderAll() {
+    document.querySelectorAll('.media-block[data-media]').forEach(function (b) {
+      render(b.dataset.media);
+    });
+  }
+
+  function openViewer(key, idx) {
+    var items = getStore(key);
+    var item = items[idx];
+    if (!item) return;
+    if (item.type === 'link') { window.open(item.url, '_blank', 'noopener,noreferrer'); return; }
+
+    stage.innerHTML = '';
+    bar.innerHTML = '';
+
+    if (item.type === 'image') {
+      var img = document.createElement('img'); img.src = item.url; img.alt = item.name || ''; stage.appendChild(img);
+    } else if (item.type === 'video') {
+      var v = document.createElement('video'); v.src = item.url; v.controls = true; v.autoplay = true; v.playsInline = true; stage.appendChild(v);
+    } else if (item.type === 'audio') {
+      var a = document.createElement('audio'); a.src = item.url; a.controls = true; a.autoplay = true; stage.appendChild(a);
+    } else if (item.type === 'pdf') {
+      var iframe = document.createElement('iframe'); iframe.src = item.url; stage.appendChild(iframe);
+    } else if (item.type === 'file') {
+      var box = document.createElement('div');
+      box.style.cssText = 'text-align:center;color:#c9cdd3;font-size:14px;line-height:2;padding:30px 20px;';
+      box.innerHTML = '<div style="font-size:40px;font-weight:600;color:#eef1f4;letter-spacing:.05em;margin-bottom:14px;">' + escHtml(extOf(item.name)) + '</div>' +
+        '<div style="direction:ltr;unicode-bidi:isolate;color:#7c828c;max-width:60ch;overflow-wrap:anywhere;">' + escHtml(item.name || '') + '</div>' +
+        '<div style="color:#7c828c;margin-top:10px;">پیش‌نمایش ندارد — دانلودش کن.</div>';
+      stage.appendChild(box);
+    }
+
+    var actions = '<a href="' + escHtml(item.url) + '" download="' + escHtml(item.name || '') + '">دانلود</a>' +
+                  '<a href="' + escHtml(item.url) + '" target="_blank" rel="noopener">باز کردن در تب جدید</a>';
+    bar.innerHTML = '<span class="mv-name">' + escHtml(item.name || item.url) + '</span>' + actions +
+      '<button class="mv-close-inline" type="button" style="background:none;border:1px solid var(--line-faint);color:var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;font-family:inherit;font-size:12px;">بستن</button>';
+    bar.querySelector('.mv-close-inline').addEventListener('click', closeViewer);
+    viewer.classList.add('open');
+  }
+  function closeViewer() {
+    viewer.classList.remove('open');
+    stage.innerHTML = '';
+    bar.innerHTML = '';
+  }
+
+  function openModal(key) {
+    currentKey = key;
+    modal.classList.add('open');
+    mmFile.value = '';
+    mmLink.value = '';
+    mmLinkName.value = '';
+    switchTab('file');
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    currentKey = null;
+  }
+  function switchTab(name) {
+    tabs.forEach(function (t) { t.classList.toggle('is-active', t.dataset.mmTab === name); });
+    panels.forEach(function (p) { p.hidden = p.dataset.mmPanel !== name; });
+    mmAddLink.hidden = name !== 'link';
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { switchTab(t.dataset.mmTab); });
+  });
+  mmDrop.addEventListener('click', function () { mmFile.click(); });
+  mmDrop.addEventListener('dragover', function (e) { e.preventDefault(); mmDrop.classList.add('is-over'); });
+  mmDrop.addEventListener('dragleave', function () { mmDrop.classList.remove('is-over'); });
+  mmDrop.addEventListener('drop', function (e) {
+    e.preventDefault(); mmDrop.classList.remove('is-over');
+    if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files);
+  });
+  mmFile.addEventListener('change', function () {
+    if (mmFile.files.length) handleFiles(mmFile.files);
+  });
+  function handleFiles(files) {
+    if (!currentKey) return;
+    var key = currentKey;
+    var items = getStore(key);
+    var remaining = files.length;
+    Array.prototype.forEach.call(files, function (file) {
+      var reader = new FileReader();
+      reader.onload = function (ev) {
+        var type = inferType(file.name, file.type);
+        items.push({ url: ev.target.result, name: file.name, type: type, size: file.size, mime: file.type });
+        setStore(key, items); render(key);
+        remaining--;
+        if (remaining <= 0) closeModal();
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+  mmAddLink.addEventListener('click', function () {
+    if (!currentKey) return;
+    var url = mmLink.value.trim();
+    if (!url) return;
+    var name = mmLinkName.value.trim() || url;
+    var items = getStore(currentKey);
+    items.push({ url: url, name: name, type: inferType(url) });
+    setStore(currentKey, items); render(currentKey); closeModal();
+  });
+
+  document.getElementById('mmClose').addEventListener('click', closeModal);
+  document.getElementById('mmCancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.getElementById('mvClose').addEventListener('click', closeViewer);
+  viewer.addEventListener('click', function (e) { if (e.target === viewer) closeViewer(); });
+
+  document.addEventListener('click', function (e) {
+    var addBtn = e.target.closest('[data-add]');
+    if (addBtn) { e.preventDefault(); openModal(addBtn.dataset.add); return; }
+
+    var del = e.target.closest('.mt-del');
+    if (del) {
+      e.stopPropagation();
+      var block = del.closest('.media-block');
+      if (!block) return;
+      var arr = getStore(block.dataset.media);
+      arr.splice(+del.dataset.del, 1);
+      setStore(block.dataset.media, arr);
+      render(block.dataset.media);
+      return;
+    }
+    var thumb = e.target.closest('.media-thumb');
+    if (thumb) {
+      var blk = thumb.closest('.media-block');
+      if (blk) openViewer(blk.dataset.media, +thumb.dataset.idx);
+      return;
+    }
+
+    var chipDel = e.target.closest('.kz-chip-del');
+    if (chipDel) {
+      e.preventDefault();
+      e.stopPropagation();
+      var chip = chipDel.parentElement;
+      if (chip) chip.remove();
+      return;
+    }
+
+    var chipAdd = e.target.closest('.kz-add-chip');
+    if (chipAdd) {
+      e.preventDefault();
+      addNewChip(chipAdd.parentElement);
+      return;
+    }
+
+    var addItemBtn = e.target.closest('.kz-add-btn');
+    if (addItemBtn) { e.preventDefault(); addNewItem(addItemBtn); return; }
+
+    var delBtn = e.target.closest('.kz-del-btn');
+    if (delBtn) {
+      e.preventDefault();
+      if (confirm('این مورد حذف بشه؟')) {
+        var item = delBtn.closest('.resume-item, .work-item');
+        if (item) item.remove();
+      }
+      return;
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeViewer(); closeModal(); }
+  });
+
+  var EDITABLE_SEL = [
+    '.hero h1', '.hero .role',
+    '#about .eyebrow', '#about h2', '#about p',
+    '#resume .eyebrow', '#resume h2', '#resume .resume-meta span',
+    '.resume-block > h3',
+    '.resume-item-head h4', '.resume-date', '.resume-org', '.resume-desc',
+    '.work-group > h3',
+    '.work-title', '.work-date', '.work-desc', '.work-tags span',
+    '.skill-group h4', '.skill-tags > span',
+    '#contact .eyebrow', '#contact h2', '.contact-link',
+    'footer .wrap > span'
+  ].join(',');
+
+  function saveDualLang(el) {
+    var lang = document.documentElement.lang === 'en' ? 'en' : 'fa';
+    if (el.hasAttribute('data-' + lang)) {
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('.kz-chip-del, .kz-add-chip, .kz-chip-del').forEach(function(b){ b.remove(); });
+      el.setAttribute('data-' + lang, clone.innerHTML);
+    }
+  }
+
+  function enableEditing() {
+    document.querySelectorAll(EDITABLE_SEL).forEach(function (el) {
+      if (el.closest('.edit-toolbar, .mm-overlay, .mv-overlay')) return;
+      el.setAttribute('contenteditable', 'true');
+      el.classList.add('kz-editable');
+      if (!el._kzInputHandler) {
+        el._kzInputHandler = function () { saveDualLang(el); };
+        el.addEventListener('input', el._kzInputHandler);
+        el.addEventListener('blur', el._kzInputHandler);
+      }
+    });
+  }
+
+  function disableEditing() {
+    document.querySelectorAll('[contenteditable="true"]').forEach(function (el) {
+      el.removeAttribute('contenteditable');
+      el.classList.remove('kz-editable');
+    });
+  }
+
+  function addDeleteButtons() {
+    document.querySelectorAll('.resume-item, .work-item').forEach(function (item) {
+      if (item.querySelector(':scope > .kz-del-btn')) return;
+      var btn = document.createElement('button');
+      btn.className = 'kz-del-btn';
+      btn.type = 'button';
+      btn.textContent = '×';
+      btn.title = 'حذف';
+      item.insertBefore(btn, item.firstChild);
+    });
+  }
+
+  function addAddButtons() {
+    document.querySelectorAll('.resume-block').forEach(function (block) {
+      if (!block.querySelector('.resume-item')) return;
+      if (block.querySelector(':scope > .kz-add-btn')) return;
+      var btn = document.createElement('button');
+      btn.className = 'kz-add-btn';
+      btn.type = 'button';
+      btn.dataset.addType = 'resume-item';
+      btn.innerHTML = '<span>+</span><span>افزودن مورد جدید</span>';
+      block.appendChild(btn);
+    });
+    document.querySelectorAll('.work-group').forEach(function (group) {
+      if (group.querySelector(':scope > .kz-add-btn')) return;
+      var btn = document.createElement('button');
+      btn.className = 'kz-add-btn';
+      btn.type = 'button';
+      btn.dataset.addType = 'work-item';
+      btn.innerHTML = '<span>+</span><span>افزودن مورد جدید</span>';
+      group.appendChild(btn);
+    });
+  }
+
+  // ============ Skills chips ============
+  function addChipDelButton(chip) {
+    if (!chip || chip.querySelector(':scope > .kz-chip-del')) return;
+    var btn = document.createElement('button');
+    btn.className = 'kz-chip-del';
+    btn.type = 'button';
+    btn.textContent = '×';
+    btn.setAttribute('contenteditable', 'false');
+    btn.title = 'حذف';
+    chip.appendChild(btn);
+  }
+
+  function addSkillChipDelButtons() {
+    document.querySelectorAll('.skill-tags > span').forEach(function (chip) {
+      addChipDelButton(chip);
+    });
+  }
+
+  function addSkillAddButtons() {
+    document.querySelectorAll('.skill-tags').forEach(function (container) {
+      if (container.querySelector(':scope > .kz-add-chip')) return;
+      var btn = document.createElement('button');
+      btn.className = 'kz-add-chip';
+      btn.type = 'button';
+      btn.textContent = '+ افزودن';
+      container.appendChild(btn);
+    });
+  }
+
+  function refreshSkillChips() {
+    addSkillChipDelButtons();
+    addSkillAddButtons();
+  }
+
+  function addNewChip(container) {
+    if (!container) return;
+    var lang = document.documentElement.lang === 'en' ? 'en' : 'fa';
+    var faText = 'مهارت جدید';
+    var enText = 'New skill';
+
+    var chip = document.createElement('span');
+    chip.setAttribute('data-fa', faText);
+    chip.setAttribute('data-en', enText);
+    chip.textContent = lang === 'en' ? enText : faText;
+    chip.setAttribute('contenteditable', 'true');
+    chip.classList.add('kz-editable');
+
+    chip._kzInputHandler = function () { saveDualLang(chip); };
+    chip.addEventListener('input', chip._kzInputHandler);
+    chip.addEventListener('blur', chip._kzInputHandler);
+
+    var addBtn = container.querySelector(':scope > .kz-add-chip');
+    if (addBtn) container.insertBefore(chip, addBtn);
+    else container.appendChild(chip);
+
+    addChipDelButton(chip);
+
+    chip.focus();
+    try {
+      var range = document.createRange();
+      var textNode = chip.firstChild;
+      if (textNode && textNode.nodeType === 3) {
+        range.selectNodeContents(textNode);
+      } else {
+        range.selectNodeContents(chip);
+      }
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    } catch (e) {}
+  }
+
+  // ============ Wrap language setter to re-add chip buttons ============
+  var origSetLang = window.__kazziSetLang;
+  if (typeof origSetLang === 'function') {
+    window.__kazziSetLang = function (lang) {
+      origSetLang(lang);
+      if (document.body.classList.contains('edit-mode')) {
+        refreshSkillChips();
+      }
+    };
+  }
+
+  function addNewItem(btn) {
+    var type = btn.dataset.addType;
+    var container = btn.parentElement;
+    var mediaKey = 'new-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+    var newItem = document.createElement('div');
+
+    var delBtnHtml = '<button class="kz-del-btn" type="button" title="حذف">×</button>';
+    var mediaHtml = '<div class="media-block" data-media="' + mediaKey + '">' +
+        '<div class="media-strip"></div>' +
+        '<button type="button" class="media-add" data-add="' + mediaKey + '">' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>' +
+          '<span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span>' +
+        '</button>' +
+      '</div>';
+
+    if (type === 'resume-item') {
+      newItem.className = 'resume-item';
+      newItem.innerHTML = delBtnHtml +
+        '<div class="resume-item-head">' +
+          '<h4 contenteditable="true" class="kz-editable">عنوان جدید</h4>' +
+          '<span class="resume-date" contenteditable="true" class="kz-editable">۱۴۰۳</span>' +
+        '</div>' +
+        '<p class="resume-org" contenteditable="true" class="kz-editable">سازمان / مکان</p>' +
+        '<div class="resume-desc" contenteditable="true" class="kz-editable"><ul><li>توضیحات…</li></ul></div>' +
+        mediaHtml;
+    } else {
+      newItem.className = 'work-item';
+      newItem.innerHTML = delBtnHtml +
+        '<div class="work-item-head">' +
+          '<p class="work-title" contenteditable="true" class="kz-editable">عنوان جدید</p>' +
+          '<span class="work-date" contenteditable="true" class="kz-editable">۱۴۰۳</span>' +
+        '</div>' +
+        '<p class="work-desc" contenteditable="true" class="kz-editable">توضیحات…</p>' +
+        '<div class="work-tags"><span contenteditable="true" class="kz-editable">تگ</span></div>' +
+        mediaHtml;
+    }
+
+    container.insertBefore(newItem, btn);
+
+    newItem.querySelectorAll('[contenteditable="true"]').forEach(function (el) {
+      el._kzInputHandler = function () { saveDualLang(el); };
+      el.addEventListener('input', el._kzInputHandler);
+      el.addEventListener('blur', el._kzInputHandler);
+    });
+
+    var first = newItem.querySelector('[contenteditable="true"]');
+    if (first) {
+      first.focus();
+      try {
+        var range = document.createRange();
+        range.selectNodeContents(first);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } catch (e) {}
+    }
+  }
+
+  function isEditOn() {
+    try { return localStorage.getItem(EDIT_KEY) === '1'; } catch (e) { return false; }
+  }
+  function setEditOn(on) {
+    document.body.classList.toggle('edit-mode', on);
+    try { localStorage.setItem(EDIT_KEY, on ? '1' : '0'); } catch (e) {}
+
+    var exportBtn = document.getElementById('exportHtmlBtn');
+    if (exportBtn) {
+      if (on) {
+        exportBtn.disabled = false;
+        exportBtn.textContent = 'ذخیره و دانلود HTML';
+      } else {
+        exportBtn.disabled = true;
+        exportBtn.textContent = 'در حال آماده‌سازی...';
+      }
+    }
+
+    if (on) {
+      enableEditing();
+      addDeleteButtons();
+      addAddButtons();
+      refreshSkillChips();
+    } else {
+      disableEditing();
+    }
+  }
+
+  if (location.hash === '#edit') setEditOn(true);
+  else if (isEditOn()) setEditOn(true);
+
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'E' || e.key === 'e')) {
+      e.preventDefault();
+      setEditOn(!document.body.classList.contains('edit-mode'));
+    }
+  });
+
+  window.addEventListener('hashchange', function () {
+    if (location.hash === '#edit') setEditOn(true);
+    else if (location.hash === '#view') setEditOn(false);
+  });
+
+  document.getElementById('exitEditBtn').addEventListener('click', function () {
+    setEditOn(false);
+  });
+
+  document.getElementById('exportHtmlBtn').addEventListener('click', function () {
+    var btn = this;
+    btn.disabled = true;
+    btn.textContent = 'در حال آماده‌سازی...';
+
+    try {
+      modal.classList.remove('open');
+      viewer.classList.remove('open');
+
+      var docClone = document.documentElement.cloneNode(true);
+
+      var bodyClone = docClone.querySelector('body');
+      if (bodyClone) bodyClone.classList.remove('edit-mode');
+
+      docClone.querySelectorAll('.kz-add-btn, .kz-del-btn, .kz-add-chip, .kz-chip-del').forEach(function (b) { b.remove(); });
+      docClone.querySelectorAll('[contenteditable]').forEach(function (el) { el.removeAttribute('contenteditable'); });
+      docClone.querySelectorAll('.kz-editable').forEach(function (el) { el.classList.remove('kz-editable'); });
+
+      docClone.setAttribute('lang', 'fa');
+      docClone.setAttribute('dir', 'rtl');
+      docClone.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.langBtn === 'fa' ? 'true' : 'false');
+      });
+
+      docClone.querySelectorAll('[data-filter]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.filter === 'all' ? 'true' : 'false');
+      });
+      docClone.querySelectorAll('.work-group[hidden]').forEach(function (g) { g.removeAttribute('hidden'); });
+
+      var expBtnClone = docClone.querySelector('#exportHtmlBtn');
+      if (expBtnClone) {
+        expBtnClone.setAttribute('disabled', '');
+        expBtnClone.textContent = 'در حال آماده‌سازی...';
+      }
+
+      docClone.querySelectorAll('.media-strip').forEach(function (s) { s.innerHTML = ''; });
+
+      var allMedia = { __version: 'v' + Date.now() };
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf(STORAGE_PREFIX) === 0) {
+          var mediaKey = k.slice(STORAGE_PREFIX.length);
+          try { allMedia[mediaKey] = JSON.parse(localStorage.getItem(k)); } catch (e) {}
+        }
+      }
+
+      var json = JSON.stringify(allMedia).replace(/<\//g, '<\\/');
+      var embScript = docClone.querySelector('#embedded-media');
+      if (embScript) embScript.textContent = json;
+
+      var html = '<!DOCTYPE html>\n' + docClone.outerHTML;
+
+      var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+
+      btn.disabled = false;
+      btn.textContent = 'ذخیره و دانلود HTML';
+
+      setTimeout(function () {
+        alert('✅ فایل index.html دانلود شد.\n\nحالا:\n1. برو به گیت‌هاب\n2. index.html قبلی رو با این جایگزین کن\n3. Commit کن\n4. صبر کن ۱ دقیقه');
+      }, 300);
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'ذخیره و دانلود HTML';
+      alert('خطا در ساخت فایل: ' + err.message);
+      console.error(err);
+    }
+  });
+
+  renderAll();
+})();
+</script>
+
+</body>
+</html>
