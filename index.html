@@ -158,10 +158,10 @@
     color:var(--line-dim); margin:0 0 14px; font-weight:500; }
   html[lang="fa"] .skill-group h4{ letter-spacing:0; text-transform:none; }
   .skill-tags{ display:flex; flex-wrap:wrap; gap:8px; }
-  .skill-tags span{ font-size:12.5px; color:var(--line-dim); border:1px solid var(--line-faint);
+  .skill-tags > span{ font-size:12.5px; color:var(--line-dim); border:1px solid var(--line-faint);
     border-radius:999px; padding:5px 13px; transition:color .2s ease, border-color .2s ease;
     font-weight:400; unicode-bidi:isolate; }
-  .skill-tags span:hover{ color:var(--line); border-color:var(--line-dim); }
+  .skill-tags > span:hover{ color:var(--line); border-color:var(--line-dim); }
 
   #contact{ display:flex; flex-direction:column; align-items:flex-start; }
   #contact h2{ max-width:20ch; }
@@ -339,7 +339,6 @@
   body.edit-mode .media-add{ display:inline-flex !important; }
   body.edit-mode .media-thumb .mt-del{ display:flex !important; }
 
-  /* edit mode: extra top space so the × button never overlaps title/date */
   body.edit-mode .resume-item,
   body.edit-mode .resume-item:first-child,
   body.edit-mode .work-item,
@@ -384,7 +383,6 @@
     background: rgba(238, 241, 244, 0.04);
   }
 
-  /* delete button — placed in the extra top space, aligned to the start edge (right in RTL) */
   .kz-del-btn{
     position: absolute;
     top: 10px;
@@ -408,6 +406,56 @@
   }
   body.edit-mode .kz-del-btn{ display: flex; }
   .kz-del-btn:hover{ background: #e5484d; color: #fff; border-color: #e5484d; transform: scale(1.08); }
+
+  /* ============ SKILL CHIP CONTROLS ============ */
+  body.edit-mode .skill-tags > span{
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .kz-chip-del{
+    display: none;
+    margin-inline-start: 6px;
+    width: 15px;
+    height: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-family: inherit;
+    font-size: 11px;
+    line-height: 1;
+    color: #ff8a8d;
+    background: rgba(229, 72, 77, 0.18);
+    border: 1px solid rgba(229, 72, 77, 0.4);
+    border-radius: 999px;
+    cursor: pointer;
+    flex-shrink: 0;
+    vertical-align: middle;
+    transition: background .18s, color .18s, border-color .18s;
+  }
+  body.edit-mode .kz-chip-del{ display: inline-flex; }
+  .kz-chip-del:hover{ background: #e5484d; color: #fff; border-color: #e5484d; }
+
+  .kz-add-chip{
+    display: none;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--line-dim);
+    background: transparent;
+    border: 1px dashed var(--line-faint);
+    border-radius: 999px;
+    padding: 5px 13px;
+    cursor: pointer;
+    align-items: center;
+    gap: 5px;
+    transition: color .2s, border-color .2s, background .2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body.edit-mode .kz-add-chip{ display: inline-flex; }
+  .kz-add-chip:hover{ color: var(--line); border-color: var(--line-dim); background: rgba(238,241,244,.04); }
 
   @media (max-width:760px){
     :root{ --header-h: 86px; }
@@ -465,7 +513,7 @@
     .work-filters::-webkit-scrollbar{ display:none; }
     .work-filters button{ flex-shrink:0; min-height:36px; }
     .skills-grid{ grid-template-columns:1fr; gap:28px; }
-    .skill-tags span{ font-size:12px; padding:4px 11px; }
+    .skill-tags > span{ font-size:12px; padding:4px 11px; }
     .work-tags span{ font-size:11.5px; padding:3px 11px; }
     .contact-link{ font-size:17px; }
     .contact-list{ font-size:13.5px; gap:14px; }
@@ -517,7 +565,7 @@
   }
   @media print{
     header.site, .scroll-cue, .work-filters, .media-add, .media-thumb .mt-del,
-    .edit-toolbar, .kz-add-btn, .kz-del-btn{ display:none !important; }
+    .edit-toolbar, .kz-add-btn, .kz-del-btn, .kz-add-chip, .kz-chip-del{ display:none !important; }
     body{ background:#fff; color:#000; }
     section{ border-top:1px solid #ccc; padding:20px 0; }
     .mark path{ stroke:#000; }
@@ -1353,6 +1401,23 @@
       if (blk) openViewer(blk.dataset.media, +thumb.dataset.idx);
       return;
     }
+
+    var chipDel = e.target.closest('.kz-chip-del');
+    if (chipDel) {
+      e.preventDefault();
+      e.stopPropagation();
+      var chip = chipDel.parentElement;
+      if (chip) chip.remove();
+      return;
+    }
+
+    var chipAdd = e.target.closest('.kz-add-chip');
+    if (chipAdd) {
+      e.preventDefault();
+      addNewChip(chipAdd.parentElement);
+      return;
+    }
+
     var addItemBtn = e.target.closest('.kz-add-btn');
     if (addItemBtn) { e.preventDefault(); addNewItem(addItemBtn); return; }
 
@@ -1379,7 +1444,7 @@
     '.resume-item-head h4', '.resume-date', '.resume-org', '.resume-desc',
     '.work-group > h3',
     '.work-title', '.work-date', '.work-desc', '.work-tags span',
-    '.skill-group h4', '.skill-tags span',
+    '.skill-group h4', '.skill-tags > span',
     '#contact .eyebrow', '#contact h2', '.contact-link',
     'footer .wrap > span'
   ].join(',');
@@ -1387,7 +1452,9 @@
   function saveDualLang(el) {
     var lang = document.documentElement.lang === 'en' ? 'en' : 'fa';
     if (el.hasAttribute('data-' + lang)) {
-      el.setAttribute('data-' + lang, el.innerHTML);
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('.kz-chip-del, .kz-add-chip, .kz-chip-del').forEach(function(b){ b.remove(); });
+      el.setAttribute('data-' + lang, clone.innerHTML);
     }
   }
 
@@ -1443,6 +1510,89 @@
       btn.innerHTML = '<span>+</span><span>افزودن مورد جدید</span>';
       group.appendChild(btn);
     });
+  }
+
+  // ============ Skills chips ============
+  function addChipDelButton(chip) {
+    if (!chip || chip.querySelector(':scope > .kz-chip-del')) return;
+    var btn = document.createElement('button');
+    btn.className = 'kz-chip-del';
+    btn.type = 'button';
+    btn.textContent = '×';
+    btn.setAttribute('contenteditable', 'false');
+    btn.title = 'حذف';
+    chip.appendChild(btn);
+  }
+
+  function addSkillChipDelButtons() {
+    document.querySelectorAll('.skill-tags > span').forEach(function (chip) {
+      addChipDelButton(chip);
+    });
+  }
+
+  function addSkillAddButtons() {
+    document.querySelectorAll('.skill-tags').forEach(function (container) {
+      if (container.querySelector(':scope > .kz-add-chip')) return;
+      var btn = document.createElement('button');
+      btn.className = 'kz-add-chip';
+      btn.type = 'button';
+      btn.textContent = '+ افزودن';
+      container.appendChild(btn);
+    });
+  }
+
+  function refreshSkillChips() {
+    addSkillChipDelButtons();
+    addSkillAddButtons();
+  }
+
+  function addNewChip(container) {
+    if (!container) return;
+    var lang = document.documentElement.lang === 'en' ? 'en' : 'fa';
+    var faText = 'مهارت جدید';
+    var enText = 'New skill';
+
+    var chip = document.createElement('span');
+    chip.setAttribute('data-fa', faText);
+    chip.setAttribute('data-en', enText);
+    chip.textContent = lang === 'en' ? enText : faText;
+    chip.setAttribute('contenteditable', 'true');
+    chip.classList.add('kz-editable');
+
+    chip._kzInputHandler = function () { saveDualLang(chip); };
+    chip.addEventListener('input', chip._kzInputHandler);
+    chip.addEventListener('blur', chip._kzInputHandler);
+
+    var addBtn = container.querySelector(':scope > .kz-add-chip');
+    if (addBtn) container.insertBefore(chip, addBtn);
+    else container.appendChild(chip);
+
+    addChipDelButton(chip);
+
+    chip.focus();
+    try {
+      var range = document.createRange();
+      var textNode = chip.firstChild;
+      if (textNode && textNode.nodeType === 3) {
+        range.selectNodeContents(textNode);
+      } else {
+        range.selectNodeContents(chip);
+      }
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    } catch (e) {}
+  }
+
+  // ============ Wrap language setter to re-add chip buttons ============
+  var origSetLang = window.__kazziSetLang;
+  if (typeof origSetLang === 'function') {
+    window.__kazziSetLang = function (lang) {
+      origSetLang(lang);
+      if (document.body.classList.contains('edit-mode')) {
+        refreshSkillChips();
+      }
+    };
   }
 
   function addNewItem(btn) {
@@ -1525,6 +1675,7 @@
       enableEditing();
       addDeleteButtons();
       addAddButtons();
+      refreshSkillChips();
     } else {
       disableEditing();
     }
@@ -1563,7 +1714,7 @@
       var bodyClone = docClone.querySelector('body');
       if (bodyClone) bodyClone.classList.remove('edit-mode');
 
-      docClone.querySelectorAll('.kz-add-btn, .kz-del-btn').forEach(function (b) { b.remove(); });
+      docClone.querySelectorAll('.kz-add-btn, .kz-del-btn, .kz-add-chip, .kz-chip-del').forEach(function (b) { b.remove(); });
       docClone.querySelectorAll('[contenteditable]').forEach(function (el) { el.removeAttribute('contenteditable'); });
       docClone.querySelectorAll('.kz-editable').forEach(function (el) { el.classList.remove('kz-editable'); });
 
