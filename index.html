@@ -441,9 +441,9 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   [contenteditable="true"]:hover{
     box-shadow: 0 0 0 1px rgba(238, 241, 244, 0.10);
   }
-  [contenteditable="true"]:focus{
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.55);
-    background: rgba(52, 152, 219, 0.05);
+  body.edit-mode [contenteditable="true"]:focus{
+    box-shadow: 0 0 0 1px rgba(238, 241, 244, 0.22);
+    background: rgba(238, 241, 244, 0.025);
   }
 
   .kz-add-btn{
@@ -889,11 +889,11 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
     <!-- ===== Funds & Awards ===== -->
     <div class="resume-block">
-      <h3 data-en="Funds &amp; Awards" data-fa="فاندها و جوایز" class="">فاندها و جوایز</h3>
+      <h3 data-en="Funds &amp; Awards" data-fa="فاندها و جوایز">فاندها و جوایز</h3>
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Travel Grant — NICOPA XII" data-fa="&lt;h4 data-en=&quot;Best Poster Award&quot; data-fa=&quot;سخنران برتر رویداد مینی لکچر&quot; class=&quot;kz-editable&quot; style=&quot;font-size: 18px; color: rgb(238, 241, 244); box-shadow: rgba(52, 152, 219, 0.55) 0px 0px 0px 2px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;&quot;&gt;سخنران برتر رویداد مینی لکچر&lt;/h4&gt;" class=""><h4 data-en="Best Poster Award" data-fa="سخنران برتر رویداد مینی لکچر" class="kz-editable" style="font-size: 18px; color: rgb(238, 241, 244); box-shadow: rgba(52, 152, 219, 0.55) 0px 0px 0px 2px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">سخنران برتر رویداد مینی لکچر</h4></h4>
+          <h4 data-en="Best Poster Award" data-fa="سخنران برتر رویداد مینی لکچر">سخنران برتر رویداد مینی لکچر</h4>
           <span class="resume-date" data-en="2024" data-fa="۱۴۰۳">۱۴۰۳</span>
         </div>
         <p class="resume-org" data-en="5th International Congress of Parasitology &amp; Parasitic Diseases of Iran" data-fa="رویداد مینی لکچر، دانشگاه علوم پزشکی البرز">رویداد مینی لکچر، دانشگاه علوم پزشکی البرز</p>
@@ -905,7 +905,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Best Poster Award" data-fa="&lt;h4 data-en=&quot;Best Poster Award&quot; data-fa=&quot;سخنران برتر رویداد مینی لکچر&quot; class=&quot;kz-editable&quot; style=&quot;color: rgb(238, 241, 244); box-shadow: rgba(52, 152, 219, 0.55) 0px 0px 0px 2px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;&quot;&gt;&amp;nbsp;&lt;span style=&quot;font-size: clamp(15.5px, 1.9vw, 18px);&quot;&gt;سخنران برتر سمپوزیوم هوش مصنوعی&lt;/span&gt;&lt;/h4&gt;" class=""><h4 data-en="Best Poster Award" data-fa="سخنران برتر رویداد مینی لکچر" class="kz-editable" style="color: rgb(238, 241, 244); box-shadow: rgba(52, 152, 219, 0.55) 0px 0px 0px 2px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;<span style="font-size: clamp(15.5px, 1.9vw, 18px);">سخنران برتر سمپوزیوم هوش مصنوعی</span></h4></h4>
+          <h4 data-en="Best Poster Award" data-fa="سخنران برتر سمپوزیوم هوش مصنوعی">سخنران برتر سمپوزیوم هوش مصنوعی</h4>
           <span class="resume-date" data-en="2024" data-fa="۱۴۰۳">۱۴۰۳</span>
         </div>
         <p class="resume-org" data-en="MedAI Summit — Tehran, Iran" data-fa="اولین سمپوزیوم هوش مصنوعی در پزشکی، دانشگاه علوم پزشکی البرز">اولین سمپوزیوم هوش مصنوعی در پزشکی، دانشگاه علوم پزشکی البرز</p>
@@ -917,15 +917,11 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Research Fund — project title" data-fa="مقام دوم مسابقه کارآفرینی جرقه" class="">مقام دوم مسابقه کارآفرینی جرقه</h4>
+          <h4 data-en="Research Fund — project title" data-fa="مقام دوم مسابقه کارآفرینی جرقه">مقام دوم مسابقه کارآفرینی جرقه</h4>
           <span class="resume-date" data-en="2023" data-fa="۱۴۰۲">۱۴۰۲</span>
         </div>
         <p class="resume-org" data-en="Funding body — Location" data-fa="رویداد جرقه، دانشگاه علوم پزشکی البرز">رویداد جرقه، دانشگاه علوم پزشکی البرز</p>
-        <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Amount received and what it funded.&lt;/li&gt;&lt;li&gt;Outcome or deliverable of the funded project.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;div&gt;&lt;br&gt;&lt;/div&gt;
-        ">
-          <div><br></div>
-        </div>
+        <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Amount received and what it funded.&lt;/li&gt;&lt;li&gt;Outcome or deliverable of the funded project.&lt;/li&gt;&lt;/ul&gt;" data-fa=""></div>
         <div class="media-block" data-media="award-3"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="award-3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
         </div>
@@ -1610,11 +1606,16 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
   function saveDualLang(el) {
     var lang = document.documentElement.lang === 'en' ? 'en' : 'fa';
-    if (el.hasAttribute('data-' + lang)) {
-      var clone = el.cloneNode(true);
-      clone.querySelectorAll('.kz-chip-del, .kz-add-chip').forEach(function(b){ b.remove(); });
-      el.setAttribute('data-' + lang, clone.innerHTML);
-    }
+    if (!el.hasAttribute('data-' + lang)) return;
+
+    var clone = el.cloneNode(true);
+    clone.querySelectorAll('.kz-chip-del, .kz-add-chip').forEach(function(b){ b.remove(); });
+    clone.querySelectorAll('[style]').forEach(function(node){ node.removeAttribute('style'); });
+
+    var simpleText = el.matches('.resume-item-head h4, .resume-date, .resume-org, .memory-head h4, .memory-date, .memory-place, .work-title, .work-date, .work-desc, .skill-group h4') &&
+      !el.matches('.resume-desc, .memory-text');
+
+    el.setAttribute('data-' + lang, simpleText ? clone.textContent.trim() : clone.innerHTML);
   }
 
   function enableEditing() {
