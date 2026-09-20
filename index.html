@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
+<html lang="fa" dir="rtl"><plasmo-csui></plasmo-csui><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style><style type="text/css">:root{--toastify-color-light: #fff;--toastify-color-dark: #121212;--toastify-color-info: #3498db;--toastify-color-success: #07bc0c;--toastify-color-warning: #f1c40f;--toastify-color-error: hsl(6, 78%, 57%);--toastify-color-transparent: rgba(255, 255, 255, .7);--toastify-icon-color-info: var(--toastify-color-info);--toastify-icon-color-success: var(--toastify-color-success);--toastify-icon-color-warning: var(--toastify-color-warning);--toastify-icon-color-error: var(--toastify-color-error);--toastify-container-width: fit-content;--toastify-toast-width: 320px;--toastify-toast-offset: 16px;--toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));--toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));--toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));--toastify-toast-bottom: max(var(--toastify-toast-offset), env(safe-area-inset-bottom));--toastify-toast-background: #fff;--toastify-toast-padding: 14px;--toastify-toast-min-height: 64px;--toastify-toast-max-height: 800px;--toastify-toast-bd-radius: 6px;--toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, .1);--toastify-font-family: sans-serif;--toastify-z-index: 9999;--toastify-text-color-light: #757575;--toastify-text-color-dark: #fff;--toastify-text-color-info: #fff;--toastify-text-color-success: #fff;--toastify-text-color-warning: #fff;--toastify-text-color-error: #fff;--toastify-spinner-color: #616161;--toastify-spinner-color-empty-area: #e0e0e0;--toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);--toastify-color-progress-dark: #bb86fc;--toastify-color-progress-info: var(--toastify-color-info);--toastify-color-progress-success: var(--toastify-color-success);--toastify-color-progress-warning: var(--toastify-color-warning);--toastify-color-progress-error: var(--toastify-color-error);--toastify-color-progress-bgo: .2}.Toastify__toast-container{z-index:var(--toastify-z-index);-webkit-transform:translate3d(0,0,var(--toastify-z-index));position:fixed;width:var(--toastify-container-width);box-sizing:border-box;color:#fff;display:flex;flex-direction:column}.Toastify__toast-container--top-left{top:var(--toastify-toast-top);left:var(--toastify-toast-left)}.Toastify__toast-container--top-center{top:var(--toastify-toast-top);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--top-right{top:var(--toastify-toast-top);right:var(--toastify-toast-right);align-items:end}.Toastify__toast-container--bottom-left{bottom:var(--toastify-toast-bottom);left:var(--toastify-toast-left)}.Toastify__toast-container--bottom-center{bottom:var(--toastify-toast-bottom);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--bottom-right{bottom:var(--toastify-toast-bottom);right:var(--toastify-toast-right);align-items:end}.Toastify__toast{--y: 0;position:relative;touch-action:none;width:var(--toastify-toast-width);min-height:var(--toastify-toast-min-height);box-sizing:border-box;margin-bottom:1rem;padding:var(--toastify-toast-padding);border-radius:var(--toastify-toast-bd-radius);box-shadow:var(--toastify-toast-shadow);max-height:var(--toastify-toast-max-height);font-family:var(--toastify-font-family);z-index:0;display:flex;flex:1 auto;align-items:center;word-break:break-word}@media only screen and (max-width: 480px){.Toastify__toast-container{width:100vw;left:env(safe-area-inset-left);margin:0}.Toastify__toast-container--top-left,.Toastify__toast-container--top-center,.Toastify__toast-container--top-right{top:env(safe-area-inset-top);transform:translate(0)}.Toastify__toast-container--bottom-left,.Toastify__toast-container--bottom-center,.Toastify__toast-container--bottom-right{bottom:env(safe-area-inset-bottom);transform:translate(0)}.Toastify__toast-container--rtl{right:env(safe-area-inset-right);left:initial}.Toastify__toast{--toastify-toast-width: 100%;margin-bottom:0;border-radius:0}}.Toastify__toast-container[data-stacked=true]{width:var(--toastify-toast-width)}.Toastify__toast--stacked{position:absolute;width:100%;transform:translate3d(0,var(--y),0) scale(var(--s));transition:transform .3s}.Toastify__toast--stacked[data-collapsed] .Toastify__toast-body,.Toastify__toast--stacked[data-collapsed] .Toastify__close-button{transition:opacity .1s}.Toastify__toast--stacked[data-collapsed=false]{overflow:visible}.Toastify__toast--stacked[data-collapsed=true]:not(:last-child)>*{opacity:0}.Toastify__toast--stacked:after{content:"";position:absolute;left:0;right:0;height:calc(var(--g) * 1px);bottom:100%}.Toastify__toast--stacked[data-pos=top]{top:0}.Toastify__toast--stacked[data-pos=bot]{bottom:0}.Toastify__toast--stacked[data-pos=bot].Toastify__toast--stacked:before{transform-origin:top}.Toastify__toast--stacked[data-pos=top].Toastify__toast--stacked:before{transform-origin:bottom}.Toastify__toast--stacked:before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;transform:scaleY(3);z-index:-1}.Toastify__toast--rtl{direction:rtl}.Toastify__toast--close-on-click{cursor:pointer}.Toastify__toast-icon{margin-inline-end:10px;width:22px;flex-shrink:0;display:flex}.Toastify--animate{animation-fill-mode:both;animation-duration:.5s}.Toastify--animate-icon{animation-fill-mode:both;animation-duration:.3s}.Toastify__toast-theme--dark{background:var(--toastify-color-dark);color:var(--toastify-text-color-dark)}.Toastify__toast-theme--light,.Toastify__toast-theme--colored.Toastify__toast--default{background:var(--toastify-color-light);color:var(--toastify-text-color-light)}.Toastify__toast-theme--colored.Toastify__toast--info{color:var(--toastify-text-color-info);background:var(--toastify-color-info)}.Toastify__toast-theme--colored.Toastify__toast--success{color:var(--toastify-text-color-success);background:var(--toastify-color-success)}.Toastify__toast-theme--colored.Toastify__toast--warning{color:var(--toastify-text-color-warning);background:var(--toastify-color-warning)}.Toastify__toast-theme--colored.Toastify__toast--error{color:var(--toastify-text-color-error);background:var(--toastify-color-error)}.Toastify__progress-bar-theme--light{background:var(--toastify-color-progress-light)}.Toastify__progress-bar-theme--dark{background:var(--toastify-color-progress-dark)}.Toastify__progress-bar--info{background:var(--toastify-color-progress-info)}.Toastify__progress-bar--success{background:var(--toastify-color-progress-success)}.Toastify__progress-bar--warning{background:var(--toastify-color-progress-warning)}.Toastify__progress-bar--error{background:var(--toastify-color-progress-error)}.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error{background:var(--toastify-color-transparent)}.Toastify__close-button{color:#fff;position:absolute;top:6px;right:6px;background:transparent;outline:none;border:none;padding:0;cursor:pointer;opacity:.7;transition:.3s ease;z-index:1}.Toastify__toast--rtl .Toastify__close-button{left:6px;right:unset}.Toastify__close-button--light{color:#000;opacity:.3}.Toastify__close-button>svg{fill:currentColor;height:16px;width:14px}.Toastify__close-button:hover,.Toastify__close-button:focus{opacity:1}@keyframes Toastify__trackProgress{0%{transform:scaleX(1)}to{transform:scaleX(0)}}.Toastify__progress-bar{position:absolute;bottom:0;left:0;width:100%;height:100%;z-index:1;opacity:.7;transform-origin:left}.Toastify__progress-bar--animated{animation:Toastify__trackProgress linear 1 forwards}.Toastify__progress-bar--controlled{transition:transform .2s}.Toastify__progress-bar--rtl{right:0;left:initial;transform-origin:right;border-bottom-left-radius:initial}.Toastify__progress-bar--wrp{position:absolute;overflow:hidden;bottom:0;left:0;width:100%;height:5px;border-bottom-left-radius:var(--toastify-toast-bd-radius);border-bottom-right-radius:var(--toastify-toast-bd-radius)}.Toastify__progress-bar--wrp[data-hidden=true]{opacity:0}.Toastify__progress-bar--bg{opacity:var(--toastify-color-progress-bgo);width:100%;height:100%}.Toastify__spinner{width:20px;height:20px;box-sizing:border-box;border:2px solid;border-radius:100%;border-color:var(--toastify-spinner-color-empty-area);border-right-color:var(--toastify-spinner-color);animation:Toastify__spin .65s linear infinite}@keyframes Toastify__bounceInRight{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(3000px,0,0)}60%{opacity:1;transform:translate3d(-25px,0,0)}75%{transform:translate3d(10px,0,0)}90%{transform:translate3d(-5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutRight{20%{opacity:1;transform:translate3d(-20px,var(--y),0)}to{opacity:0;transform:translate3d(2000px,var(--y),0)}}@keyframes Toastify__bounceInLeft{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(-3000px,0,0)}60%{opacity:1;transform:translate3d(25px,0,0)}75%{transform:translate3d(-10px,0,0)}90%{transform:translate3d(5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutLeft{20%{opacity:1;transform:translate3d(20px,var(--y),0)}to{opacity:0;transform:translate3d(-2000px,var(--y),0)}}@keyframes Toastify__bounceInUp{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,3000px,0)}60%{opacity:1;transform:translate3d(0,-20px,0)}75%{transform:translate3d(0,10px,0)}90%{transform:translate3d(0,-5px,0)}to{transform:translateZ(0)}}@keyframes Toastify__bounceOutUp{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,-2000px,0)}}@keyframes Toastify__bounceInDown{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,-3000px,0)}60%{opacity:1;transform:translate3d(0,25px,0)}75%{transform:translate3d(0,-10px,0)}90%{transform:translate3d(0,5px,0)}to{transform:none}}@keyframes Toastify__bounceOutDown{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,2000px,0)}}.Toastify__bounce-enter--top-left,.Toastify__bounce-enter--bottom-left{animation-name:Toastify__bounceInLeft}.Toastify__bounce-enter--top-right,.Toastify__bounce-enter--bottom-right{animation-name:Toastify__bounceInRight}.Toastify__bounce-enter--top-center{animation-name:Toastify__bounceInDown}.Toastify__bounce-enter--bottom-center{animation-name:Toastify__bounceInUp}.Toastify__bounce-exit--top-left,.Toastify__bounce-exit--bottom-left{animation-name:Toastify__bounceOutLeft}.Toastify__bounce-exit--top-right,.Toastify__bounce-exit--bottom-right{animation-name:Toastify__bounceOutRight}.Toastify__bounce-exit--top-center{animation-name:Toastify__bounceOutUp}.Toastify__bounce-exit--bottom-center{animation-name:Toastify__bounceOutDown}@keyframes Toastify__zoomIn{0%{opacity:0;transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes Toastify__zoomOut{0%{opacity:1}50%{opacity:0;transform:translate3d(0,var(--y),0) scale3d(.3,.3,.3)}to{opacity:0}}.Toastify__zoom-enter{animation-name:Toastify__zoomIn}.Toastify__zoom-exit{animation-name:Toastify__zoomOut}@keyframes Toastify__flipIn{0%{transform:perspective(400px) rotateX(90deg);animation-timing-function:ease-in;opacity:0}40%{transform:perspective(400px) rotateX(-20deg);animation-timing-function:ease-in}60%{transform:perspective(400px) rotateX(10deg);opacity:1}80%{transform:perspective(400px) rotateX(-5deg)}to{transform:perspective(400px)}}@keyframes Toastify__flipOut{0%{transform:translate3d(0,var(--y),0) perspective(400px)}30%{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(-20deg);opacity:1}to{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(90deg);opacity:0}}.Toastify__flip-enter{animation-name:Toastify__flipIn}.Toastify__flip-exit{animation-name:Toastify__flipOut}@keyframes Toastify__slideInRight{0%{transform:translate3d(110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInLeft{0%{transform:translate3d(-110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInUp{0%{transform:translate3d(0,110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInDown{0%{transform:translate3d(0,-110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideOutRight{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(110%,var(--y),0)}}@keyframes Toastify__slideOutLeft{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(-110%,var(--y),0)}}@keyframes Toastify__slideOutDown{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,500px,0)}}@keyframes Toastify__slideOutUp{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,-500px,0)}}.Toastify__slide-enter--top-left,.Toastify__slide-enter--bottom-left{animation-name:Toastify__slideInLeft}.Toastify__slide-enter--top-right,.Toastify__slide-enter--bottom-right{animation-name:Toastify__slideInRight}.Toastify__slide-enter--top-center{animation-name:Toastify__slideInDown}.Toastify__slide-enter--bottom-center{animation-name:Toastify__slideInUp}.Toastify__slide-exit--top-left,.Toastify__slide-exit--bottom-left{animation-name:Toastify__slideOutLeft;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-right,.Toastify__slide-exit--bottom-right{animation-name:Toastify__slideOutRight;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-center{animation-name:Toastify__slideOutUp;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--bottom-center{animation-name:Toastify__slideOutDown;animation-timing-function:ease-in;animation-duration:.3s}@keyframes Toastify__spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>KazziBlanka</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 1080'%3E%3Cg fill='none' stroke='%23eef1f4' stroke-width='34' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M414 532 C414 480 458 447 504 447 C550 447 594 480 594 532'/%3E%3Cpath d='M245 546 L620 546 C630 546 632 556 626 566 L610 588 C604 598 606 608 616 610 L646 608 C656 606 664 614 660 624 L646 646 C640 656 648 666 658 664 L858 610'/%3E%3Cpath d='M520 662 L618 656'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#07080a; --line:#eef1f4; --line-dim:#7c828c; --line-faint:#2a2d32;
@@ -670,8 +672,8 @@
     .mark path{ stroke:#000; }
   }
 </style>
-</head>
-<body>
+<style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style></head>
+<body class="">
 
 <header class="site">
   <div class="wrap header-inner">
@@ -714,7 +716,7 @@
     <path d="M245 546 L620 546 C630 546, 632 556, 626 566 L610 588 C604 598, 606 608, 616 610 L646 608 C656 606, 664 614, 660 624 L646 646 C640 656, 648 666, 658 664 L858 610"></path>
     <path d="M520 662 L618 656"></path>
   </svg>
-  <h1>KazziBlanka</h1>
+  <h1 class="">KazziBlanka</h1>
   <p class="role" data-en="Personal website of Mohammad Hossein Kazemi" data-fa="وب‌سایت شخصی محمدحسین کاظمی">وب‌سایت شخصی محمدحسین کاظمی</p>
   <div class="scroll-cue"><span class="line"></span><span data-en="scroll" data-fa="اسکرول">اسکرول</span></div>
 </section>
@@ -723,12 +725,12 @@
   <div class="wrap">
     <span class="eyebrow" data-en="about" data-fa="درباره">درباره</span>
     <div class="about-grid">
-      <h2 data-en="From the classroom to a shipped product" data-fa="از کلاس درس تا خط تولید محصول">از کلاس درس تا خط تولید محصول</h2>
+      <h2 data-en="From the classroom to a shipped product" data-fa="از کلاس درس تا خط تولید محصول" class="">از کلاس درس تا خط تولید محصول</h2>
       <p data-en="Alongside teaching at Alborz University of Medical Sciences, I work on products that make medical learning more accessible in Iran — from audio podcasts of course material to structured question banks. What comes out of this sits where rigorous scientific content meets a simple user experience." data-fa="
         در کنار تدریس در دانشگاه علوم پزشکی البرز، روی محصولاتی کار می‌کنم که یادگیری پزشکی را در ایران قابل دسترس‌تر می‌کنند؛
         از پادکست‌های صوتی درسی گرفته تا بانک‌های سؤال ساخت‌یافته. حاصل این مسیر، محصولاتی است که در نقطهٔ تلاقی محتوای علمی
         دقیق و تجربهٔ کاربری ساده شکل می‌گیرند.
-      ">
+      " class="">
         در کنار تدریس در دانشگاه علوم پزشکی البرز، روی محصولاتی کار می‌کنم که یادگیری پزشکی را در ایران قابل دسترس‌تر می‌کنند؛
         از پادکست‌های صوتی درسی گرفته تا بانک‌های سؤال ساخت‌یافته. حاصل این مسیر، محصولاتی است که در نقطهٔ تلاقی محتوای علمی
         دقیق و تجربهٔ کاربری ساده شکل می‌گیرند.
@@ -740,20 +742,20 @@
 <section id="resume">
   <div class="wrap">
     <span class="eyebrow" data-en="resume" data-fa="رزومه">رزومه</span>
-    <h2 data-en="Mohammad Hossein Kazemi" data-fa="محمدحسین کاظمی">محمدحسین کاظمی</h2>
+    <h2 data-en="Mohammad Hossein Kazemi" data-fa="محمدحسین کاظمی" class="">محمدحسین کاظمی</h2>
     <div class="resume-meta">
-      <span data-en="Iran · Tehran · kazziworks@gmail.com · 0912 0921 084 · DoB: 1 October 2003" data-fa="ایران · تهران · kazziworks@gmail.com · ۰۹۱۲ ۰۹۲۱ ۰۸۴ · متولد ۹ مهر ۱۳۸۲">ایران · تهران · kazziworks@gmail.com · ۰۹۱۲ ۰۹۲۱ ۰۸۴ · متولد ۹ مهر ۱۳۸۲</span>
+      <span data-en="Iran · Tehran · kazziworks@gmail.com · 0912 0921 084 · DoB: 1 October 2003" data-fa="ایران · تهران · kazziworks@gmail.com · ۰۹۱۲ ۰۹۲۱ ۰۸۴ · متولد ۹ مهر ۱۳۸۲" class="">ایران · تهران · kazziworks@gmail.com · ۰۹۱۲ ۰۹۲۱ ۰۸۴ · متولد ۹ مهر ۱۳۸۲</span>
     </div>
 
     <div class="resume-block">
-      <h3 data-en="Experience" data-fa="تجربیات کاری">تجربیات کاری</h3>
+      <h3 data-en="Experience" data-fa="تجربیات کاری" class="">تجربیات کاری</h3>
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Network Technical Support" data-fa="پشتیبانی فنی شبکه">پشتیبانی فنی شبکه</h4>
+          <h4 data-en="Network Technical Support" data-fa="پشتیبانی فنی شبکه" class="">پشتیبانی فنی شبکه</h4>
           <span class="resume-date" data-en="Sep 2025 – Jun 2026" data-fa="مهر ۱۴۰۴ – خرداد ۱۴۰۵">مهر ۱۴۰۴ – خرداد ۱۴۰۵</span>
         </div>
-        <p class="resume-org" data-en="Afzali Textile — Tehran, Grand Bazaar" data-fa="افضلی نساجی — تهران، بازار بزرگ">افضلی نساجی — تهران، بازار بزرگ</p>
+        <p class="resume-org" data-en="Afzali Textile — Tehran, Grand Bazaar" data-fa="نساجی افضلی — تهران، بازار بزرگ">نساجی افضلی — تهران، بازار بزرگ</p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Monitor network performance, uptime, and traffic anomalies.&lt;/li&gt;&lt;li&gt;Troubleshoot and resolve LAN, WAN, and Wi-Fi connectivity issues.&lt;/li&gt;&lt;li&gt;Configure, update, and maintain routers, switches, firewalls, and access points.&lt;/li&gt;&lt;li&gt;Manage user accounts, permissions, and access controls.&lt;/li&gt;&lt;li&gt;Install and terminate network cabling and hardware.&lt;/li&gt;&lt;/ul&gt;" data-fa="
           &lt;ul&gt;&lt;li&gt;پایش عملکرد شبکه، زمان در دسترس بودن و ناهنجاری‌های ترافیک.&lt;/li&gt;&lt;li&gt;عیب‌یابی و رفع مشکلات اتصال LAN، WAN و Wi-Fi.&lt;/li&gt;&lt;li&gt;پیکربندی، به‌روزرسانی و نگهداری روترها، سوئیچ‌ها، فایروال‌ها و اکسس‌پوینت‌ها.&lt;/li&gt;&lt;li&gt;مدیریت حساب‌های کاربری، دسترسی‌ها و مجوزها.&lt;/li&gt;&lt;li&gt;نصب و سرکابل‌کشی شبکه و سخت‌افزار.&lt;/li&gt;&lt;/ul&gt;
         ">
@@ -766,10 +768,10 @@
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Spare Parts Salesperson" data-fa="فروشنده قطعات یدکی">فروشنده قطعات یدکی</h4>
+          <h4 data-en="Spare Parts Salesperson" data-fa="فروشنده قطعات یدکی" class="">فروشنده قطعات یدکی</h4>
           <span class="resume-date" data-en="Feb 2026 – Jul 2026" data-fa="اسفند ۱۴۰۴ – تیر ۱۴۰۵">اسفند ۱۴۰۴ – تیر ۱۴۰۵</span>
         </div>
-        <p class="resume-org" data-en="Shahin Spare Parts — Tehran, Kashani Mall" data-fa="شاهین قطعات یدکی — تهران، پاساژ کاشانی">شاهین قطعات یدکی — تهران، پاساژ کاشانی</p>
+        <p class="resume-org" data-en="Shahin Spare Parts — Tehran, Kashani Mall" data-fa="قطعات یدکی شاهین — تهران، پاساژ کاشانی">قطعات یدکی شاهین — تهران، پاساژ کاشانی</p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Customer service and support.&lt;/li&gt;&lt;li&gt;Check orders.&lt;/li&gt;&lt;li&gt;CRM.&lt;/li&gt;&lt;li&gt;Oversee physical organization, labeling, and stocking of shelves or warehouse inventory.&lt;/li&gt;&lt;/ul&gt;" data-fa="
           &lt;ul&gt;&lt;li&gt;پشتیبانی و خدمات مشتریان.&lt;/li&gt;&lt;li&gt;بررسی سفارش‌ها.&lt;/li&gt;&lt;li&gt;CRM.&lt;/li&gt;&lt;li&gt;نظارت بر چیدمان فیزیکی، برچسب‌گذاری و موجودی قفسه‌ها یا انبار.&lt;/li&gt;&lt;/ul&gt;
         ">
@@ -782,14 +784,14 @@
     </div>
 
     <div class="resume-block">
-      <h3 data-en="Things I've Built" data-fa="چیزهایی که ساختم">چیزهایی که ساختم</h3>
+      <h3 data-en="Things I've Built" data-fa="چیزهایی که ساختم" class="">چیزهایی که ساختم</h3>
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Project Name — short tagline" data-fa="نام پروژه — یک خط معرفی">نام پروژه — یک خط معرفی</h4>
+          <h4 data-en="Project Name — short tagline" data-fa="مدکاردی — هوش مصنوعی و آموزش علوم پزشکی" class="">مدکاردی — هوش مصنوعی و آموزش علوم پزشکی</h4>
           <span class="resume-date" data-en="2024 – Present" data-fa="۱۴۰۳ – اکنون">۱۴۰۳ – اکنون</span>
         </div>
-        <p class="resume-org" data-en="Founder — Tehran, Iran" data-fa="بنیان‌گذار — تهران، ایران">بنیان‌گذار — تهران، ایران</p>
+        <p class="resume-org" data-en="Founder — Tehran, Iran" data-fa="هم بنیان‌گذار — تهران، ایران">هم بنیان‌گذار — تهران، ایران</p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;What problem it solves and who it's for.&lt;/li&gt;&lt;li&gt;Your specific role and main contributions.&lt;/li&gt;&lt;li&gt;Key outcome: users, revenue, downloads, or impact metric.&lt;/li&gt;&lt;/ul&gt;" data-fa="
           &lt;ul&gt;&lt;li&gt;چه مشکلی را حل می‌کند و مخاطبش کیست.&lt;/li&gt;&lt;li&gt;نقش دقیق شما و مشارکت‌های اصلی.&lt;/li&gt;&lt;li&gt;نتیجهٔ کلیدی: تعداد کاربر، درآمد، دانلود یا شاخص اثر.&lt;/li&gt;&lt;/ul&gt;
         ">
@@ -800,29 +802,15 @@
         </div>
       </div>
 
-      <div class="resume-item">
-        <div class="resume-item-head">
-          <h4 data-en="Project Name — short tagline" data-fa="نام پروژه — یک خط معرفی">نام پروژه — یک خط معرفی</h4>
-          <span class="resume-date" data-en="2023 – 2024" data-fa="۱۴۰۲ – ۱۴۰۳">۱۴۰۲ – ۱۴۰۳</span>
-        </div>
-        <p class="resume-org" data-en="Co-founder — Location" data-fa="هم‌بنیان‌گذار — مکان">هم‌بنیان‌گذار — مکان</p>
-        <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;What problem it solves and who it's for.&lt;/li&gt;&lt;li&gt;Your specific role and main contributions.&lt;/li&gt;&lt;li&gt;Key outcome: users, revenue, downloads, or impact metric.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;ul&gt;&lt;li&gt;چه مشکلی را حل می‌کند و مخاطبش کیست.&lt;/li&gt;&lt;li&gt;نقش دقیق شما و مشارکت‌های اصلی.&lt;/li&gt;&lt;li&gt;نتیجهٔ کلیدی: تعداد کاربر، درآمد، دانلود یا شاخص اثر.&lt;/li&gt;&lt;/ul&gt;
-        ">
-          <ul><li>چه مشکلی را حل می‌کند و مخاطبش کیست.</li><li>نقش دقیق شما و مشارکت‌های اصلی.</li><li>نتیجهٔ کلیدی: تعداد کاربر، درآمد، دانلود یا شاخص اثر.</li></ul>
-        </div>
-        <div class="media-block" data-media="built-2"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="built-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
+      
     </div>
 
     <div class="resume-block">
-      <h3 data-en="Leadership &amp; Activities" data-fa="رهبری و فعالیت‌ها">رهبری و فعالیت‌ها</h3>
+      <h3 data-en="Leadership &amp; Activities" data-fa="رهبری و فعالیت‌ها" class="">رهبری و فعالیت‌ها</h3>
 
       <div class="resume-item">
-        <div class="resume-item-head"><h4 data-en="Lead Graphic Designer" data-fa="سرپرست طراحی گرافیک">سرپرست طراحی گرافیک</h4></div>
-        <p class="resume-org"><span data-en="Organization: " data-fa="سازمان: ">سازمان: </span><a href="https://telegram.me/MedAISummit" target="_blank" rel="noopener">MedAI Summit</a></p>
+        <div class="resume-item-head"><h4 data-en="Lead Graphic Designer" data-fa="سرپرست طراحی گرافیک" class="">سرپرست طراحی گرافیک</h4></div>
+        <p class="resume-org"><a href="https://telegram.me/MedAISummit" target="_blank" rel="noopener">M</a>edAI Summit</p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Define, establish, and enforce visual identity and brand guidelines across all projects.&lt;/li&gt;&lt;li&gt;Collaborate with marketing, product, and development teams to align design outputs with business objectives.&lt;/li&gt;&lt;li&gt;Manage project timelines, resource allocation, and workflow for the design department.&lt;/li&gt;&lt;/ul&gt;" data-fa="
           &lt;ul&gt;&lt;li&gt;تعریف، استقرار و اجرای هویت بصری و دستورالعمل‌های برند در تمام پروژه‌ها.&lt;/li&gt;&lt;li&gt;همکاری با تیم‌های بازاریابی، محصول و توسعه برای هم‌راستاسازی خروجی‌های طراحی با اهداف کسب‌وکار.&lt;/li&gt;&lt;li&gt;مدیریت زمان‌بندی پروژه، تخصیص منابع و جریان کاری دپارتمان طراحی.&lt;/li&gt;&lt;/ul&gt;
         ">
@@ -834,12 +822,12 @@
       </div>
 
       <div class="resume-item">
-        <div class="resume-item-head"><h4 data-en="Sponsorship Team Lead" data-fa="سرپرست تیم اسپانسرشیپ">سرپرست تیم اسپانسرشیپ</h4></div>
-        <p class="resume-org"><span data-en="Organization: " data-fa="سازمان: ">سازمان: </span><a href="https://telegram.me/MedAISummit" target="_blank" rel="noopener">MedAI Summit</a></p>
+        <div class="resume-item-head"><h4 data-en="Sponsorship Team Lead" data-fa="سرپرست اسپانسرشیپ" class="">سرپرست اسپانسرشیپ</h4></div>
+        <p class="resume-org"><a href="https://telegram.me/MedAISummit" target="_blank" rel="noopener" style="text-decoration: underline rgb(42, 45, 50);">M</a>edAI Summit</p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Identify, pitch, and negotiate sponsorship agreements with prospective corporate partners and brands.&lt;/li&gt;&lt;li&gt;Develop and execute sponsorship strategies to meet organizational revenue and brand visibility goals.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;ul&gt;&lt;li&gt;شناسایی، پیشنهاد و مذاکره قراردادهای اسپانسرشیپ با شرکای تجاری و برندهای آینده.&lt;/li&gt;&lt;li&gt;توسعه و اجرای استراتژی‌های اسپانسرشیپ برای دستیابی به اهداف درآمدی و دیده‌شدن برند.&lt;/li&gt;&lt;/ul&gt;
+          &lt;ul&gt;&lt;li&gt;شناسایی، پیشنهاد و مذاکره قراردادهای اسپانسرشیپ با شرکای تجاری.&lt;/li&gt;&lt;li&gt;توسعه و اجرای استراتژی‌های اسپانسرشیپ برای دستیابی به اهداف درآمدی و دیده‌شدن برند.&lt;/li&gt;&lt;/ul&gt;
         ">
-          <ul><li>شناسایی، پیشنهاد و مذاکره قراردادهای اسپانسرشیپ با شرکای تجاری و برندهای آینده.</li><li>توسعه و اجرای استراتژی‌های اسپانسرشیپ برای دستیابی به اهداف درآمدی و دیده‌شدن برند.</li></ul>
+          <ul><li>شناسایی، پیشنهاد و مذاکره قراردادهای اسپانسرشیپ با شرکای تجاری.</li><li>توسعه و اجرای استراتژی‌های اسپانسرشیپ برای دستیابی به اهداف درآمدی و دیده‌شدن برند.</li></ul>
         </div>
         <div class="media-block" data-media="lead-spon"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="lead-spon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
@@ -847,12 +835,12 @@
       </div>
 
       <div class="resume-item">
-        <div class="resume-item-head"><h4 data-en="Event Host / Presenter" data-fa="مجری رویداد">مجری رویداد</h4></div>
-        <p class="resume-org"><span data-en="Organization: " data-fa="سازمان: ">سازمان: </span><a href="https://telegram.me/AbzumsAI" target="_blank" rel="noopener">ABZUMS AI</a> (<a href="https://github.com/AbzumsAI" target="_blank" rel="noopener">GitHub</a>)</p>
+        <div class="resume-item-head"><h4 data-en="Event Host / Presenter" data-fa="مجری رویداد روز پروژه ها" class="">مجری رویداد روز پروژه ها</h4></div>
+        <p class="resume-org"><a href="https://telegram.me/AbzumsAI" target="_blank" rel="noopener">ABZUMS AI</a>&nbsp;</p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Prepare, adapt, and deliver scripts, introductions, and transitions for live or recorded events.&lt;/li&gt;&lt;li&gt;Engage the audience and maintain the appropriate energy and tone throughout the event.&lt;/li&gt;&lt;li&gt;Facilitate Q&amp;A sessions, interviews, or panel discussions as required by the event format.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;ul&gt;&lt;li&gt;آماده‌سازی، تطبیق و ارائه متن‌ها، معرفی‌ها و انتقال‌ها برای رویدادهای زنده یا ضبط‌شده.&lt;/li&gt;&lt;li&gt;تعامل با مخاطب و حفظ انرژی و لحن مناسب در طول رویداد.&lt;/li&gt;&lt;li&gt;مدیریت جلسات پرسش و پاسخ، مصاحبه‌ها یا پنل‌ها مطابق با قالب رویداد.&lt;/li&gt;&lt;/ul&gt;
+          &lt;div&gt;&lt;ul&gt;&lt;li&gt;تعامل با مخاطب و حفظ انرژی و لحن مناسب در طول رویداد.&lt;/li&gt;&lt;li&gt;مدیریت جلسات پرسش و پاسخ، مصاحبه‌ها یا پنل‌ها مطابق با قالب رویداد.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
         ">
-          <ul><li>آماده‌سازی، تطبیق و ارائه متن‌ها، معرفی‌ها و انتقال‌ها برای رویدادهای زنده یا ضبط‌شده.</li><li>تعامل با مخاطب و حفظ انرژی و لحن مناسب در طول رویداد.</li><li>مدیریت جلسات پرسش و پاسخ، مصاحبه‌ها یا پنل‌ها مطابق با قالب رویداد.</li></ul>
+          <div><ul><li>تعامل با مخاطب و حفظ انرژی و لحن مناسب در طول رویداد.</li><li>مدیریت جلسات پرسش و پاسخ، مصاحبه‌ها یا پنل‌ها مطابق با قالب رویداد.</li></ul></div>
         </div>
         <div class="media-block" data-media="lead-host-ai"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="lead-host-ai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
@@ -860,12 +848,12 @@
       </div>
 
       <div class="resume-item">
-        <div class="resume-item-head"><h4 data-en="Event Host / Presenter" data-fa="مجری رویداد">مجری رویداد</h4></div>
-        <p class="resume-org"><span data-en="Organization: " data-fa="سازمان: ">سازمان: </span><a href="https://abzums.ac.ir/" target="_blank" rel="noopener">Alborz University of Medical Sciences</a></p>
+        <div class="resume-item-head"><h4 data-en="Event Host / Presenter" data-fa="مجری رویداد گرامیداشت هفته پژوهش" class="">مجری رویداد گرامیداشت هفته پژوهش</h4></div>
+        <p class="resume-org"><span data-en="Organization: " data-fa="سازمان: ">سازمان: </span></p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Prepare, adapt, and deliver scripts, introductions, and transitions for live or recorded events.&lt;/li&gt;&lt;li&gt;Engage the audience and maintain the appropriate energy and tone throughout the event.&lt;/li&gt;&lt;li&gt;Facilitate Q&amp;A sessions, interviews, or panel discussions as required by the event format.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;ul&gt;&lt;li&gt;آماده‌سازی، تطبیق و ارائه متن‌ها، معرفی‌ها و انتقال‌ها برای رویدادهای زنده یا ضبط‌شده.&lt;/li&gt;&lt;li&gt;تعامل با مخاطب و حفظ انرژی و لحن مناسب در طول رویداد.&lt;/li&gt;&lt;li&gt;مدیریت جلسات پرسش و پاسخ، مصاحبه‌ها یا پنل‌ها مطابق با قالب رویداد.&lt;/li&gt;&lt;/ul&gt;
+          &lt;ul&gt;&lt;li&gt;مدیریت رویداد و سخنرانی&lt;/li&gt;&lt;li&gt;تعامل با مخاطب و حفظ انرژی و لحن مناسب در طول رویداد.&lt;/li&gt;&lt;/ul&gt;
         ">
-          <ul><li>آماده‌سازی، تطبیق و ارائه متن‌ها، معرفی‌ها و انتقال‌ها برای رویدادهای زنده یا ضبط‌شده.</li><li>تعامل با مخاطب و حفظ انرژی و لحن مناسب در طول رویداد.</li><li>مدیریت جلسات پرسش و پاسخ، مصاحبه‌ها یا پنل‌ها مطابق با قالب رویداد.</li></ul>
+          <ul><li>مدیریت رویداد و سخنرانی</li><li>تعامل با مخاطب و حفظ انرژی و لحن مناسب در طول رویداد.</li></ul>
         </div>
         <div class="media-block" data-media="lead-host-abz"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="lead-host-abz"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
@@ -873,12 +861,12 @@
       </div>
 
       <div class="resume-item">
-        <div class="resume-item-head"><h4 data-en="Executive Team Lead" data-fa="سرپرست تیم اجرایی">سرپرست تیم اجرایی</h4></div>
-        <p class="resume-org" data-en="Organization: 5th International and 12th National Congress of Parasitology &amp; Parasitic Diseases of Iran (NICOPA XII)" data-fa="سازمان: پنجمین کنگره بین‌المللی و دوازدهمین کنگره ملی انگل‌شناسی و بیماری‌های انگلی ایران (NICOPA XII)">سازمان: پنجمین کنگره بین‌المللی و دوازدهمین کنگره ملی انگل‌شناسی و بیماری‌های انگلی ایران (NICOPA XII)</p>
+        <div class="resume-item-head"><h4 data-en="Executive Team Lead" data-fa="سرپرست تیم اجرایی" class="">سرپرست تیم اجرایی</h4></div>
+        <p class="resume-org" data-en="Organization: 5th International and 12th National Congress of Parasitology &amp; Parasitic Diseases of Iran (NICOPA XII)" data-fa="پنجمین کنگره بین‌المللی و دوازدهمین کنگره ملی انگل‌شناسی و بیماری‌های انگلی ایران (NICOPA XII)">پنجمین کنگره بین‌المللی و دوازدهمین کنگره ملی انگل‌شناسی و بیماری‌های انگلی ایران (NICOPA XII)</p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Oversee daily operational workflows to ensure alignment with organizational objectives.&lt;/li&gt;&lt;li&gt;Supervise, train, and evaluate team members to maintain performance and quality standards.&lt;/li&gt;&lt;li&gt;Manage staff scheduling, payroll administration, and resource allocation.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;ul&gt;&lt;li&gt;نظارت بر جریان‌های کاری روزانه برای اطمینان از هم‌راستایی با اهداف سازمانی.&lt;/li&gt;&lt;li&gt;سرپرستی، آموزش و ارزیابی اعضای تیم برای حفظ استانداردهای عملکرد و کیفیت.&lt;/li&gt;&lt;li&gt;مدیریت زمان‌بندی کارکنان، امور حقوق و دستمزد و تخصیص منابع.&lt;/li&gt;&lt;/ul&gt;
+          &lt;div&gt;&lt;ul&gt;&lt;li&gt;سرپرستی، آموزش و ارزیابی اعضای تیم برای حفظ استانداردهای عملکرد و کیفیت.&lt;/li&gt;&lt;li&gt;مدیریت زمان‌بندی کارکنان و وظایف.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
         ">
-          <ul><li>نظارت بر جریان‌های کاری روزانه برای اطمینان از هم‌راستایی با اهداف سازمانی.</li><li>سرپرستی، آموزش و ارزیابی اعضای تیم برای حفظ استانداردهای عملکرد و کیفیت.</li><li>مدیریت زمان‌بندی کارکنان، امور حقوق و دستمزد و تخصیص منابع.</li></ul>
+          <div><ul><li>سرپرستی، آموزش و ارزیابی اعضای تیم برای حفظ استانداردهای عملکرد و کیفیت.</li><li>مدیریت زمان‌بندی کارکنان و وظایف.</li></ul></div>
         </div>
         <div class="media-block" data-media="lead-exec"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="lead-exec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
@@ -886,8 +874,8 @@
       </div>
 
       <div class="resume-item">
-        <div class="resume-item-head"><h4 data-en="Website Developer Intern" data-fa="کارآموز توسعه وب">کارآموز توسعه وب</h4></div>
-        <p class="resume-org"><span data-en="Organization: " data-fa="سازمان: ">سازمان: </span><a href="https://www.moolianperfume.com/" target="_blank" rel="noopener">Moolian Perfume</a> (<a href="https://github.com/2-3-MoolianPerfume" target="_blank" rel="noopener">GitHub</a>)</p>
+        <div class="resume-item-head"><h4 data-en="Website Developer Intern" data-fa="کارآموز توسعه وب" class="">کارآموز توسعه وب</h4></div>
+        <p class="resume-org"><span data-en="Organization: " data-fa="سازمان: ">سازمان: </span></p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Assist in writing, testing, and debugging code for web applications using HTML, CSS, JavaScript, and relevant frameworks.&lt;/li&gt;&lt;li&gt;Collaborate with senior developers and designers to implement UI/UX designs and functional features.&lt;/li&gt;&lt;/ul&gt;" data-fa="
           &lt;ul&gt;&lt;li&gt;کمک در نوشتن، تست و رفع اشکال کد برای اپلیکیشن‌های وب با HTML، CSS، JavaScript و فریم‌ورک‌های مرتبط.&lt;/li&gt;&lt;li&gt;همکاری با توسعه‌دهندگان ارشد و طراحان برای پیاده‌سازی طرح‌های UI/UX و ویژگی‌های عملکردی.&lt;/li&gt;&lt;/ul&gt;
         ">
@@ -897,23 +885,19 @@
           <button type="button" class="media-add" data-add="lead-web"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
         </div>
       </div>
-    </div>
+    <div class="resume-item"><div class="resume-item-head"><h4 class="" data-en="New item" data-fa="سرپرست تیم گرافیک">سرپرست تیم گرافیک</h4><span class="resume-date" data-en="1403" data-fa="۱۴۰۳">۱۴۰۳</span></div><p class="resume-org" data-en="Organization / Location" data-fa="پنجمین کنگره بین‌المللی و دوازدهمین کنگره ملی انگل‌شناسی و بیماری‌های انگلی ایران (NICOPA XII)">پنجمین کنگره بین‌المللی و دوازدهمین کنگره ملی انگل‌شناسی و بیماری‌های انگلی ایران (NICOPA XII)</p><div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Description…&lt;/li&gt;&lt;/ul&gt;" data-fa="&lt;ul&gt;&lt;li&gt;توضیحات…&lt;/li&gt;&lt;/ul&gt;"><ul><li>توضیحات…</li></ul></div><div class="media-block" data-media="new-1789888125249-5"><div class="media-strip"></div><button type="button" class="media-add" data-add="new-1789888125249-5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button></div></div></div>
 
     <!-- ===== Funds & Awards ===== -->
     <div class="resume-block">
-      <h3 data-en="Funds &amp; Awards" data-fa="فاندها و جوایز">فاندها و جوایز</h3>
+      <h3 data-en="Funds &amp; Awards" data-fa="فاندها و جوایز" class="">فاندها و جوایز</h3>
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Travel Grant — NICOPA XII" data-fa="گرنت سفر — کنگره NICOPA XII">گرنت سفر — کنگره NICOPA XII</h4>
+          <h4 data-en="Travel Grant — NICOPA XII" data-fa="&lt;h4 data-en=&quot;Best Poster Award&quot; data-fa=&quot;سخنران برتر رویداد مینی لکچر&quot; class=&quot;kz-editable&quot; style=&quot;font-size: 18px; color: rgb(238, 241, 244); box-shadow: rgba(52, 152, 219, 0.55) 0px 0px 0px 2px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;&quot;&gt;سخنران برتر رویداد مینی لکچر&lt;/h4&gt;" class=""><h4 data-en="Best Poster Award" data-fa="سخنران برتر رویداد مینی لکچر" class="kz-editable" style="font-size: 18px; color: rgb(238, 241, 244); box-shadow: rgba(52, 152, 219, 0.55) 0px 0px 0px 2px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">سخنران برتر رویداد مینی لکچر</h4></h4>
           <span class="resume-date" data-en="2024" data-fa="۱۴۰۳">۱۴۰۳</span>
         </div>
-        <p class="resume-org" data-en="5th International Congress of Parasitology &amp; Parasitic Diseases of Iran" data-fa="پنجمین کنگره بین‌المللی انگل‌شناسی و بیماری‌های انگلی ایران">پنجمین کنگره بین‌المللی انگل‌شناسی و بیماری‌های انگلی ایران</p>
-        <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Awarded to cover travel and accommodation for presenting research at the congress.&lt;/li&gt;&lt;li&gt;Selected based on the scientific merit of the submitted abstract.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;ul&gt;&lt;li&gt;برای پوشش هزینهٔ سفر و اقامت جهت ارائهٔ پژوهش در کنگره اعطا شد.&lt;/li&gt;&lt;li&gt;بر اساس ارزش علمی چکیدهٔ ارسالی انتخاب شدم.&lt;/li&gt;&lt;/ul&gt;
-        ">
-          <ul><li>برای پوشش هزینهٔ سفر و اقامت جهت ارائهٔ پژوهش در کنگره اعطا شد.</li><li>بر اساس ارزش علمی چکیدهٔ ارسالی انتخاب شدم.</li></ul>
-        </div>
+        <p class="resume-org" data-en="5th International Congress of Parasitology &amp; Parasitic Diseases of Iran" data-fa="رویداد مینی لکچر، دانشگاه علوم پزشکی البرز">رویداد مینی لکچر، دانشگاه علوم پزشکی البرز</p>
+        <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Awarded to cover travel and accommodation for presenting research at the congress.&lt;/li&gt;&lt;li&gt;Selected based on the scientific merit of the submitted abstract.&lt;/li&gt;&lt;/ul&gt;" data-fa=""></div>
         <div class="media-block" data-media="award-1"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="award-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
         </div>
@@ -921,15 +905,11 @@
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Best Poster Award" data-fa="جایزهٔ بهترین پوستر">جایزهٔ بهترین پوستر</h4>
+          <h4 data-en="Best Poster Award" data-fa="&lt;h4 data-en=&quot;Best Poster Award&quot; data-fa=&quot;سخنران برتر رویداد مینی لکچر&quot; class=&quot;kz-editable&quot; style=&quot;color: rgb(238, 241, 244); box-shadow: rgba(52, 152, 219, 0.55) 0px 0px 0px 2px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;&quot;&gt;&amp;nbsp;&lt;span style=&quot;font-size: clamp(15.5px, 1.9vw, 18px);&quot;&gt;سخنران برتر سمپوزیوم هوش مصنوعی&lt;/span&gt;&lt;/h4&gt;" class=""><h4 data-en="Best Poster Award" data-fa="سخنران برتر رویداد مینی لکچر" class="kz-editable" style="color: rgb(238, 241, 244); box-shadow: rgba(52, 152, 219, 0.55) 0px 0px 0px 2px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;<span style="font-size: clamp(15.5px, 1.9vw, 18px);">سخنران برتر سمپوزیوم هوش مصنوعی</span></h4></h4>
           <span class="resume-date" data-en="2024" data-fa="۱۴۰۳">۱۴۰۳</span>
         </div>
-        <p class="resume-org" data-en="MedAI Summit — Tehran, Iran" data-fa="رویداد MedAI Summit — تهران، ایران">رویداد MedAI Summit — تهران، ایران</p>
-        <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Recognized for the poster design and presentation on AI in medical education.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;ul&gt;&lt;li&gt;برای طراحی و ارائهٔ پوستر با موضوع هوش مصنوعی در آموزش پزشکی تقدیر شدم.&lt;/li&gt;&lt;/ul&gt;
-        ">
-          <ul><li>برای طراحی و ارائهٔ پوستر با موضوع هوش مصنوعی در آموزش پزشکی تقدیر شدم.</li></ul>
-        </div>
+        <p class="resume-org" data-en="MedAI Summit — Tehran, Iran" data-fa="اولین سمپوزیوم هوش مصنوعی در پزشکی، دانشگاه علوم پزشکی البرز">اولین سمپوزیوم هوش مصنوعی در پزشکی، دانشگاه علوم پزشکی البرز</p>
+        <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Recognized for the poster design and presentation on AI in medical education.&lt;/li&gt;&lt;/ul&gt;" data-fa=""></div>
         <div class="media-block" data-media="award-2"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="award-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
         </div>
@@ -937,14 +917,14 @@
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Research Fund — project title" data-fa="فاند پژوهشی — عنوان پروژه">فاند پژوهشی — عنوان پروژه</h4>
+          <h4 data-en="Research Fund — project title" data-fa="مقام دوم مسابقه کارآفرینی جرقه" class="">مقام دوم مسابقه کارآفرینی جرقه</h4>
           <span class="resume-date" data-en="2023" data-fa="۱۴۰۲">۱۴۰۲</span>
         </div>
-        <p class="resume-org" data-en="Funding body — Location" data-fa="نهاد تأمین‌کنندهٔ بودجه — مکان">نهاد تأمین‌کنندهٔ بودجه — مکان</p>
+        <p class="resume-org" data-en="Funding body — Location" data-fa="رویداد جرقه، دانشگاه علوم پزشکی البرز">رویداد جرقه، دانشگاه علوم پزشکی البرز</p>
         <div class="resume-desc" data-en="&lt;ul&gt;&lt;li&gt;Amount received and what it funded.&lt;/li&gt;&lt;li&gt;Outcome or deliverable of the funded project.&lt;/li&gt;&lt;/ul&gt;" data-fa="
-          &lt;ul&gt;&lt;li&gt;مبلغ دریافتی و اینکه صرف چه چیزی شد.&lt;/li&gt;&lt;li&gt;خروجی یا دستاورد پروژهٔ فاندشده.&lt;/li&gt;&lt;/ul&gt;
+          &lt;div&gt;&lt;br&gt;&lt;/div&gt;
         ">
-          <ul><li>مبلغ دریافتی و اینکه صرف چه چیزی شد.</li><li>خروجی یا دستاورد پروژهٔ فاندشده.</li></ul>
+          <div><br></div>
         </div>
         <div class="media-block" data-media="award-3"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="award-3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
@@ -954,11 +934,11 @@
     <!-- ===== /Funds & Awards ===== -->
 
     <div class="resume-block">
-      <h3 data-en="Education" data-fa="تحصیلات">تحصیلات</h3>
+      <h3 data-en="Education" data-fa="تحصیلات" class="">تحصیلات</h3>
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Bachelor of Computer Engineering" data-fa="کارشناسی مهندسی کامپیوتر">کارشناسی مهندسی کامپیوتر</h4>
+          <h4 data-en="Bachelor of Computer Engineering" data-fa="کارشناسی مهندسی کامپیوتر" class="">کارشناسی مهندسی کامپیوتر</h4>
           <span class="resume-date" data-en="2025–Present" data-fa="۱۴۰۴–اکنون">۱۴۰۴–اکنون</span>
         </div>
         <p class="resume-org" data-en="Islamic Azad University" data-fa="دانشگاه آزاد اسلامی">دانشگاه آزاد اسلامی</p>
@@ -969,7 +949,7 @@
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="Bachelor of Laboratory Medical Sciences" data-fa="کارشناسی علوم آزمایشگاهی">کارشناسی علوم آزمایشگاهی</h4>
+          <h4 data-en="Bachelor of Laboratory Medical Sciences" data-fa="کارشناسی علوم آزمایشگاهی" class="">کارشناسی علوم آزمایشگاهی</h4>
           <span class="resume-date" data-en="2022–2025" data-fa="۱۴۰۱–۱۴۰۴">۱۴۰۱–۱۴۰۴</span>
         </div>
         <p class="resume-org" data-en="Alborz University of Medical Sciences" data-fa="دانشگاه علوم پزشکی البرز">دانشگاه علوم پزشکی البرز</p>
@@ -980,11 +960,11 @@
     </div>
 
     <div class="resume-block">
-      <h3 data-en="Courses" data-fa="دوره‌ها">دوره‌ها</h3>
+      <h3 data-en="Courses" data-fa="دوره‌ها" class="">دوره‌ها</h3>
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="DBA Course" data-fa="دوره DBA">دوره DBA</h4>
+          <h4 data-en="DBA Course" data-fa="دوره DBA" class="">دوره DBA</h4>
           <span class="resume-date" data-en="2025–Present" data-fa="۱۴۰۴–اکنون">۱۴۰۴–اکنون</span>
         </div>
         <p class="resume-org" data-en="Tehran University" data-fa="دانشگاه تهران">دانشگاه تهران</p>
@@ -995,7 +975,7 @@
 
       <div class="resume-item">
         <div class="resume-item-head">
-          <h4 data-en="MBA Course" data-fa="دوره MBA">دوره MBA</h4>
+          <h4 data-en="MBA Course" data-fa="دوره MBA" class="">دوره MBA</h4>
           <span class="resume-date" data-en="2023–2024" data-fa="۱۴۰۲–۱۴۰۳">۱۴۰۲–۱۴۰۳</span>
         </div>
         <p class="resume-org" data-en="Shahid Beheshti University of Medical Sciences" data-fa="دانشگاه علوم پزشکی شهید بهشتی">دانشگاه علوم پزشکی شهید بهشتی</p>
@@ -1006,118 +986,73 @@
     </div>
 
     <div class="resume-block">
-      <h3 data-en="Skills &amp; Interests" data-fa="مهارت‌ها و علاقه‌مندی‌ها">مهارت‌ها و علاقه‌مندی‌ها</h3>
+      <h3 data-en="Skills &amp; Interests" data-fa="مهارت‌ها و علاقه‌مندی‌ها" class="">مهارت‌ها و علاقه‌مندی‌ها</h3>
 
       <div class="skills-grid">
         <div class="skill-group">
-          <h4 data-en="Hard Skills" data-fa="مهارت‌های تخصصی">مهارت‌های تخصصی</h4>
+          <h4 data-en="Hard Skills" data-fa="مهارت‌های تخصصی" class="">مهارت‌های تخصصی</h4>
           <div class="skill-tags">
-            <span data-en="Python — Basic" data-fa="پایتون — مقدماتی">پایتون — مقدماتی</span>
-            <span data-en="Photoshop — Upper-intermediate" data-fa="فتوشاپ — بالاتر از متوسط">فتوشاپ — بالاتر از متوسط</span>
-            <span data-en="Premiere Pro — Basics" data-fa="پریمیر — مقدماتی">پریمیر — مقدماتی</span>
-            <span data-en="Deep Learning — Basics" data-fa="یادگیری عمیق — مقدماتی">یادگیری عمیق — مقدماتی</span>
-            <span data-en="Machine Learning — Basics" data-fa="یادگیری ماشین — مقدماتی">یادگیری ماشین — مقدماتی</span>
-            <span data-en="Prompt Engineering — Basics" data-fa="مهندسی پرامپت — مقدماتی">مهندسی پرامپت — مقدماتی</span>
-            <span data-en="Project Management — Basics" data-fa="مدیریت پروژه — مقدماتی">مدیریت پروژه — مقدماتی</span>
-            <span data-en="Computer Science — Basics" data-fa="علوم کامپیوتر — مقدماتی">علوم کامپیوتر — مقدماتی</span>
-            <span data-en="Network+ — Basics" data-fa="Network+ — مقدماتی">Network+ — مقدماتی</span>
+            <span data-en="Python — Basic" data-fa="پایتون — مقدماتی" class="">پایتون — مقدماتی</span>
+            <span data-en="Photoshop — Upper-intermediate" data-fa="فتوشاپ — بالاتر از متوسط" class="">فتوشاپ — بالاتر از متوسط</span>
+            <span data-en="Premiere Pro — Basics" data-fa="پریمیر — مقدماتی" class="">پریمیر — مقدماتی</span>
+            <span data-en="Deep Learning — Basics" data-fa="یادگیری عمیق — مقدماتی" class="">یادگیری عمیق — مقدماتی</span>
+            <span data-en="Machine Learning — Basics" data-fa="یادگیری ماشین — مقدماتی" class="">یادگیری ماشین — مقدماتی</span>
+            <span data-en="Prompt Engineering — Basics" data-fa="مهندسی پرامپت — مقدماتی" class="">مهندسی پرامپت — مقدماتی</span>
+            <span data-en="Project Management — Basics" data-fa="مدیریت پروژه — مقدماتی" class="">مدیریت پروژه — مقدماتی</span>
+            <span data-en="Computer Science — Basics" data-fa="علوم کامپیوتر — مقدماتی" class="">علوم کامپیوتر — مقدماتی</span>
+            <span data-en="Network+ — Basics" data-fa="Network+ — مقدماتی" class="">Network+ — مقدماتی</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <h4 data-en="Soft Skills" data-fa="مهارت‌های نرم">مهارت‌های نرم</h4>
+          <h4 data-en="Soft Skills" data-fa="مهارت‌های نرم" class="">مهارت‌های نرم</h4>
           <div class="skill-tags">
-            <span data-en="Leadership — Basics" data-fa="رهبری — مقدماتی">رهبری — مقدماتی</span>
-            <span data-en="Human Centered Skills (Flexibility, resilience) — Basics" data-fa="مهارت‌های انسان‌محور (انعطاف‌پذیری، تاب‌آوری) — مقدماتی">مهارت‌های انسان‌محور (انعطاف‌پذیری، تاب‌آوری) — مقدماتی</span>
-            <span data-en="Writing — Basics" data-fa="نویسندگی — مقدماتی">نویسندگی — مقدماتی</span>
-            <span data-en="Entrepreneurship — Basics" data-fa="کارآفرینی — مقدماتی">کارآفرینی — مقدماتی</span>
+            <span data-en="Leadership — Basics" data-fa="رهبری — مقدماتی" class="">رهبری — مقدماتی</span>
+            <span data-en="Human Centered Skills (Flexibility, resilience) — Basics" data-fa="مهارت‌های انسان‌محور (انعطاف‌پذیری، تاب‌آوری) — مقدماتی" class="">مهارت‌های انسان‌محور (انعطاف‌پذیری، تاب‌آوری) — مقدماتی</span>
+            <span data-en="Writing — Basics" data-fa="نویسندگی — مقدماتی" class="">نویسندگی — مقدماتی</span>
+            <span data-en="Entrepreneurship — Basics" data-fa="کارآفرینی — مقدماتی" class="">کارآفرینی — مقدماتی</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <h4 data-en="Artistic" data-fa="هنری">هنری</h4>
+          <h4 data-en="Artistic" data-fa="هنری" class="">هنری</h4>
           <div class="skill-tags">
-            <span data-en="Painting — Intermediate" data-fa="نقاشی — متوسط">نقاشی — متوسط</span>
-            <span data-en="Graphic Design — Upper-intermediate" data-fa="طراحی گرافیک — بالاتر از متوسط">طراحی گرافیک — بالاتر از متوسط</span>
-            <span data-en="Visual Identity — Basics" data-fa="هویت بصری — مقدماتی">هویت بصری — مقدماتی</span>
-            <span data-en="Photography — Basics" data-fa="عکاسی — مقدماتی">عکاسی — مقدماتی</span>
-            <span data-en="Video Editing — Basics" data-fa="تدوین ویدیو — مقدماتی">تدوین ویدیو — مقدماتی</span>
+            <span data-en="Painting — Intermediate" data-fa="نقاشی — متوسط" class="">نقاشی — متوسط</span>
+            <span data-en="Graphic Design — Upper-intermediate" data-fa="طراحی گرافیک — بالاتر از متوسط" class="">طراحی گرافیک — بالاتر از متوسط</span>
+            <span data-en="Visual Identity — Basics" data-fa="هویت بصری — مقدماتی" class="">هویت بصری — مقدماتی</span>
+            <span data-en="Photography — Basics" data-fa="عکاسی — مقدماتی" class="">عکاسی — مقدماتی</span>
+            <span data-en="Video Editing — Basics" data-fa="تدوین ویدیو — مقدماتی" class="">تدوین ویدیو — مقدماتی</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <h4 data-en="Sports Achievements" data-fa="دستاوردهای ورزشی">دستاوردهای ورزشی</h4>
+          <h4 data-en="Sports Achievements" data-fa="دستاوردهای ورزشی" class="">دستاوردهای ورزشی</h4>
           <div class="skill-tags">
-            <span data-en="Swimming — Provincial medal" data-fa="شنا — مقام استانی">شنا — مقام استانی</span>
-            <span data-en="Football — University team" data-fa="فوتبال — عضویت در تیم دانشگاه">فوتبال — عضویت در تیم دانشگاه</span>
-            <span data-en="Mountaineering — Damavand summit" data-fa="کوهنوردی — صعود به دماوند">کوهنوردی — صعود به دماوند</span>
+            <span data-en="Swimming — Provincial medal" data-fa="شنا — مقام استانی" class="">شنا — مقام استانی</span>
+            <span data-en="Football — University team" data-fa="فوتبال — عضویت در تیم دانشگاه" class="">فوتبال — عضویت در تیم دانشگاه</span>
+            <span data-en="Mountaineering — Damavand summit" data-fa="کوهنوردی — صعود به دماوند" class="">کوهنوردی — صعود به دماوند</span>
           </div>
         </div>
       </div>
     </div>
 
     <div class="resume-block">
-      <h3 data-en="Languages" data-fa="زبان‌ها">زبان‌ها</h3>
+      <h3 data-en="Languages" data-fa="زبان‌ها" class="">زبان‌ها</h3>
       <div class="skill-tags">
-        <span data-en="English — Upper-Intermediate" data-fa="انگلیسی — بالاتر از متوسط">انگلیسی — بالاتر از متوسط</span>
+        <span data-en="English — Upper-Intermediate" data-fa="انگلیسی — بالاتر از متوسط" class="">انگلیسی — بالاتر از متوسط</span>
       </div>
     </div>
 
     <!-- ===== Memories ===== -->
     <div class="resume-block">
-      <h3 data-en="Memories" data-fa="خاطرات">خاطرات</h3>
+      <h3 data-en="Memories" data-fa="خاطرات" class="">خاطرات</h3>
 
-      <div class="memory-item">
-        <div class="memory-head">
-          <h4 data-en="First day teaching at Alborz" data-fa="اولین روز تدریس در البرز">اولین روز تدریس در البرز</h4>
-          <span class="memory-date" data-en="Autumn 2022" data-fa="پاییز ۱۴۰۱">پاییز ۱۴۰۱</span>
-        </div>
-        <p class="memory-place" data-en="Alborz University of Medical Sciences — Karaj" data-fa="دانشگاه علوم پزشکی البرز — کرج">دانشگاه علوم پزشکی البرز — کرج</p>
-        <div class="memory-text" data-en="&lt;p&gt;I still remember the moment I stood in front of the class for the first time. Half an hour before, I had rewritten my notes three times, sure that I would forget everything.&lt;/p&gt;&lt;p&gt;What actually happened was different: the questions the students asked were sharper than anything I had prepared for, and by the end of that session I understood that teaching is not about transferring information — it is about the conversation that starts afterwards.&lt;/p&gt;" data-fa="
-          &lt;p&gt;هنوز لحظه‌ای که برای اولین بار جلوی کلاس ایستادم یادم است. نیم ساعت قبلش سه بار جزوه‌ام را بازنویسی کرده بودم و مطمئن بودم همه‌چیز را فراموش می‌کنم.&lt;/p&gt;&lt;p&gt;چیزی که واقعاً اتفاق افتاد متفاوت بود: سؤال‌هایی که دانشجوها پرسیدند از هر چیزی که آماده کرده بودم تیزتر بود، و آخر آن جلسه فهمیدم تدریس انتقال اطلاعات نیست — گفت‌وگویی است که بعد از آن شروع می‌شود.&lt;/p&gt;
-        ">
-          <p>هنوز لحظه‌ای که برای اولین بار جلوی کلاس ایستادم یادم است. نیم ساعت قبلش سه بار جزوه‌ام را بازنویسی کرده بودم و مطمئن بودم همه‌چیز را فراموش می‌کنم.</p>
-          <p>چیزی که واقعاً اتفاق افتاد متفاوت بود: سؤال‌هایی که دانشجوها پرسیدند از هر چیزی که آماده کرده بودم تیزتر بود، و آخر آن جلسه فهمیدم تدریس انتقال اطلاعات نیست — گفت‌وگویی است که بعد از آن شروع می‌شود.</p>
-        </div>
-        <div class="media-block" data-media="memory-1"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="memory-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
+      
 
-      <div class="memory-item">
-        <div class="memory-head">
-          <h4 data-en="The night before MedAI Summit" data-fa="شب قبل از MedAI Summit">شب قبل از MedAI Summit</h4>
-          <span class="memory-date" data-en="Winter 2024" data-fa="زمستان ۱۴۰۳">زمستان ۱۴۰۳</span>
-        </div>
-        <p class="memory-place" data-en="Tehran" data-fa="تهران">تهران</p>
-        <div class="memory-text" data-en="&lt;p&gt;We were four people, one laptop, and a printer that kept jamming. The sponsorship deck had to be ready by seven in the morning, and the visual identity still had three unresolved details.&lt;/p&gt;&lt;p&gt;At some point past midnight someone made tea and we stopped arguing about colors. The version we shipped that night was not perfect, but it was ours — and it opened doors we could not have predicted.&lt;/p&gt;" data-fa="
-          &lt;p&gt;چهار نفر بودیم، یک لپ‌تاپ، و یک پرینتری که مدام گیر می‌کرد. فایل اسپانسرشیپ باید تا هفت صبح آماده می‌شد و هویت بصری هنوز سه جزئیات حل‌نشده داشت.&lt;/p&gt;&lt;p&gt;یک جایی بعد از نصفه‌شب یکی چای آورد و ما بحث دربارهٔ رنگ‌ها را قطع کردیم. نسخه‌ای که آن شب تحویل دادیم کامل نبود، اما مال خودمان بود — و درهایی را باز کرد که نمی‌توانستیم پیش‌بینی کنیم.&lt;/p&gt;
-        ">
-          <p>چهار نفر بودیم، یک لپ‌تاپ، و یک پرینتری که مدام گیر می‌کرد. فایل اسپانسرشیپ باید تا هفت صبح آماده می‌شد و هویت بصری هنوز سه جزئیات حل‌نشده داشت.</p>
-          <p>یک جایی بعد از نصفه‌شب یکی چای آورد و ما بحث دربارهٔ رنگ‌ها را قطع کردیم. نسخه‌ای که آن شب تحویل دادیم کامل نبود، اما مال خودمان بود — و درهایی را باز کرد که نمی‌توانستیم پیش‌بینی کنیم.</p>
-        </div>
-        <div class="media-block" data-media="memory-2"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="memory-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
+      
 
-      <div class="memory-item">
-        <div class="memory-head">
-          <h4 data-en="Damavand, first attempt" data-fa="دماوند، اولین تلاش">دماوند، اولین تلاش</h4>
-          <span class="memory-date" data-en="Summer 2023" data-fa="تابستان ۱۴۰۲">تابستان ۱۴۰۲</span>
-        </div>
-        <p class="memory-place" data-en="Mount Damavand — Mazandaran" data-fa="قله دماوند — مازندران">قله دماوند — مازندران</p>
-        <div class="memory-text" data-en="&lt;p&gt;We started at midnight with headlamps and too much confidence. By four in the morning the wind had picked up and one of us was already feeling the altitude.&lt;/p&gt;&lt;p&gt;The summit came later than planned, and the view lasted maybe ten minutes before the clouds closed in. I do not remember the summit itself as much as I remember the silence on the way down — nobody needed to say anything.&lt;/p&gt;" data-fa="
-          &lt;p&gt;نصفه‌شب با چراغ‌پیشانی و اعتمادبه‌نفس زیادی راه افتادیم. تا ساعت چهار صبح باد شدت گرفته بود و یکی از بچه‌ها داشت ارتفاع می‌زد.&lt;/p&gt;&lt;p&gt;قله دیرتر از برنامه‌ریزی رسید و منظره شاید ده دقیقه دوام آورد تا ابرها بستند. خود قله را زیاد یادم نیست؛ بیشتر سکوت مسیر برگشت را یادم است — هیچ‌کس لازم نبود چیزی بگوید.&lt;/p&gt;
-        ">
-          <p>نصفه‌شب با چراغ‌پیشانی و اعتمادبه‌نفس زیادی راه افتادیم. تا ساعت چهار صبح باد شدت گرفته بود و یکی از بچه‌ها داشت ارتفاع می‌زد.</p>
-          <p>قله دیرتر از برنامه‌ریزی رسید و منظره شاید ده دقیقه دوام آورد تا ابرها بستند. خود قله را زیاد یادم نیست؛ بیشتر سکوت مسیر برگشت را یادم است — هیچ‌کس لازم نبود چیزی بگوید.</p>
-        </div>
-        <div class="media-block" data-media="memory-3"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="memory-3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
-    </div>
+      
+    <div class="memory-item"><div class="memory-head"><h4 class="" data-en="New memory" data-fa="شب قبل از پنجمین کنگره بین المللی انگل شناسی ایران">شب قبل از پنجمین کنگره بین المللی انگل شناسی ایران</h4><span class="memory-date" data-en="1403" data-fa="۱۴۰۳">۱۴۰۳</span></div><p class="memory-place" data-en="Place" data-fa="دانشگاه علوم پزشکی البرز">دانشگاه علوم پزشکی البرز</p><div class="memory-text" data-en="&lt;p&gt;Write the memory here…&lt;/p&gt;" data-fa="&lt;p&gt;خاطره را اینجا بنویس…&lt;/p&gt;"><p>خاطره را اینجا بنویس…</p></div><div class="media-block" data-media="new-1789887634951-163"><div class="media-strip"></div><button type="button" class="media-add" data-add="new-1789887634951-163"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button></div></div></div>
     <!-- ===== /Memories ===== -->
 
   </div>
@@ -1138,91 +1073,32 @@
     </div>
 
     <div class="work-group" data-cat="video">
-      <h3 data-en="Video" data-fa="ویدیو">ویدیو</h3>
-      <div class="work-item">
-        <div class="work-item-head">
-          <p class="work-title" data-en="Anatomy in Five Minutes — short teaching series" data-fa="آناتومی در پنج دقیقه — مجموعهٔ آموزشی کوتاه">آناتومی در پنج دقیقه — مجموعهٔ آموزشی کوتاه</p>
-          <span class="work-date" data-en="2025 – Present" data-fa="۱۴۰۴ – اکنون">۱۴۰۴ – اکنون</span>
-        </div>
-        <p class="work-desc" data-en="Short, high-density videos covering core anatomy topics for medical students, built for quick review." data-fa="ویدیوهای کوتاه و فشرده دربارهٔ مباحث پایهٔ آناتومی برای دانشجویان پزشکی، طراحی‌شده برای مرور سریع.">ویدیوهای کوتاه و فشرده دربارهٔ مباحث پایهٔ آناتومی برای دانشجویان پزشکی، طراحی‌شده برای مرور سریع.</p>
-        <div class="work-tags"><span data-en="medical education" data-fa="آموزش پزشکی">آموزش پزشکی</span><span data-en="video" data-fa="ویدیو">ویدیو</span></div>
-        <div class="media-block" data-media="work-video-1"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="work-video-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
+      <h3 data-en="Video" data-fa="ویدیو" class="">ویدیو</h3>
+      
     </div>
 
     <div class="work-group" data-cat="docs">
-      <h3 data-en="Docs — Papers &amp; Books" data-fa="مستندات — مقاله و کتاب">مستندات — مقاله و کتاب</h3>
+      <h3 data-en="Docs — Papers &amp; Books" data-fa="مستندات — مقاله و کتاب" class="">مستندات — مقاله و کتاب</h3>
 
-      <div class="work-item">
-        <div class="work-item-head">
-          <p class="work-title" data-en="Title of your paper goes here" data-fa="عنوان مقالهٔ شما اینجا قرار می‌گیرد">عنوان مقالهٔ شما اینجا قرار می‌گیرد</p>
-          <span class="work-date" data-en="2025" data-fa="۱۴۰۴">۱۴۰۴</span>
-        </div>
-        <p class="work-desc" data-en="M. H. Kazemi, et al. — Journal / Conference name, Year. DOI or link." data-fa="م.ح. کاظمی و همکاران — نام مجله / کنفرانس، سال. DOI یا لینک.">م.ح. کاظمی و همکاران — نام مجله / کنفرانس، سال. DOI یا لینک.</p>
-        <div class="work-tags"><span data-en="medical education" data-fa="آموزش پزشکی">آموزش پزشکی</span><span data-en="edtech" data-fa="فناوری آموزشی">فناوری آموزشی</span></div>
-        <div class="media-block" data-media="work-doc-1"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="work-doc-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
+      
 
-      <div class="work-item">
-        <div class="work-item-head">
-          <p class="work-title" data-en="Title of your book goes here" data-fa="عنوان کتاب شما اینجا قرار می‌گیرد">عنوان کتاب شما اینجا قرار می‌گیرد</p>
-          <span class="work-date" data-en="2024" data-fa="۱۴۰۳">۱۴۰۳</span>
-        </div>
-        <p class="work-desc" data-en="Publisher — short description of the book." data-fa="ناشر — توضیح کوتاه دربارهٔ کتاب.">ناشر — توضیح کوتاه دربارهٔ کتاب.</p>
-        <div class="work-tags"><span data-en="book" data-fa="کتاب">کتاب</span></div>
-        <div class="media-block" data-media="work-doc-2"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="work-doc-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
-    </div>
+      
+    <div class="work-item"><div class="work-item-head"><p class="work-title" data-en="New item" data-fa="دوره های مدیریت کسب و کار: آری یا خیر؟">دوره های مدیریت کسب و کار: آری یا خیر؟</p><span class="work-date" data-en="1403" data-fa="۱۴۰۳">۱۴۰۳</span></div><p class="work-desc" data-en="Description…" data-fa="توضیحات…">توضیحات…</p><div class="work-tags"><span class="" data-en="tag" data-fa="تگ">تگ</span></div><div class="media-block" data-media="new-1789887767598-499"><div class="media-strip"></div><button type="button" class="media-add" data-add="new-1789887767598-499"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button></div></div></div>
 
     <div class="work-group" data-cat="audio">
-      <h3 data-en="Audio — Podcast" data-fa="صوتی — پادکست">صوتی — پادکست</h3>
-      <div class="work-item">
-        <div class="work-item-head">
-          <p class="work-title" data-en="Lab — audio podcast of course material" data-fa="آزمایشگاه — پادکست صوتی محتوای درسی">آزمایشگاه — پادکست صوتی محتوای درسی</p>
-          <span class="work-date" data-en="2024 – Present" data-fa="۱۴۰۳ – اکنون">۱۴۰۳ – اکنون</span>
-        </div>
-        <p class="work-desc" data-en="Audio versions of course material so students can study while commuting or away from a desk." data-fa="نسخهٔ صوتی محتوای درسی تا دانشجوها بتوانند در مسیر رفت‌وآمد یا دور از میز مطالعه کنند.">نسخهٔ صوتی محتوای درسی تا دانشجوها بتوانند در مسیر رفت‌وآمد یا دور از میز مطالعه کنند.</p>
-        <div class="work-tags"><span data-en="podcast" data-fa="پادکست">پادکست</span><span data-en="audio" data-fa="صوتی">صوتی</span></div>
-        <div class="media-block" data-media="work-audio-1"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="work-audio-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
+      <h3 data-en="Audio — Podcast" data-fa="صوتی — پادکست" class="">صوتی — پادکست</h3>
+      
     </div>
 
     <div class="work-group" data-cat="visual">
-      <h3 data-en="Visual — Painting" data-fa="تصویری — نقاشی">تصویری — نقاشی</h3>
-      <div class="work-item">
-        <div class="work-item-head">
-          <p class="work-title" data-en="Painting collection — title goes here" data-fa="مجموعهٔ نقاشی — عنوان اینجا قرار می‌گیرد">مجموعهٔ نقاشی — عنوان اینجا قرار می‌گیرد</p>
-          <span class="work-date" data-en="2023 – Present" data-fa="۱۴۰۲ – اکنون">۱۴۰۲ – اکنون</span>
-        </div>
-        <p class="work-desc" data-en="A short description of the collection, medium, and where it has been shown." data-fa="توضیح کوتاه دربارهٔ مجموعه، تکنیک و مکان نمایش.">توضیح کوتاه دربارهٔ مجموعه، تکنیک و مکان نمایش.</p>
-        <div class="work-tags"><span data-en="painting" data-fa="نقاشی">نقاشی</span><span data-en="visual art" data-fa="هنرهای تجسمی">هنرهای تجسمی</span></div>
-        <div class="media-block" data-media="work-visual-1"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="work-visual-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
+      <h3 data-en="Visual — Painting" data-fa="تصویری — نقاشی" class="">تصویری — نقاشی</h3>
+      
     </div>
 
     <div class="work-group" data-cat="channels">
-      <h3 data-en="Channels" data-fa="کانال‌ها">کانال‌ها</h3>
+      <h3 data-en="Channels" data-fa="کانال‌ها" class="">کانال‌ها</h3>
 
-      <div class="work-item">
-        <div class="work-item-head">
-          <p class="work-title" data-en="YouTube — @kazziblanka" data-fa="یوتیوب — kazziblanka@">یوتیوب — kazziblanka@</p>
-          <span class="work-date" data-en="Video" data-fa="ویدیو">ویدیو</span>
-        </div>
-        <p class="work-desc" data-en="Where I publish teaching videos and short lessons. &lt;a href='https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH' target='_blank' rel='noopener'&gt;youtube.com/@kazziblanka&lt;/a&gt;" data-fa="جایی که ویدیوهای آموزشی و درس‌های کوتاه منتشر می‌کنم. &lt;a href=&quot;https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;youtube.com/@kazziblanka&lt;/a&gt;">جایی که ویدیوهای آموزشی و درس‌های کوتاه منتشر می‌کنم. <a href="https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH" target="_blank" rel="noopener">youtube.com/@kazziblanka</a></p>
-        <div class="media-block" data-media="work-ch-yt"><div class="media-strip"></div>
-          <button type="button" class="media-add" data-add="work-ch-yt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
-        </div>
-      </div>
+      
 
       <div class="work-item">
         <div class="work-item-head">
@@ -1275,31 +1151,31 @@
 <section id="contact">
   <div class="wrap">
     <span class="eyebrow" data-en="get in touch" data-fa="ارتباط">ارتباط</span>
-    <h2 data-en="Let's work together" data-fa="برای همکاری در ارتباط باشید">برای همکاری در ارتباط باشید</h2>
+    <h2 data-en="Let's work together" data-fa="برای همکاری در ارتباط باشید" class="">برای همکاری در ارتباط باشید</h2>
     <a class="contact-link" href="mailto:kazziworks@gmail.com">kazziworks@gmail.com</a>
 
     <!-- Brand logo row (monochrome flat, matches the reference image style) -->
     <div class="brand-row" aria-label="Social media / برندها">
-      <a href="https://orcid.org/0009-0001-5252-1276" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+      <a href="https://orcid.org/0009-0001-5252-1276" target="_blank" rel="noopener" aria-label="ORCID">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"></path></svg>
       </a>
-      <a href="https://www.linkedin.com/in/thisiskazzi" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <a href="https://www.linkedin.com/in/thisiskazzi" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
       </a>
-      <a href="https://x.com/thisiskazzi" target="_blank" rel="noopener" aria-label="X" title="X">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+      <a href="https://x.com/thisiskazzi" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg>
       </a>
-      <a href="https://www.instagram.com/thisiskazzi/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      <a href="https://www.instagram.com/thisiskazzi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"></path></svg>
       </a>
-      <a href="https://t.me/KazziWorks" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      <a href="https://t.me/KazziWorks" target="_blank" rel="noopener" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg>
       </a>
-      <a href="https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      <a href="https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
       </a>
-      <a href="https://github.com/thisiskazzi" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      <a href="https://github.com/thisiskazzi" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
       </a>
     </div>
   </div>
@@ -1307,15 +1183,15 @@
 
 <footer>
   <div class="wrap">
-    <span data-en="© 2026 KazziBlanka" data-fa="© ۲۰۲۶ KazziBlanka">© ۲۰۲۶ KazziBlanka</span>
-    <span data-en="Mohammad Hossein Kazemi" data-fa="محمدحسین کاظمی">محمدحسین کاظمی</span>
+    <span data-en="© 2026 KazziBlanka" data-fa="© ۲۰۲۶ KazziBlanka" class="">© ۲۰۲۶ KazziBlanka</span>
+    <span data-en="Mohammad Hossein Kazemi" data-fa="محمدحسین کاظمی" class="">محمدحسین کاظمی</span>
   </div>
 </footer>
 
 <div class="edit-toolbar" role="toolbar" aria-label="حالت ویرایش">
   <span class="edit-dot"></span>
   <span class="edit-label">حالت ویرایش</span>
-  <button type="button" class="edit-btn" id="exportHtmlBtn" disabled>در حال آماده‌سازی...</button>
+  <button type="button" class="edit-btn" id="exportHtmlBtn" disabled="">در حال آماده‌سازی...</button>
   <button type="button" class="edit-btn ghost" id="exitEditBtn">خروج</button>
 </div>
 
@@ -1326,38 +1202,34 @@
       <button class="mm-x" id="mmClose" type="button" aria-label="بستن">×</button>
     </div>
     <div class="mm-tabs">
-      <button class="mm-tab is-active" type="button" data-mm-tab="file" data-en="Upload file" data-fa="آپلود فایل">آپلود فایل</button>
-      <button class="mm-tab" type="button" data-mm-tab="link" data-en="Link" data-fa="لینک">لینک</button>
+      <button class="mm-tab" type="button" data-mm-tab="file" data-en="Upload file" data-fa="آپلود فایل">آپلود فایل</button>
+      <button class="mm-tab is-active" type="button" data-mm-tab="link" data-en="Link" data-fa="لینک">لینک</button>
     </div>
-    <div class="mm-panel" data-mm-panel="file">
+    <div class="mm-panel" data-mm-panel="file" hidden="">
       <div class="mm-drop" id="mmDrop">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4 4 4"></path><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg>
         <strong data-en="Drop a file here or click to browse" data-fa="فایل را اینجا رها کن یا کلیک کن">فایل را اینجا رها کن یا کلیک کن</strong>
         <small data-en="Image, video, audio, PDF or any other file — multiple files allowed" data-fa="تصویر، ویدیو، صدا، PDF یا هر فایل دیگری — چند فایل هم می‌شود">تصویر، ویدیو، صدا، PDF یا هر فایل دیگری — چند فایل هم می‌شود</small>
-        <input type="file" id="mmFile" hidden multiple>
+        <input type="file" id="mmFile" hidden="" multiple="">
       </div>
     </div>
-    <div class="mm-panel" data-mm-panel="link" hidden>
+    <div class="mm-panel" data-mm-panel="link">
       <div class="mm-field">
         <label data-en="Link URL" data-fa="آدرس لینک">آدرس لینک</label>
         <input type="url" id="mmLink" placeholder="https://..." dir="ltr">
       </div>
       <div class="mm-field">
         <label data-en="English link name (optional)" data-fa="نام لینک انگلیسی (اختیاری)">نام لینک انگلیسی (اختیاری)</label>
-        <input type="text" id="mmLinkNameEn" placeholder="e.g. Certificate, Portfolio, Paper" dir="ltr"
-               data-en-placeholder="e.g. Certificate, Portfolio, Paper"
-               data-fa-placeholder="مثلاً Certificate، Portfolio، Paper">
+        <input type="text" id="mmLinkNameEn" placeholder="مثلاً Certificate، Portfolio، Paper" dir="ltr" data-en-placeholder="e.g. Certificate, Portfolio, Paper" data-fa-placeholder="مثلاً Certificate، Portfolio، Paper">
       </div>
       <div class="mm-field">
         <label data-en="Persian link name (optional)" data-fa="نام لینک فارسی (اختیاری)">نام لینک فارسی (اختیاری)</label>
-        <input type="text" id="mmLinkNameFa" placeholder="مثلاً گواهی، نمونه‌کار، مقاله"
-               data-en-placeholder="e.g. گواهی، نمونه‌کار، مقاله"
-               data-fa-placeholder="مثلاً گواهی، نمونه‌کار، مقاله">
+        <input type="text" id="mmLinkNameFa" placeholder="مثلاً گواهی، نمونه‌کار، مقاله" data-en-placeholder="e.g. گواهی، نمونه‌کار، مقاله" data-fa-placeholder="مثلاً گواهی، نمونه‌کار، مقاله">
       </div>
     </div>
     <div class="mm-foot">
       <button class="mm-btn ghost" id="mmCancel" type="button" data-en="Cancel" data-fa="انصراف">انصراف</button>
-      <button class="mm-btn primary" id="mmAddLink" type="button" hidden data-en="Add link" data-fa="افزودن لینک">افزودن لینک</button>
+      <button class="mm-btn primary" id="mmAddLink" type="button" data-en="Add link" data-fa="افزودن لینک">افزودن لینک</button>
     </div>
   </div>
 </div>
@@ -1370,7 +1242,7 @@
   </div>
 </div>
 
-<script type="application/json" id="embedded-media">{"__version":"v1789809273203"}</script>
+<script type="application/json" id="embedded-media">{"__version":"v1789888263688","new-1789887767598-499":[{"url":"https://vrgl.ir/WaIuo","nameEn":"Virgool","nameFa":"ویرگول","name":"Virgool","type":"link"}],"built-2":[{"url":"سیزصر","nameEn":"dewdewd","nameFa":"سیزریسر","name":"dewdewd","type":"link"}],"exp-sales":[],"lead-spon":[],"exp-net":[],"new-1789884772539-669":[{"url":"https://vrgl.ir/WaIuo","nameEn":"Virgool","nameFa":"ویرگول","name":"Virgool","type":"link"}]}</script>
 
 <script>
 (function () {
@@ -2074,5 +1946,6 @@
 })();
 </script>
 
-</body>
-</html>
+
+
+</body></html>
