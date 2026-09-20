@@ -30,7 +30,8 @@
     justify-content:space-between; gap:10px; direction:ltr; min-height:36px; }
   .brand{ display:flex; align-items:center; gap:8px; font-size:15px; letter-spacing:.02em;
     text-decoration:none; color:inherit; font-weight:500; flex-shrink:0; z-index:2; }
-  .brand svg{ width:26px; height:auto; }
+  .brand svg{ width:26px; height:auto; flex-shrink:0; }
+  .brand span{ white-space:nowrap; }
   .site-nav{ position:absolute; left:50%; top:50%; transform:translate(-50%, -50%);
     display:flex; align-items:center; gap:clamp(14px, 2.2vw, 26px); font-size:14px; font-weight:400;
     z-index:1; white-space:nowrap; direction:rtl; }
@@ -118,6 +119,26 @@
     line-height:1.85; overflow-wrap:anywhere; }
   .resume-desc li:last-child{ margin-bottom:0; }
   .resume-desc li::before{ content:'–'; position:absolute; inset-inline-start:0; color:var(--line-faint); }
+
+  /* —— Memories: cards with story text —— */
+  .memory-item{ display:grid; grid-template-columns:1fr; gap:10px;
+    padding:clamp(18px, 2.6vw, 26px) 0; position:relative; }
+  .memory-item:first-child{ padding-top:clamp(18px, 2.6vw, 26px); }
+  .memory-item:last-child{ padding-bottom:0; }
+  .memory-head{ display:flex; justify-content:space-between; align-items:baseline;
+    gap:8px 16px; flex-wrap:nowrap; }
+  .memory-head h4{ margin:0; font-size:clamp(15.5px, 1.9vw, 18px); font-weight:500;
+    line-height:1.4; color:var(--line); flex:1 1 0; min-width:0;
+    overflow-wrap:break-word; }
+  .memory-date{ font-size:12.5px; color:var(--line-dim); white-space:nowrap;
+    font-weight:400; unicode-bidi:isolate; flex:0 0 auto; }
+  .memory-place{ margin:0; font-size:13px; color:var(--line-dim); font-weight:400;
+    letter-spacing:.02em; }
+  .memory-text{ margin:0; font-size:14.5px; color:#c9cdd3; font-weight:300;
+    line-height:2; max-width:66ch; overflow-wrap:anywhere; }
+  .memory-text p{ margin:0 0 10px; font-size:inherit; line-height:inherit;
+    color:inherit; max-width:none; }
+  .memory-text p:last-child{ margin-bottom:0; }
 
   .work-filters{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 clamp(32px, 4.5vw, 46px); }
   .work-filters button{ font-family:inherit; font-size:12.5px; font-weight:400;
@@ -404,7 +425,9 @@
   body.edit-mode .resume-item,
   body.edit-mode .resume-item:first-child,
   body.edit-mode .work-item,
-  body.edit-mode .work-item:first-child{
+  body.edit-mode .work-item:first-child,
+  body.edit-mode .memory-item,
+  body.edit-mode .memory-item:first-child{
     padding-top: 48px;
   }
 
@@ -519,6 +542,11 @@
   body.edit-mode .kz-add-chip{ display: inline-flex; }
   .kz-add-chip:hover{ color: var(--line); border-color: var(--line-dim); background: rgba(238,241,244,.04); }
 
+  /* ============================================================
+     Mobile header: keep brand text visible next to the logo
+     — matches desktop layout (brand on the left, lang/socials right,
+       nav centered or below on very narrow widths)
+     ============================================================ */
   @media (max-width:760px){
     :root{ --header-h: 86px; }
     header.site{ padding-top:max(8px, env(safe-area-inset-top, 0));
@@ -527,6 +555,8 @@
     header.site .wrap.header-inner{ flex-wrap:wrap; row-gap:8px; gap:10px; }
     .brand{ order:1; font-size:13.5px; gap:6px; }
     .brand svg{ width:22px; }
+    /* keep the wordmark visible on mobile, matching desktop */
+    .brand span{ display:inline; }
     .header-right{ order:2; margin-inline-start:auto; gap:8px; }
     .site-nav{ position:static; transform:none; order:3; flex-basis:100%;
       justify-content:center; gap:clamp(12px, 4vw, 20px); font-size:12.5px;
@@ -538,7 +568,8 @@
   }
   @media (max-width:560px){
     :root{ --gap-xl: clamp(48px, 12vw, 80px); --header-h: 82px; }
-    .brand span{ display:none; }
+    /* NOTE: do NOT hide .brand span — it must stay visible like desktop */
+    .brand span{ display:inline; font-size:13px; letter-spacing:.02em; }
     .brand svg{ width:22px; }
     .lang-switch button{ padding:5px 8px; font-size:10px; min-width:26px; }
     .site-nav{ font-size:12px; gap:14px; padding-top:8px; }
@@ -558,13 +589,17 @@
     body.edit-mode .resume-item,
     body.edit-mode .resume-item:first-child,
     body.edit-mode .work-item,
-    body.edit-mode .work-item:first-child{ padding-top:44px; }
-    .resume-item, .work-item{ padding:16px 0; }
-    .resume-item:first-child, .work-item:first-child{ padding-top:16px; }
-    .resume-item-head h4, .work-title{ font-size:15.5px; }
-    .resume-date, .work-date{ font-size:11.5px; }
+    body.edit-mode .work-item:first-child,
+    body.edit-mode .memory-item,
+    body.edit-mode .memory-item:first-child{ padding-top:44px; }
+    .resume-item, .work-item, .memory-item{ padding:16px 0; }
+    .resume-item:first-child, .work-item:first-child, .memory-item:first-child{ padding-top:16px; }
+    .resume-item-head h4, .work-title, .memory-head h4{ font-size:15.5px; }
+    .resume-date, .work-date, .memory-date{ font-size:11.5px; }
     .resume-org{ font-size:13.5px; }
     .resume-desc, .work-desc{ font-size:13.5px; line-height:1.8; }
+    .memory-text{ font-size:13.5px; line-height:1.9; }
+    .memory-place{ font-size:12px; }
     .work-filters{ flex-wrap:nowrap; overflow-x:auto;
       -webkit-overflow-scrolling:touch; scrollbar-width:none;
       margin-inline:calc(-1 * var(--pad-x)); padding:2px var(--pad-x) 6px;
@@ -596,9 +631,11 @@
     .edit-label{ display:none; }
   }
   @media (max-width:400px){
-    .resume-item-head, .work-item-head{ gap:6px 10px; }
-    .resume-item-head h4, .work-title{ font-size:14.5px; line-height:1.35; }
-    .resume-date, .work-date{ font-size:11px; }
+    .resume-item-head, .work-item-head, .memory-head{ gap:6px 10px; }
+    .resume-item-head h4, .work-title, .memory-head h4{ font-size:14.5px; line-height:1.35; }
+    .resume-date, .work-date, .memory-date{ font-size:11px; }
+    .brand span{ font-size:12px; }
+    .brand svg{ width:20px; }
   }
   @media (max-width:380px){
     :root{ --header-h: 78px; }
@@ -607,13 +644,15 @@
     .mark{ width:min(72vw, 200px, 28vh); }
     h1{ font-size:20px; }
     .role{ font-size:12.5px; max-width:30ch; }
-    .resume-item, .work-item{ padding:14px 0; }
+    .resume-item, .work-item, .memory-item{ padding:14px 0; }
     .resume-desc, .work-desc{ font-size:13px; }
+    .memory-text{ font-size:13px; }
     .wrap{ padding:0 14px; }
     .work-filters{ margin-inline:-14px; padding-inline:14px; }
     .media-strip{ grid-template-columns:repeat(auto-fill, minmax(72px, 1fr)); }
     .brand-row{ gap:14px; }
     .brand-row svg{ height:20px; }
+    .brand span{ font-size:11.5px; }
   }
   @media (hover:none){ .media-thumb .mt-del{ opacity:1; transform:none; } }
   @media (prefers-reduced-motion: reduce){
@@ -1023,6 +1062,64 @@
         <span data-en="English — Upper-Intermediate" data-fa="انگلیسی — بالاتر از متوسط">انگلیسی — بالاتر از متوسط</span>
       </div>
     </div>
+
+    <!-- ===== Memories ===== -->
+    <div class="resume-block">
+      <h3 data-en="Memories" data-fa="خاطرات">خاطرات</h3>
+
+      <div class="memory-item">
+        <div class="memory-head">
+          <h4 data-en="First day teaching at Alborz" data-fa="اولین روز تدریس در البرز">اولین روز تدریس در البرز</h4>
+          <span class="memory-date" data-en="Autumn 2022" data-fa="پاییز ۱۴۰۱">پاییز ۱۴۰۱</span>
+        </div>
+        <p class="memory-place" data-en="Alborz University of Medical Sciences — Karaj" data-fa="دانشگاه علوم پزشکی البرز — کرج">دانشگاه علوم پزشکی البرز — کرج</p>
+        <div class="memory-text" data-en="&lt;p&gt;I still remember the moment I stood in front of the class for the first time. Half an hour before, I had rewritten my notes three times, sure that I would forget everything.&lt;/p&gt;&lt;p&gt;What actually happened was different: the questions the students asked were sharper than anything I had prepared for, and by the end of that session I understood that teaching is not about transferring information — it is about the conversation that starts afterwards.&lt;/p&gt;" data-fa="
+          &lt;p&gt;هنوز لحظه‌ای که برای اولین بار جلوی کلاس ایستادم یادم است. نیم ساعت قبلش سه بار جزوه‌ام را بازنویسی کرده بودم و مطمئن بودم همه‌چیز را فراموش می‌کنم.&lt;/p&gt;&lt;p&gt;چیزی که واقعاً اتفاق افتاد متفاوت بود: سؤال‌هایی که دانشجوها پرسیدند از هر چیزی که آماده کرده بودم تیزتر بود، و آخر آن جلسه فهمیدم تدریس انتقال اطلاعات نیست — گفت‌وگویی است که بعد از آن شروع می‌شود.&lt;/p&gt;
+        ">
+          <p>هنوز لحظه‌ای که برای اولین بار جلوی کلاس ایستادم یادم است. نیم ساعت قبلش سه بار جزوه‌ام را بازنویسی کرده بودم و مطمئن بودم همه‌چیز را فراموش می‌کنم.</p>
+          <p>چیزی که واقعاً اتفاق افتاد متفاوت بود: سؤال‌هایی که دانشجوها پرسیدند از هر چیزی که آماده کرده بودم تیزتر بود، و آخر آن جلسه فهمیدم تدریس انتقال اطلاعات نیست — گفت‌وگویی است که بعد از آن شروع می‌شود.</p>
+        </div>
+        <div class="media-block" data-media="memory-1"><div class="media-strip"></div>
+          <button type="button" class="media-add" data-add="memory-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
+        </div>
+      </div>
+
+      <div class="memory-item">
+        <div class="memory-head">
+          <h4 data-en="The night before MedAI Summit" data-fa="شب قبل از MedAI Summit">شب قبل از MedAI Summit</h4>
+          <span class="memory-date" data-en="Winter 2024" data-fa="زمستان ۱۴۰۳">زمستان ۱۴۰۳</span>
+        </div>
+        <p class="memory-place" data-en="Tehran" data-fa="تهران">تهران</p>
+        <div class="memory-text" data-en="&lt;p&gt;We were four people, one laptop, and a printer that kept jamming. The sponsorship deck had to be ready by seven in the morning, and the visual identity still had three unresolved details.&lt;/p&gt;&lt;p&gt;At some point past midnight someone made tea and we stopped arguing about colors. The version we shipped that night was not perfect, but it was ours — and it opened doors we could not have predicted.&lt;/p&gt;" data-fa="
+          &lt;p&gt;چهار نفر بودیم، یک لپ‌تاپ، و یک پرینتری که مدام گیر می‌کرد. فایل اسپانسرشیپ باید تا هفت صبح آماده می‌شد و هویت بصری هنوز سه جزئیات حل‌نشده داشت.&lt;/p&gt;&lt;p&gt;یک جایی بعد از نصفه‌شب یکی چای آورد و ما بحث دربارهٔ رنگ‌ها را قطع کردیم. نسخه‌ای که آن شب تحویل دادیم کامل نبود، اما مال خودمان بود — و درهایی را باز کرد که نمی‌توانستیم پیش‌بینی کنیم.&lt;/p&gt;
+        ">
+          <p>چهار نفر بودیم، یک لپ‌تاپ، و یک پرینتری که مدام گیر می‌کرد. فایل اسپانسرشیپ باید تا هفت صبح آماده می‌شد و هویت بصری هنوز سه جزئیات حل‌نشده داشت.</p>
+          <p>یک جایی بعد از نصفه‌شب یکی چای آورد و ما بحث دربارهٔ رنگ‌ها را قطع کردیم. نسخه‌ای که آن شب تحویل دادیم کامل نبود، اما مال خودمان بود — و درهایی را باز کرد که نمی‌توانستیم پیش‌بینی کنیم.</p>
+        </div>
+        <div class="media-block" data-media="memory-2"><div class="media-strip"></div>
+          <button type="button" class="media-add" data-add="memory-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
+        </div>
+      </div>
+
+      <div class="memory-item">
+        <div class="memory-head">
+          <h4 data-en="Damavand, first attempt" data-fa="دماوند، اولین تلاش">دماوند، اولین تلاش</h4>
+          <span class="memory-date" data-en="Summer 2023" data-fa="تابستان ۱۴۰۲">تابستان ۱۴۰۲</span>
+        </div>
+        <p class="memory-place" data-en="Mount Damavand — Mazandaran" data-fa="قله دماوند — مازندران">قله دماوند — مازندران</p>
+        <div class="memory-text" data-en="&lt;p&gt;We started at midnight with headlamps and too much confidence. By four in the morning the wind had picked up and one of us was already feeling the altitude.&lt;/p&gt;&lt;p&gt;The summit came later than planned, and the view lasted maybe ten minutes before the clouds closed in. I do not remember the summit itself as much as I remember the silence on the way down — nobody needed to say anything.&lt;/p&gt;" data-fa="
+          &lt;p&gt;نصفه‌شب با چراغ‌پیشانی و اعتمادبه‌نفس زیادی راه افتادیم. تا ساعت چهار صبح باد شدت گرفته بود و یکی از بچه‌ها داشت ارتفاع می‌زد.&lt;/p&gt;&lt;p&gt;قله دیرتر از برنامه‌ریزی رسید و منظره شاید ده دقیقه دوام آورد تا ابرها بستند. خود قله را زیاد یادم نیست؛ بیشتر سکوت مسیر برگشت را یادم است — هیچ‌کس لازم نبود چیزی بگوید.&lt;/p&gt;
+        ">
+          <p>نصفه‌شب با چراغ‌پیشانی و اعتمادبه‌نفس زیادی راه افتادیم. تا ساعت چهار صبح باد شدت گرفته بود و یکی از بچه‌ها داشت ارتفاع می‌زد.</p>
+          <p>قله دیرتر از برنامه‌ریزی رسید و منظره شاید ده دقیقه دوام آورد تا ابرها بستند. خود قله را زیاد یادم نیست؛ بیشتر سکوت مسیر برگشت را یادم است — هیچ‌کس لازم نبود چیزی بگوید.</p>
+        </div>
+        <div class="media-block" data-media="memory-3"><div class="media-strip"></div>
+          <button type="button" class="media-add" data-add="memory-3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
+        </div>
+      </div>
+    </div>
+    <!-- ===== /Memories ===== -->
+
   </div>
 </section>
 
@@ -1118,10 +1215,10 @@
 
       <div class="work-item">
         <div class="work-item-head">
-          <p class="work-title" data-en="YouTube — @KazziBlanka" data-fa="یوتیوب — KazziBlanka@">یوتیوب — KazziBlanka@</p>
+          <p class="work-title" data-en="YouTube — @kazziblanka" data-fa="یوتیوب — kazziblanka@">یوتیوب — kazziblanka@</p>
           <span class="work-date" data-en="Video" data-fa="ویدیو">ویدیو</span>
         </div>
-        <p class="work-desc" data-en="Where I publish teaching videos and short lessons. &lt;a href='https://youtube.com/@KazziBlanka' target='_blank' rel='noopener'&gt;youtube.com/@KazziBlanka&lt;/a&gt;" data-fa="جایی که ویدیوهای آموزشی و درس‌های کوتاه منتشر می‌کنم. &lt;a href=&quot;https://youtube.com/@KazziBlanka&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;youtube.com/@KazziBlanka&lt;/a&gt;">جایی که ویدیوهای آموزشی و درس‌های کوتاه منتشر می‌کنم. <a href="https://youtube.com/@KazziBlanka" target="_blank" rel="noopener">youtube.com/@KazziBlanka</a></p>
+        <p class="work-desc" data-en="Where I publish teaching videos and short lessons. &lt;a href='https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH' target='_blank' rel='noopener'&gt;youtube.com/@kazziblanka&lt;/a&gt;" data-fa="جایی که ویدیوهای آموزشی و درس‌های کوتاه منتشر می‌کنم. &lt;a href=&quot;https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;youtube.com/@kazziblanka&lt;/a&gt;">جایی که ویدیوهای آموزشی و درس‌های کوتاه منتشر می‌کنم. <a href="https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH" target="_blank" rel="noopener">youtube.com/@kazziblanka</a></p>
         <div class="media-block" data-media="work-ch-yt"><div class="media-strip"></div>
           <button type="button" class="media-add" data-add="work-ch-yt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span data-en="Add media" data-fa="افزودن رسانه">افزودن رسانه</span></button>
         </div>
@@ -1198,7 +1295,7 @@
       <a href="https://t.me/KazziWorks" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
       </a>
-      <a href="https://youtube.com/@KazziBlanka" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+      <a href="https://youtube.com/@kazziblanka?si=diWAE0ETfsaoyWXH" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       </a>
       <a href="https://github.com/thisiskazzi" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
@@ -1280,7 +1377,6 @@
   var root = document.documentElement;
   var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-lang-btn]'));
 
-  // یک بار در ابتدا برای پر کردن data-fa عناصری که فقط data-en دارند
   document.querySelectorAll('[data-en]').forEach(function (el) {
     if (!el.dataset.fa) el.dataset.fa = el.innerHTML;
   });
@@ -1295,7 +1391,6 @@
     root.setAttribute('lang', lang);
     root.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
 
-    // هر بار از DOM می‌خونیم تا عناصری که بعداً اضافه شدن هم شامل بشن
     document.querySelectorAll('[data-en]').forEach(function (el) {
       var v = el.dataset[lang];
       if (typeof v === 'string') el.innerHTML = v;
@@ -1616,7 +1711,7 @@
     if (delBtn) {
       e.preventDefault();
       if (confirm('این مورد حذف بشه؟')) {
-        var item = delBtn.closest('.resume-item, .work-item');
+        var item = delBtn.closest('.resume-item, .work-item, .memory-item');
         if (item) item.remove();
       }
       return;
@@ -1633,6 +1728,7 @@
     '#resume .eyebrow', '#resume h2', '#resume .resume-meta span',
     '.resume-block > h3',
     '.resume-item-head h4', '.resume-date', '.resume-org', '.resume-desc',
+    '.memory-head h4', '.memory-date', '.memory-place', '.memory-text',
     '.work-group > h3',
     '.work-title', '.work-date', '.work-desc', '.work-tags span',
     '.skill-group h4', '.skill-tags > span',
@@ -1670,7 +1766,7 @@
   }
 
   function addDeleteButtons() {
-    document.querySelectorAll('.resume-item, .work-item').forEach(function (item) {
+    document.querySelectorAll('.resume-item, .work-item, .memory-item').forEach(function (item) {
       if (item.querySelector(':scope > .kz-del-btn')) return;
       var btn = document.createElement('button');
       btn.className = 'kz-del-btn';
@@ -1683,12 +1779,13 @@
 
   function addAddButtons() {
     document.querySelectorAll('.resume-block').forEach(function (block) {
-      if (!block.querySelector('.resume-item')) return;
+      if (!block.querySelector('.resume-item, .memory-item')) return;
       if (block.querySelector(':scope > .kz-add-btn')) return;
+      var isMemory = !!block.querySelector('.memory-item');
       var btn = document.createElement('button');
       btn.className = 'kz-add-btn';
       btn.type = 'button';
-      btn.dataset.addType = 'resume-item';
+      btn.dataset.addType = isMemory ? 'memory-item' : 'resume-item';
       btn.innerHTML = '<span>+</span><span>افزودن مورد جدید</span>';
       block.appendChild(btn);
     });
@@ -1790,7 +1887,17 @@
         '</button>' +
       '</div>';
 
-    if (type === 'resume-item') {
+    if (type === 'memory-item') {
+      newItem.className = 'memory-item';
+      newItem.innerHTML = delBtnHtml +
+        '<div class="memory-head">' +
+          '<h4 contenteditable="true" class="kz-editable" data-en="New memory" data-fa="خاطرهٔ جدید">خاطرهٔ جدید</h4>' +
+          '<span class="memory-date" contenteditable="true" class="kz-editable" data-en="1403" data-fa="۱۴۰۳">۱۴۰۳</span>' +
+        '</div>' +
+        '<p class="memory-place" contenteditable="true" class="kz-editable" data-en="Place" data-fa="مکان">مکان</p>' +
+        '<div class="memory-text" contenteditable="true" class="kz-editable" data-en="&lt;p&gt;Write the memory here…&lt;/p&gt;" data-fa="&lt;p&gt;خاطره را اینجا بنویس…&lt;/p&gt;"><p>خاطره را اینجا بنویس…</p></div>' +
+        mediaHtml;
+    } else if (type === 'resume-item') {
       newItem.className = 'resume-item';
       newItem.innerHTML = delBtnHtml +
         '<div class="resume-item-head">' +
