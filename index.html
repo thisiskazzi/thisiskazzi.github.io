@@ -213,52 +213,7 @@
   .brand-row a:hover{ color:var(--line); transform:translateY(-2px); }
   .brand-row a:focus-visible{ outline:1px solid var(--line); outline-offset:5px; border-radius:4px; }
   .brand-row svg{ height:clamp(20px, 2.6vw, 28px); width:auto; fill:currentColor; display:block; }
-    /* —— Custom tooltip for brand-row icons (replaces native title) —— */
-  .brand-row a{ position:relative; }
-  .brand-row a::before{
-    content:attr(data-tooltip);
-    position:absolute;
-    bottom:calc(100% + 12px);
-    left:50%;
-    transform:translateX(-50%) translateY(6px);
-    background:rgba(11,13,17,.96);
-    color:var(--line);
-    font-size:11.5px;
-    font-weight:500;
-    letter-spacing:.03em;
-    padding:5px 11px;
-    border-radius:8px;
-    border:1px solid var(--line-faint);
-    white-space:nowrap;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .18s ease, transform .18s ease;
-    z-index:20;
-    -webkit-backdrop-filter:blur(8px);
-    backdrop-filter:blur(8px);
-    box-shadow:0 8px 24px rgba(0,0,0,.45);
-  }
-  .brand-row a::after{
-    content:'';
-    position:absolute;
-    bottom:calc(100% + 6px);
-    left:50%;
-    transform:translateX(-50%) translateY(6px);
-    border:5px solid transparent;
-    border-top-color:rgba(11,13,17,.96);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .18s ease, transform .18s ease;
-    z-index:20;
-  }
-  .brand-row a:hover::before,
-  .brand-row a:focus-visible::before,
-  .brand-row a:hover::after,
-  .brand-row a:focus-visible::after{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-  }
-
+   
   .socials{ display:flex; align-items:center; gap:6px; }
   .socials a{ position:relative; width:34px; height:34px; display:grid; place-items:center;
     color:var(--line-dim); text-decoration:none; border:1px solid transparent; border-radius:50%;
