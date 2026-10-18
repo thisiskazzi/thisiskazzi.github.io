@@ -1308,18 +1308,11 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     }
   } catch (e) { EMBEDDED = {}; }
 
-  (function syncFromEmbedded() {
-    var embVer = EMBEDDED.__version || '';
-    if (!embVer) return;
-    var locVer = '';
-    try { locVer = localStorage.getItem(VERSION_KEY) || ''; } catch (e) {}
-    if (embVer === locVer) return;
-    Object.keys(EMBEDDED).forEach(function (key) {
-      if (key === '__version') return;
-      try { localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(EMBEDDED[key])); } catch (e) {}
-    });
-    try { localStorage.setItem(VERSION_KEY, embVer); } catch (e) {}
-  })();
+  // Published media is authoritative. Browser storage contains editor drafts only.
+  // Keep legacy drafts intact so the owner can recover unpublished uploads in #edit.
+  var mediaDrafts = Object.create(null);
+  var DRAFT_PREFIX = 'kazzi-media-draft-';
+  var publishedVersion = EMBEDDED.__version || '';
 
   var modal = document.getElementById('mediaModal');
   var viewer = document.getElementById('mediaViewer');
@@ -1334,13 +1327,39 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   var tabs = document.querySelectorAll('[data-mm-tab]');
   var panels = document.querySelectorAll('[data-mm-panel]');
 
+  function publishedMedia(key) {
+    return Array.isArray(EMBEDDED[key]) ? EMBEDDED[key] : [];
+  }
   function getStore(key) {
-    try { var raw = localStorage.getItem(STORAGE_PREFIX + key); if (raw) return JSON.parse(raw); } catch (e) {}
-    return [];
+    var published = publishedMedia(key);
+    if (!document.body.classList.contains('edit-mode')) return published.slice();
+    if (Object.prototype.hasOwnProperty.call(mediaDrafts, key)) return mediaDrafts[key].slice();
+    try {
+      var raw = localStorage.getItem(DRAFT_PREFIX + key);
+      if (raw) {
+        var draft = JSON.parse(raw);
+        if (draft && draft.version === publishedVersion && Array.isArray(draft.items)) {
+          return draft.items.slice();
+        }
+      }
+      // Older versions stored drafts without an envelope. Recover only matching versions.
+      if (localStorage.getItem(VERSION_KEY) === publishedVersion) {
+        var legacy = JSON.parse(localStorage.getItem(STORAGE_PREFIX + key) || 'null');
+        if (Array.isArray(legacy)) return legacy.slice();
+      }
+    } catch (e) {}
+    return published.slice();
   }
   function setStore(key, arr) {
-    try { localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(arr)); }
-    catch (e) { alert('حجم فایل زیاد است یا حافظه پر شده.'); }
+    mediaDrafts[key] = arr.slice();
+    try {
+      localStorage.setItem(DRAFT_PREFIX + key, JSON.stringify({
+        version: publishedVersion, items: arr
+      }));
+    } catch (e) {
+      alert(T('تغییرات فعلاً در این صفحه حفظ شده‌اند. برای نگه داشتن آن‌ها، پیش از بستن صفحه خروجی HTML بگیر و منتشر کن.',
+        'Changes are kept in this page. Export and publish the HTML before closing it.'));
+    }
   }
   function inferType(url, fileType) {
     if (fileType) {
@@ -1523,6 +1542,8 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   viewer.addEventListener('click', function (e) { if (e.target === viewer) closeViewer(); });
 
   document.addEventListener('click', function (e) {
+    var editing = document.body.classList.contains('edit-mode');
+    if (!editing && e.target.closest('[data-add], .mt-del, .kz-chip-del, .kz-add-chip, .kz-add-btn, .kz-del-btn')) return;
     var addBtn = e.target.closest('[data-add]');
     if (addBtn) { e.preventDefault(); openModal(addBtn.dataset.add); return; }
 
@@ -1812,7 +1833,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     if (exportBtn) {
       if (on) {
         exportBtn.disabled = false;
-        exportBtn.textContent = 'ذخیره و دانلود HTML';
+        exportBtn.textContent = 'دانلود نسخه برای انتشار';
       } else {
         exportBtn.disabled = true;
         exportBtn.textContent = 'در حال آماده‌سازی...';
@@ -1826,7 +1847,10 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       refreshSkillChips();
     } else {
       disableEditing();
+      closeModal();
+      closeViewer();
     }
+    renderAll();
   }
 
   if (location.hash === '#edit') setEditOn(true);
@@ -1893,13 +1917,9 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       docClone.querySelectorAll('.media-strip').forEach(function (s) { s.innerHTML = ''; });
 
       var allMedia = { __version: 'v' + Date.now() };
-      for (var i = 0; i < localStorage.length; i++) {
-        var k = localStorage.key(i);
-        if (k && k.indexOf(STORAGE_PREFIX) === 0) {
-          var mediaKey = k.slice(STORAGE_PREFIX.length);
-          try { allMedia[mediaKey] = JSON.parse(localStorage.getItem(k)); } catch (e) {}
-        }
-      }
+      docClone.querySelectorAll('.media-block[data-media]').forEach(function (block) {
+        allMedia[block.dataset.media] = getStore(block.dataset.media);
+      });
 
       var json = JSON.stringify(allMedia).replace(/<\//g, '<\\/');
       var embScript = docClone.querySelector('#embedded-media');
@@ -1918,14 +1938,14 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
 
       btn.disabled = false;
-      btn.textContent = 'ذخیره و دانلود HTML';
+      btn.textContent = 'دانلود نسخه برای انتشار';
 
       setTimeout(function () {
         alert('✅ فایل index.html دانلود شد.\n\nحالا:\n1. برو به گیت‌هاب\n2. index.html قبلی رو با این جایگزین کن\n3. Commit کن\n4. صبر کن ۱ دقیقه');
       }, 300);
     } catch (err) {
       btn.disabled = false;
-      btn.textContent = 'ذخیره و دانلود HTML';
+      btn.textContent = 'دانلود نسخه برای انتشار';
       alert('خطا در ساخت فایل: ' + err.message);
       console.error(err);
     }
