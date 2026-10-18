@@ -750,6 +750,71 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     }
     .site-nav a:hover, .contact-list a:hover{ color:#e0edff; }
   }
+  /* Shared glass surfaces; decorative layers leave content geometry intact. */
+  #about .about-grid, .resume-item, .memory-item, .work-item, .skill-group{
+    position:relative;
+    isolation:isolate;
+    border-radius:16px;
+    background:none;
+  }
+  #about .about-grid::after, .resume-item::after, .memory-item::after,
+  .work-item::after, .skill-group::after{
+    content:'';
+    position:absolute;
+    inset:0 -10px;
+    z-index:-1;
+    pointer-events:none;
+    border-radius:inherit;
+    background:linear-gradient(125deg,rgba(176,204,240,.07),rgba(121,153,194,.025) 60%,rgba(187,211,242,.04));
+    box-shadow:inset 0 1px 0 rgba(224,237,255,.12),
+      inset 0 0 0 1px rgba(194,214,242,.07),0 10px 26px rgba(0,0,0,.10);
+  }
+  #about .about-grid::after, .skill-group::after{ inset:-10px; }
+  .resume-meta{
+    border-radius:8px;
+    background:rgba(165,194,232,.035);
+    box-shadow:0 0 0 6px rgba(165,194,232,.035);
+  }
+  .resume-block > h3, .work-group > h3, .skill-group h4{
+    text-shadow:0 1px 14px rgba(171,205,250,.12);
+  }
+  .contact-link, .contact-list a, .brand-row a{
+    border-radius:8px;
+    background:rgba(174,204,244,.04);
+    box-shadow:0 0 0 6px rgba(174,204,244,.04),inset 0 1px 0 rgba(225,238,255,.06);
+    transition:background .22s ease,box-shadow .22s ease,color .22s ease;
+  }
+  .mm-tabs, .mm-drop, .media-add, .mm-btn.ghost, .edit-exit, .mv-close{
+    background:var(--glass-fill);
+    border-color:var(--glass-edge);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .mm-tab.is-active{
+    background:linear-gradient(135deg,#f0f5fc,#c8d6e8);
+    color:#101722;
+  }
+  footer{
+    background:linear-gradient(180deg,rgba(170,198,236,.035),rgba(94,124,165,.012));
+    box-shadow:inset 0 1px 0 rgba(217,233,255,.045);
+    color:var(--line-dim);
+  }
+  @media (hover:hover){
+    .contact-link:hover, .contact-list a:hover, .brand-row a:hover{
+      background:rgba(174,204,244,.085);
+      box-shadow:0 0 0 6px rgba(174,204,244,.085),inset 0 1px 0 rgba(225,238,255,.13);
+    }
+    .media-add:hover, .mm-btn.ghost:hover, .mm-drop:hover{
+      background:rgba(174,204,244,.085);
+      border-color:rgba(213,229,249,.32);
+    }
+  }
+  @media print{
+    #about .about-grid::after, .resume-item::after, .memory-item::after,
+    .work-item::after, .skill-group::after{ content:none; }
+    .resume-meta, .contact-link, .contact-list a, .brand-row a, footer{
+      background:none; box-shadow:none; color:inherit;
+    }
+  }
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
     header.site{ background:#10151e; }
     .mm-card, .edit-toolbar{ background:#111824; }
